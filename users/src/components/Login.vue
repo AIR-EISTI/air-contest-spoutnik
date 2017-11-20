@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="back-grey center">
       <section id="login-section">
         <p class="subtitle">Utilisez votre compte Air-eisti</p>
         <form>

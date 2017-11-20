@@ -8,14 +8,21 @@ html,body
     
 }
 
-body
+#app
 {
-    
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
 }
 
-body.body-grey
+.back-grey
 {
     background-color: rgb(240,240,240);
+}
+
+main
+{
+    flex-grow: 1;
 }
 
 #landing-page
@@ -65,7 +72,8 @@ h2
     left: 0;
     width: calc(100vw - 30px);
     z-index: 5;
-    background-color: black
+    background-color: black;
+    flex-wrap: 0;
 }
 
 #navbar h1
@@ -237,6 +245,7 @@ h2
     display: inline-block;
     padding: 40px;
     border: 1px solid lightgrey;
+    margin-top: 50px;
 }
 
 form .line

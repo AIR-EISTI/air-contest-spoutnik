@@ -1,11 +1,10 @@
 <template>
     <nav id="navbar">
-        <a href="index.html"><h1>Air-contest</h1></a>
+        <router-link :to="{name: 'Home'}"><h1>Air-contest</h1></router-link>
         <ul>
             <a href="#"><li>Listes des exercices</li></a>
             <a href="#"><li>Les tournois</li></a>
-            <router-link :to="{name: 'UserIndex'}">
-            <a router-link :to="{name: 'Login'}"><li>Login</li></a>
+            <router-link :to="{name: 'Login'}"><li>Login</li></router-link>
         </ul>
     </nav>
 </template>
