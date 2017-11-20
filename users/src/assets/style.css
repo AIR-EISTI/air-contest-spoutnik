@@ -1,0 +1,370 @@
+/* css base */
+
+html,body
+{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    
+}
+
+body
+{
+    
+}
+
+body.body-grey
+{
+    background-color: rgb(240,240,240);
+}
+
+#landing-page
+{
+    margin: 0;
+}
+h2
+{
+    text-align: center;
+    font-weight: 300;
+    font-size: 2em;
+}
+
+.button
+{
+    padding: 10px;
+    display: inline-block;
+    border: 1px solid black;
+    min-width: 150px;
+    text-align: center;
+    text-decoration: none;
+    background-color: navy;
+    color: white;
+    margin-top: 10px;
+}
+
+.center
+{
+    text-align: center;
+}
+
+.no-color
+{
+    background-color: transparent !important;
+    background-image: none !important;
+}
+
+/*-- -- nav bar -- --*/
+
+#navbar
+{    
+    display: flex;
+    padding: 15px;
+    align-items: center;
+    position: fixed;
+    top:0;
+    left: 0;
+    width: calc(100vw - 30px);
+    z-index: 5;
+    background-color: black
+}
+
+#navbar h1
+{
+    margin: 0;
+    flex-shrink:0;
+}
+
+#navbar ul
+{
+    margin: 0;
+    list-style-type: none;
+    flex-grow: 1;
+    text-align: right;
+}
+
+#navbar li
+{
+    display: inline-block;
+    padding: 10px;
+}
+
+#navbar a
+{
+    text-decoration: none;
+    color:white;
+}
+
+
+/**** intro *****/
+
+#intro-section
+{
+    padding: 5px 0px 100px 0px;
+    
+    background-color: cornflowerblue;
+    background-image: url("imgs/fond5.jpg");
+    background-size: cover;
+    padding-top: 100px;
+}
+
+/*** text-image ***/
+
+.text-image
+{
+    display: flex;
+    flex-direction: row;
+
+}
+
+.text-image > *
+{
+    flex: 1;
+    padding: 80px;
+}
+
+
+.text-image aside
+{
+
+}
+
+.text-image aside img
+{
+    width: 100%;
+    box-shadow: 1px 1px 8px rgba(0,0,0,0.5);
+}
+
+
+.text-image.inversed
+{
+    flex-direction: row-reverse;
+}
+
+#month-exercise
+{
+    height: 500px;
+    position: relative;
+    top: -100px;
+    background-color: white;
+    width: 1000px;
+    max-width: 100vw;
+    margin: auto;
+    box-shadow: 1px 1px 8px rgba(0,0,0,0.5);
+    padding: 5px;
+}
+
+/*********** tag **************/
+
+.tags.horizontal
+{
+    text-align: center;
+}
+
+.tags.horizontal li
+{
+    display: inline-block;
+    min-width: 80px;
+    padding: 10px 10px;
+    text-align: center;
+    background-color: #F5D247;
+
+}
+
+.tags.horizontal h2
+{
+    display:none;
+}
+
+
+
+/****** exercise *************/
+
+
+.list-exo-min
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.vertical-line
+{
+    border-left: 1px solid #B7E0ED;
+    display: none;
+}
+.exo-min
+{
+    width: 320px;
+    padding: 5px;
+    height: 200px;
+    color: rgb(70,70,70);
+    
+}
+
+.exo-min.plus
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.exo-min.plus .button
+{
+    background-color:lightsteelblue;
+    color:black;
+}
+
+.exo-min .title
+{
+    font-size: 1.3em;
+    text-align: center;
+    margin: 5px;
+}
+
+.exo-min .description
+{
+    margin: 10px;
+}
+
+/**** input ****/
+
+
+#login-section
+{
+    background-color: white;
+    display: inline-block;
+    padding: 40px;
+    border: 1px solid lightgrey;
+}
+
+form .line
+{
+    text-align: center;
+    width: 250px;
+    margin: 15px auto;
+}
+
+.subtitle
+{
+    text-align: center;
+    font-size: 1.2em;
+    color: rgb(100,100,100);
+    margin: 0px;
+    margin-top: 0px;
+    font-weight: 800;
+    margin-top: 5px;
+    
+}
+
+label
+{
+    text-align: left;
+    width: 100%;
+    display: inline-block;
+    display: block;
+    
+}
+
+input {
+    border-radius: 0px;
+    -webkit-appearance: none;
+    border: none;
+    border-bottom: 1px solid black;
+    height: 30px;
+    margin: 10px;
+    width: 100%;
+}
+
+
+input[type=submit]
+{
+    background-color: navy;
+    padding: 10px;
+    width: 200px;
+    height: 40px;
+    color: white;
+}
+
+@media only screen and (max-width: 1100px) 
+{
+    #month-exercise
+    {
+        width: auto;
+        box-shadow: none;
+        margin: 0;
+    }
+
+    .text-image.inversed,.text-image
+    {
+        flex-direction: column;
+    }
+    
+    .text-image > *
+    {
+        padding: 20px 80px;
+    }
+}
+
+
+@media only screen and (max-width: 700px)
+{
+    #navbar
+    {
+        display: block;
+        height: 100vh;
+        color:white;
+        background-color: black;
+        background-image: none;
+        width: 200px;
+    }
+
+    #navbar ul
+    {
+        padding: 0;
+        text-align: left;
+    }
+
+    #navbar a
+    {
+        color:white;
+    }
+
+    #navbar li
+    {
+        display: block;
+        padding: 0;
+        margin: 10px 0px;
+    }
+
+    .tags.horizontal
+    {
+        padding: 0;
+        position: fixed;
+        bottom: 0;
+        z-index: 6;
+        color: white;
+        padding: 15px;
+    }
+
+    .tags.horizontal li
+    {
+        display: block;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        text-align: left;
+        background-color: transparent;
+        margin-bottom: 5px;
+
+    }
+
+
+    .tags.horizontal h2
+    {
+        display:block;
+        margin: 0;
+        margin-bottom: 10px;
+    }
+} 
