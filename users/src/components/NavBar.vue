@@ -25,7 +25,7 @@ export default {
     displayMenu () {
       this.noVisible = !this.noVisible
     }
-  },
+  }
 }
 </script>
 

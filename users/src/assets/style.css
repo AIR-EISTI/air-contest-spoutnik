@@ -20,6 +20,11 @@ html,body
     min-height: calc(100vh - 51px);
 }
 
+article
+{
+    text-align: justify;
+}
+
 .back-grey
 {
     background-color: rgb(240,240,240);
