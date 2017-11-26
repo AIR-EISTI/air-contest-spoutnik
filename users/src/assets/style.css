@@ -13,7 +13,7 @@ html,body
     display: flex;
     flex-direction: row;
     background-color: rgb(245,245,245);
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    font-family: sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     margin-top: 51px;
@@ -184,7 +184,19 @@ h2
     border: 1px solid lightgrey;
     background-color: white;
     margin-top: 10px;
+    display: flex;
+    flex-direction: column;
     
+}
+
+.exo-min .description
+{
+    flex: 1;
+    flex-shrink: 0;
+}
+.exo-min .button
+{
+
 }
 
 .exo-min.plus
@@ -303,61 +315,11 @@ input[type=submit]
         margin-top: 0px !important;
     }
 
-
-    /**** *** *** *** *** NAVBAR *** *** *** *** ****/
-
-    #navbar
+    .text-image > *
     {
-        display: block;
-        height: 100vh;
-        color:white;
-        background-color: black;
-        background-image: none;
-        width: 200px;
+        padding: 20px 20px;
     }
-
-    #navbar .content-menu
-    {
-        display: block;
-    }
-
-    #navbar ul
-    {
-        padding: 0;
-        text-align: left;
-    }
-
-    #navbar a
-    {
-        color:white;
-    }
-
-    #navbar li
-    {
-        display: block;
-        padding: 0;
-        margin: 10px 0px;
-    }
-
-    #navbar.noVisible .content-menu
-    {
-        display: none;
-    }
-
-    #navbar .hamburger
-    {
-        filter: invert(100%);
-        height: 50px;
-        width: 50px;    
-        display: block;   
-    }
-  
-    #navbar.noVisible
-    {
-        width: 50px;
-        height: 50px;
-    }
-
+    
     /*** *** *** *** tags navbar *** *** *** ****/
 
     #navbar.noVisible + main .tags
@@ -371,7 +333,7 @@ input[type=submit]
         position: fixed;
         bottom: 0;
         z-index: 6;
-        color: white;
+        color: black;
         padding: 15px;
     }
 
