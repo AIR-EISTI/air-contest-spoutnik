@@ -111,12 +111,19 @@ export default {
 
     /**** *** *** *** *** NAVBAR *** *** *** *** ****/
 
+    #navbar h1
+    {
+        border-bottom: 1px solid black;
+        padding: 5px;
+        text-align: center;
+    }
     #navbar
     {
         display: block;
         height: 100vh;
-        color:white;
-        background-color: black;
+        color:black;
+        background-color: rgba(255,255,255,0.9);
+        border-right: 1px solid rgb(100,100,100);
         background-image: none;
         width: 200px;
         padding:15px;
@@ -135,7 +142,7 @@ export default {
 
     #navbar a
     {
-        color:white;
+        color:black;
     }
     #navbar ul
     {
@@ -146,9 +153,18 @@ export default {
         display: block;
         padding: 0;
         margin: 10px 0px;
+        padding: 10px 5px;
         text-align: left;
-        color:white;
+        color:black;
         border: none;
+        font-weight: 800;
+        border-left: 1px solid rgb(150,150,150);
+    }
+
+    #navbar li:hover
+    {
+        background-color: transparent;
+        border-color: black;
     }
 
     #navbar.noVisible .content-menu
@@ -158,7 +174,6 @@ export default {
 
     #navbar .hamburger
     {
-        filter: invert(100%);
         height: 50px;
         width: 50px;    
         display: block;   
