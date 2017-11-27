@@ -1,10 +1,7 @@
 <template lang="html">
-  <div class="upload">
-    <input :id="inputId" type="file" v-on:change="fileChange">
-    <div class="progress">
-      <div></div>
-    </div>
-    <label :for="inputId" class="button">
+  <div class="input-file">
+    <input id="inputId" type="file" v-on:change="fileChange">
+    <label for="inputId" class="button">
       <img src="/static/icons/IcoMoon/SVG/049-folder-open.svg" width="16px">
       <span>{{ file === null ? 'Chosir un fichier' : file.name }}</span>
     </label>
@@ -22,50 +19,34 @@ export default {
   methods: {
     fileChange (event) {
       this.file = event.target.files[0]
+      this.$emit('fileChange', this.file)
     }
   },
-  name: 'FileUpload'
+  name: 'FileInput'
 }
 </script>
 
-<style lang="css">
-.upload input[type="file"] {
+<style lang="css" scoped>
+input[type="file"] {
   display: none;
 }
 
-.upload label img {
-  filter: invert(100%);
-}
-
-.upload label {
+label {
   cursor: pointer;
   width: auto;
   overflow: hidden;
   margin-top: 0;
 }
-.upload label > span {
+
+label > span {
   display: inline-block;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   width: 150px;
 }
-.upload {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
-.upload .progress {
-  flex-grow: 1;
-  background-color: #edf9ff;
-  height: 5px;
-  margin: 0 10px;
-}
-
-.upload .progress > div {
-  background-color: navy;
-  height: 100%;
-  width: 50%;
+label img {
+  filter: invert(100%);
 }
 </style>

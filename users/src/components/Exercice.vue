@@ -13,20 +13,23 @@
       <p>
         The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
       </p>
+      <pre>
+      </pre>
     </div>
     <div class="resultat">
       <h2>Résultats</h2>
       <a href="#d">Télécharger le jeu de données.</a>
-      <file-upload></file-upload>
+      <extendable-content-input title="Sortie du programme"></extendable-content-input>
+      <button class="button">Envoyer</button>
     </div>
   </main>
 </template>
 
 <script>
-import FileUpload from '@/components/FileUpload'
+import ExtendableContentInput from '@/components/ExtendableContentInput'
 export default {
   components: {
-    'fileUpload': FileUpload
+    'ExtendableContentInput': ExtendableContentInput
   }
 }
 </script>
@@ -53,4 +56,5 @@ export default {
 .exercice a, .exercice a:visited {
   color: #234cff;
 }
+
 </style>
