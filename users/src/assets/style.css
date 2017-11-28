@@ -35,6 +35,20 @@ main
     flex-grow: 1;
 }
 
+
+.center-container
+{
+    max-width: 750px;
+    margin: auto;
+}
+
+.white-container
+{
+    background-color: white;
+    border: 1px solid lightgray;
+    padding: 10px;
+}
+
 #landing-page
 {
     margin: 0;
@@ -125,13 +139,9 @@ h2
     height: 500px;
     position: relative;
     top: -100px;
-    background-color: white;
     width: 1000px;
     max-width: calc(100vw - 50px);
     margin: auto !important;
-    /*box-shadow: 1px 1px 8px rgba(0,0,0,0.5);*/
-    border: 1px solid lightgrey;
-    padding: 5px;
 }
 
 /*********** tag **************/
@@ -200,8 +210,6 @@ h2
     padding: 5px;
     height: 220px;
     color: rgb(70,70,70);
-    border: 1px solid lightgrey;
-    background-color: white;
     margin-top: 10px;
     display: flex;
     flex-direction: column;

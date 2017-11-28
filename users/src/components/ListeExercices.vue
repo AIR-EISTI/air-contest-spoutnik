@@ -11,7 +11,7 @@
             </ul>
       </section>
       <ul id="listeExercices">
-          <li class="exercice">
+          <li class="exercice white-container">
               <h2 class="title">Super exercice avec un nom très long</h2>
               <p>
                   une petite description de l'exercice qui est suivi par un lorem ipsum.Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie. c'est ainsi que l'on peut conclure ce 1er exercice avec un long texte qui nous rpend la tête n'est pas magnifique ?
@@ -21,7 +21,7 @@
                 <li class="tag">#graph</li>
               </ul>
           </li>
-          <li class="exercice">
+          <li class="exercice white-container">
               <h2 class="title">Super exercice avec un nom très long</h2>
               <p>
                   une petite description de l'exercice qui est suivi par un lorem ipsum.Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie. c'est ainsi que l'on peut conclure ce 1er exercice avec un long texte qui nous rpend la tête n'est pas magnifique ?
@@ -31,7 +31,7 @@
                 <li class="tag">#graph</li>
               </ul>
           </li>
-          <li class="exercice">
+          <li class="exercice white-container">
               <h2 class="title">Super exercice avec un nom très long</h2>
               <p>
                   une petite description de l'exercice qui est suivi par un lorem ipsum.Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie. c'est ainsi que l'on peut conclure ce 1er exercice avec un long texte qui nous rpend la tête n'est pas magnifique ?
@@ -41,13 +41,13 @@
                 <li class="tag">#graph</li>
               </ul>
           </li>
-          <li class="exercice">
+          <li class="exercice white-container">
               <h2 class="title">Super exercice avec un nom très long</h2>
               <p>
                   une petite description de l'exercice qui est suivi par un lorem ipsum.Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie. c'est ainsi que l'on peut conclure ce 1er exercice avec un long texte qui nous rpend la tête n'est pas magnifique ?
               </p>
           </li>
-          <li class="exercice">
+          <li class="exercice white-container">
               <h2 class="title">Super exercice avec un nom très long</h2>
               <p>
                   une petite description de l'exercice qui est suivi par un lorem ipsum.Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie. c'est ainsi que l'on peut conclure ce 1er exercice avec un long texte qui nous rpend la tête n'est pas magnifique ?
@@ -106,11 +106,7 @@ input[type=search]
 
 .exercice
 {
-    border:none;
-    background-color: white;
-    padding: 10px;
     margin-top: 15px;
-    border: 1px solid lightgrey;
     border-top: 2px solid navy;
 }
 

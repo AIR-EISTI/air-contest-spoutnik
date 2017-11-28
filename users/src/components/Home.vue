@@ -15,7 +15,7 @@
                 </aside>
             </div>
         </section>
-        <section id="month-exercise">
+        <section id="month-exercise" class="white-container">
             
             <h2 class="center">Exercice du mois</h2>
             <br/>
@@ -26,7 +26,7 @@
         <section >
             <h2 class="center">Les autres exercices</h2>
             <div class="list-exo-min">
-            <div class="exo-min">
+            <div class="exo-min white-container">
                 <div class="title">Le labyrinthe du sorcier</div>
                 <div class="description">
                     Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie.
@@ -37,7 +37,7 @@
                 </div>
             </div>
             <div class="vertical-line"></div>
-            <div class="exo-min">
+            <div class="exo-min white-container">
                 <div class="title">Le labyrinthe du sorcier</div>
                 <div class="description">
                     Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie.
@@ -47,7 +47,7 @@
                 </div>
             </div>
             <div class="vertical-line"></div>
-            <div class="exo-min">
+            <div class="exo-min white-container">
                 <div class="title">Le labyrinthe du sorcier</div>
                 <div class="description">
                     Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie.
