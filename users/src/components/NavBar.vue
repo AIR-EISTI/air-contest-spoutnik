@@ -4,7 +4,7 @@
         <div class="content-menu">
         <router-link :to="{name: 'Home'}"><h1>Air-contest</h1></router-link>
         <ul>
-            <a href="#"><li>Listes des exercices</li></a>
+            <router-link :to="{name: 'ListeExercices'}"><li>Listes des exercices</li></router-link>
             <a href="#"><li>Les tournois</li></a>
             <router-link :to="{name: 'Login'}"><li>Login</li></router-link>
         </ul>
