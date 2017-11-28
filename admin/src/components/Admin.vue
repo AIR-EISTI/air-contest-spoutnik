@@ -4,12 +4,18 @@
       <h2 class="neon">Bienvenue dans votre page administrateur </h2>
     </div>
     <div id="infos">
-      <div id="nbUsers">
-        <p>bidule</p>
-      </div>
-      <div id="nbExercies">
-        <p>prout</p>
-      </div>
+      <router-link :to="{name: 'Users'}">
+        <div id="nbUsers">
+          <p>Nombre d'utilisateurs</p>
+          <p class="nombre">0</p>
+        </div>
+      </router-link>
+      <router-link :to="{name: 'Exercices'}">
+        <div id="nbExercies">
+          <p>Nombre d'exercices</p>
+          <p class="nombre">0</p>
+        </div>
+      </router-link>
     </div>
   </main>
 </template>
@@ -39,8 +45,9 @@ export default {
   #infos{
     display:flex;
     justify-content:space-around;
+    padding-top: 50px;
   }
-  #infos div{
+  #infos a{
     color:  #00F3F9;
     padding: 8px 8px 8px 32px;
     border : 1px solid #E120F0!important;
@@ -49,6 +56,13 @@ export default {
     border-bottom-right-radius:30px;
     height: 267px;
     width : 35%;
+    font-size: 35px;
+    text-align: center;
+  }
 
+  .nombre {
+    font-size: 45px;
+    text-shadow: 2px 2px 5px #E120F0, -2px -2px 5px #E120F0, -2px 2px 5px #E120F0, 2px -2px 5px #E120F0;
+    font-family: neonsregular;
   }
 </style>

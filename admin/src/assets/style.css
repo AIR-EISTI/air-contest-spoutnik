@@ -1,7 +1,6 @@
 #app
 {
     display : flex;
-    background-color: rgb(245,245,245);
     font-family: sans-serif;
     height: 100%;
 }
@@ -17,6 +16,7 @@
 body{
   height: 100vh;
   margin: 0;
+  background-color: #1f0030;
 }
 
 @font-face {
