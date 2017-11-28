@@ -1,0 +1,16 @@
+#app
+{
+    display : flex;
+    background-color: rgb(245,245,245);
+    font-family: sans-serif;
+    height: 100%;
+}
+
+#app > main{
+  flex-grow: 1;
+}
+
+body{
+  height: 100vh;
+  margin: 0;
+}
