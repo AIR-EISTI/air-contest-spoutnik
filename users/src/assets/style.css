@@ -5,7 +5,7 @@ html,body
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    
+
 }
 
 #app
@@ -39,7 +39,7 @@ main
 .center-container
 {
     max-width: 750px;
-    margin: auto;
+    margin: 0 auto;
 }
 
 .white-container
@@ -93,7 +93,7 @@ h2
 #intro-section
 {
     padding: 5px 0px 100px 0px;
-    
+
     background-color: cornflowerblue;
     background-image: url("imgs/fond5.jpg");
     background-size: cover;
@@ -213,7 +213,7 @@ h2
     margin-top: 10px;
     display: flex;
     flex-direction: column;
-    
+
 }
 
 .exo-min .description
@@ -289,7 +289,7 @@ form .line
     margin-top: 0px;
     font-weight: 800;
     margin-top: 5px;
-    
+
 }
 
 label
@@ -298,7 +298,7 @@ label
     width: 100%;
     display: inline-block;
     display: block;
-    
+
 }
 
 input {
@@ -321,7 +321,7 @@ input[type=submit]
     color: white;
 }
 
-@media only screen and (max-width: 1100px) 
+@media only screen and (max-width: 1100px)
 {
     #month-exercise
     {
@@ -334,7 +334,7 @@ input[type=submit]
     {
         flex-direction: column;
     }
-    
+
     .text-image > *
     {
         padding: 20px 80px;
@@ -353,7 +353,7 @@ input[type=submit]
     {
         padding: 20px 20px;
     }
-    
+
     /*** *** *** *** tags navbar *** *** *** ****/
 
     #navbar.noVisible + main .tags
@@ -390,4 +390,4 @@ input[type=submit]
         margin: 0;
         margin-bottom: 10px;
     }
-} 
+}
