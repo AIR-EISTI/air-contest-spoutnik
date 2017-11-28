@@ -3,7 +3,7 @@
     <div class="enonce" v-html="description">
     </div>
     <div class="resultat white-container">
-      <h2>Résultats<span :title="date | dateTitle">fin {{dateEnd | date}}</span></h2>
+      <h2>Résultats<span :title="dateEnd | dateTitle">fin {{dateEnd | date}}</span></h2>
       <a :href="dataSetUrl">Télécharger le jeu de données.</a>
       <extendable-content-input title="Sortie du programme" ref="output"></extendable-content-input>
       <extendable-content-input title="Code du programme" ref="code"></extendable-content-input>
