@@ -1,7 +1,7 @@
 <template lang="html">
   <nav id="menu">
     <div class="side-menu">
-    <router-link :to="{name: 'Admin'}"><h1 class="neon">Administation</h1></router-link>
+    <router-link :to="{name: 'Admin'}"><h1 class="neon">Administration</h1></router-link>
     <div class="links neon">
         <router-link :to="{name: 'Users'}" class="item">Users</router-link>
         <router-link :to="{name: 'Exercices'}" class="item">Exercices</router-link>
@@ -59,7 +59,7 @@ export default {
   h1{
     color : #00FE00;
     text-decoration: none;
-    font-size: 35px;
+    font-size: 30px;
     display: block;
     text-align: center;
   }

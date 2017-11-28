@@ -1,7 +1,15 @@
 <template lang="html">
   <main>
-    <div>
+    <div id="titre">
       <h2 class="neon">Bienvenue dans votre page administrateur </h2>
+    </div>
+    <div id="infos">
+      <div id="nbUsers">
+        <p>bidule</p>
+      </div>
+      <div id="nbExercies">
+        <p>prout</p>
+      </div>
     </div>
   </main>
 </template>
@@ -26,6 +34,21 @@ export default {
   }
   main{
     background-color: #1f0030;
+    overflow-y: scroll;
   }
+  #infos{
+    display:flex;
+    justify-content:space-around;
+  }
+  #infos div{
+    color:  #00F3F9;
+    padding: 8px 8px 8px 32px;
+    border : 1px solid #E120F0!important;
+    box-shadow: 0 0 10px #E120F0 inset, 0 0 10px #E120F0;
+    border-top-left-radius:30px;
+    border-bottom-right-radius:30px;
+    height: 267px;
+    width : 35%;
 
+  }
 </style>
