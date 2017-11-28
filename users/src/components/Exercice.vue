@@ -51,9 +51,9 @@ export default {
 </script>
 
 <style lang="css" scoped>
-.exercice > div {
-  margin: 0 auto;
+main.exercice {
   max-width: 750px;
+  margin: 0 auto;
 }
 
 .exercice .resultat {
