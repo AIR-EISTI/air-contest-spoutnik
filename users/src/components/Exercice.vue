@@ -1,8 +1,8 @@
 <template lang="html">
-  <main class="exercice">
+  <main class="exercice center-container">
     <div class="enonce" v-html="description">
     </div>
-    <div class="resultat">
+    <div class="resultat white-container">
       <h2>Résultats<span :title="date | dateTitle">fin {{dateEnd | date}}</span></h2>
       <a :href="dataSetUrl">Télécharger le jeu de données.</a>
       <extendable-content-input title="Sortie du programme" ref="output"></extendable-content-input>
@@ -68,15 +68,6 @@ export default {
 </script>
 
 <style lang="css" scoped>
-main.exercice {
-  max-width: 750px;
-  margin: 0 auto;
-}
-
-.exercice .resultat {
-  padding: 10px;
-  background: white;
-}
 
 .exercice .resultat h2 {
   margin-top: 0;
