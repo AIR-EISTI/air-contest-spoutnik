@@ -1,7 +1,26 @@
 <template lang="html">
   <main class="exercice">
-    <div class="enonce">
-      <h1>Super exercice</h1>
+    <div class="enonce" v-html="description">
+    </div>
+    <div class="resultat">
+      <h2>Résultats<span>fin le {{dateEnd}}</span></h2>
+      <a :href="dataSetUrl">Télécharger le jeu de données.</a>
+      <extendable-content-input title="Sortie du programme" ref="output"></extendable-content-input>
+      <extendable-content-input title="Code du programme" ref="code"></extendable-content-input>
+      <button class="button" @click="sendResult">Envoyer</button>
+    </div>
+  </main>
+</template>
+
+<script>
+import ExtendableContentInput from '@/components/ExtendableContentInput'
+export default {
+  data () {
+    return {
+      dataSetUrl: '/api/exercice/1/dataset',
+      dateStart: 1511859303842,
+      dateEnd: 1511859303842,
+      description: `<h1>Super exercice</h1>
       <h2>What is Lorem Ipsum?</h2>
       <p>
         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
@@ -12,25 +31,22 @@
       </p>
       <p>
         The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
-      </p>
-      <pre>
-      </pre>
-    </div>
-    <div class="resultat">
-      <h2>Résultats</h2>
-      <a href="#d">Télécharger le jeu de données.</a>
-      <extendable-content-input title="Sortie du programme"></extendable-content-input>
-      <button class="button">Envoyer</button>
-    </div>
-  </main>
-</template>
-
-<script>
-import ExtendableContentInput from '@/components/ExtendableContentInput'
-export default {
+      </p>`
+    }
+  },
   components: {
     'ExtendableContentInput': ExtendableContentInput
-  }
+  },
+  methods: {
+    sendResult () {
+      console.log({
+        exercice: this.$route.params.id,
+        output: this.$refs.output.fileContent,
+        code: this.$refs.code.fileContent
+      })
+    }
+  },
+  name: 'Exercice'
 }
 </script>
 
@@ -47,6 +63,16 @@ export default {
 
 .exercice .resultat h2 {
   margin-top: 0;
+}
+
+.exercice .resultat h2 span {
+  font-size: 0.3em;
+  display: inline-block;
+  margin-left: 10px;
+  padding: 5px;
+  background-color: beige;
+  position: relative;
+  top: -0.6em
 }
 
 .exercice h2, .exercice h1 {

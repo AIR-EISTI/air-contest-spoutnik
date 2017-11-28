@@ -1,9 +1,9 @@
 <template lang="html">
   <div class="extendable">
-    <h3><img src="/static/icons/IcoMoon/SVG/323-circle-right.svg" @click="toggleExtended" :class="{extended: extended}">{{title}}</h3>
+    <h3 @click="toggleExtended"><img src="/static/icons/IcoMoon/SVG/323-circle-right.svg" :class="{extended: extended}">{{title}}</h3>
     <div v-if="extended">
       <file-input @fileChange="fileChange"></file-input>
-      <textarea placeholder="Coller le contenu">{{outputFileContent}}</textarea>
+      <textarea placeholder="Coller le contenu" :value="fileContent"></textarea>
     </div>
   </div>
 </template>
@@ -16,7 +16,7 @@ export default {
   ],
   data () {
     return {
-      outputFileContent: '',
+      fileContent: '',
       extended: false
     }
   },
@@ -30,7 +30,7 @@ export default {
       if (evt.target.readyState !== 2 || evt.target.error) {
         return
       }
-      this.outputFileContent = evt.target.result
+      this.fileContent = evt.target.result
     },
     toggleExtended (evt) {
       this.extended = !this.extended
@@ -38,13 +38,15 @@ export default {
   },
   components: {
     'FileInput': FileInput
-  }
+  },
+  name: 'ExtendableContentInput'
 }
 </script>
 
 <style lang="css">
 .extendable h3 {
   font-weight: normal;
+  cursor: pointer;
 }
 
 .extendable h3 img {
@@ -52,7 +54,6 @@ export default {
   width: 16px;
   height: 16px;
   margin-right: 10px;
-  cursor: pointer;
 }
 
 .extendable textarea {
