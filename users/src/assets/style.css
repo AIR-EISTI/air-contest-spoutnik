@@ -141,7 +141,7 @@ h2
     text-align: center;
 }
 
-.tags.horizontal li
+.tags.horizontal li, .tags-fixe .tag
 {
     display: inline-block;
     min-width: 80px;
@@ -154,6 +154,26 @@ h2
 .tags.horizontal h2
 {
     display:none;
+}
+
+
+.tags-fixe
+{
+    list-style-type: none;
+}
+
+.tags-fixe
+{
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.tags-fixe .tag
+{
+    min-width: 50px;
+    padding: 5px 10px;
+    margin: 5px;
 }
 
 
@@ -214,11 +234,18 @@ h2
     color:black;
 }
 
-.exo-min .title
+.exo-min .title,.exercice .title
 {
     font-size: 1.3em;
     text-align: center;
     margin: 5px;
+    font-weight: normal;
+}
+
+.exercice .title
+{
+    font-size: 1.5em;
+    text-align: left;
 }
 
 .exo-min .description
