@@ -6,6 +6,10 @@
     height: 100%;
 }
 
+.neon{
+  font-family: neonsregular;
+}
+
 #app > main{
   flex-grow: 1;
 }
@@ -13,4 +17,12 @@
 body{
   height: 100vh;
   margin: 0;
+}
+
+@font-face {
+    font-family: 'neonsregular';
+    src: url('fonts/neons/neons_demo-webfont.woff2') format('woff2'),
+         url('fonts/neons/neons_demo-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
