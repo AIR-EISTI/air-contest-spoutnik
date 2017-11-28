@@ -3,7 +3,7 @@
     <div class="enonce" v-html="description">
     </div>
     <div class="resultat">
-      <h2>Résultats<span>fin le {{dateEnd}}</span></h2>
+      <h2>Résultats<span :title="date | dateTitle">fin {{dateEnd | date}}</span></h2>
       <a :href="dataSetUrl">Télécharger le jeu de données.</a>
       <extendable-content-input title="Sortie du programme" ref="output"></extendable-content-input>
       <extendable-content-input title="Code du programme" ref="code"></extendable-content-input>
@@ -14,6 +14,8 @@
 
 <script>
 import ExtendableContentInput from '@/components/ExtendableContentInput'
+import * as moment from 'moment'
+import 'moment/locale/fr'
 export default {
   data () {
     return {
@@ -37,6 +39,9 @@ export default {
   components: {
     'ExtendableContentInput': ExtendableContentInput
   },
+  mounted () {
+    moment.locale('fr')
+  },
   methods: {
     sendResult () {
       console.log({
@@ -44,6 +49,18 @@ export default {
         output: this.$refs.output.fileContent,
         code: this.$refs.code.fileContent
       })
+    }
+  },
+  filters: {
+    date: function (value) {
+      if (moment().add(1, 'day').isAfter(moment(value))) {
+        return `${moment(value).fromNow()}`
+      } else {
+        return `le ${moment(value).format('LL')}`
+      }
+    },
+    dateTitle: function (value) {
+      return moment(value).format('LLL')
     }
   },
   name: 'Exercice'
