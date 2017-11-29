@@ -48,6 +48,11 @@ export default {
         this.inputFile = response.data.inputFile
         this.state = response.data.state
       })
+      .catch(error => {
+        if (error.request.status === 404) {
+          this.$router.push('/404')
+        }
+      })
   },
   methods: {
     sendResult () {
