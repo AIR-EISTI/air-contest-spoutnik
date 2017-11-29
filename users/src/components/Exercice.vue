@@ -1,12 +1,16 @@
 <template lang="html">
   <main class="exercice center-container">
     <div class="enonce">
-      <h1>{{title}} <span class="date" :title="dateEnd | dateTitle">fin {{dateEnd | date}}</span></h1>
+      <h1>
+        {{title}}
+        <span class="date" :title="dateEnd | dateTitle">fin {{dateEnd | date}}</span>
+        <span class="state">{{state}}</span>
+      </h1>
       <div v-html="description"></div>
     </div>
     <div class="resultat white-container">
       <h2>Résultats</h2>
-      <a :href="dataSetUrl">Télécharger le jeu de données.</a>
+      <a :href="inputFile">Télécharger le jeu de données.</a>
       <extendable-content-input title="Sortie du programme" ref="output"></extendable-content-input>
       <extendable-content-input title="Code du programme" ref="code"></extendable-content-input>
       <button class="button" @click="sendResult">Envoyer</button>
@@ -22,11 +26,12 @@ import * as axios from 'axios'
 export default {
   data () {
     return {
-      dataSetUrl: '/api/exercice/1/dataset',
+      inputFile: '',
       title: '',
       dateStart: 0,
       dateEnd: 0,
-      description: ''
+      description: '',
+      state: ''
     }
   },
   components: {
@@ -40,6 +45,8 @@ export default {
         this.dateStart = response.data.dateStart
         this.dateEnd = response.data.dateEnd
         this.title = response.data.title
+        this.inputFile = response.data.inputFile
+        this.state = response.data.state
       })
   },
   methods: {
@@ -73,15 +80,22 @@ export default {
   margin-top: 0;
 }
 
-.exercice .enonce span.date {
+.exercice .enonce span.date, .exercice .enonce span.state {
   font-weight: normal;
   font-size: 0.7rem;
   display: inline-block;
   margin-left: 10px;
   padding: 5px;
-  background-color: beige;
   position: relative;
   top: -0.45rem
+}
+
+.exercice .enonce span.date {
+  background-color: beige;
+}
+
+.exercice .enonce span.state {
+  background-color: #a1dea1;
 }
 
 .exercice h2, .exercice h1 {
