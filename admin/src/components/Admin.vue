@@ -7,13 +7,13 @@
       <router-link :to="{name: 'Users'}">
         <div id="nbUsers">
           <p>Nombre d'utilisateurs</p>
-          <p class="nombre">0</p>
+          <p class="nombre" id="nbUsersNb">0</p>
         </div>
       </router-link>
       <router-link :to="{name: 'Exercices'}">
         <div id="nbExercies">
           <p>Nombre d'exercices</p>
-          <p class="nombre">0</p>
+          <p class="nombre" id="nbExerciesNb">0</p>
         </div>
       </router-link>
     </div>
@@ -21,12 +21,29 @@
 </template>
 
 <script>
+import * as axios from 'axios'
 export default {
-  name: 'Home',
+  name: 'Admin',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
+  },
+  mounted () {
+    // axios.get(`/api/exercice/quantity`)
+    //   .then(response => {
+    //     document.getElementById("nbExerciesNb").innerHTML = "38";
+    //     document.getElementById("nbExerciesNb").innerHTML = response.data.quantity
+    //
+    //   })
+    // axios.get(`/api/user/quantity`)
+    //   .then(response => {
+    //     document.getElementById("nbUsersNb").innerHTML = "38";
+    //     document.getElementById("nbUsersNb").innerHTML = response.data.quantity
+    //
+    //   })
+    document.getElementById("nbExerciesNb").innerHTML = "38";
+    document.getElementById("nbUsersNb").innerHTML = "7";
   }
 }
 </script>
@@ -40,7 +57,7 @@ export default {
   }
   main{
     background-color: #1f0030;
-    overflow-y: scroll;
+    overflow-y: auto;
   }
   #infos{
     display:flex;
