@@ -31,112 +31,18 @@
             </ul>
       </section>
       <ul id="listeExercices">
-          <li class="exercice white-container">
-              <h2 class="title">Super exercice avec un nom très long</h2>
-              <p>
-                  une petite description de l'exercice qui est suivi par un lorem ipsum.Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie. c'est ainsi que l'on peut conclure ce 1er exercice avec un long texte qui nous rpend la tête n'est pas magnifique ?
-              </p>
-              <ul class="tags-fixe">
-                <li class="tag">#snake</li>
-                <li class="tag">#graph</li>
-              </ul>
-          </li>
-          <li class="exercice white-container">
-              <h2 class="title">Super exercice avec un nom très long</h2>
-              <p>
-                  une petite description de l'exercice qui est suivi par un lorem ipsum.Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie. c'est ainsi que l'on peut conclure ce 1er exercice avec un long texte qui nous rpend la tête n'est pas magnifique ?
-              </p>
-              <ul class="tags-fixe">
-                <li class="tag">#snake</li>
-                <li class="tag">#graph</li>
-              </ul>
-          </li>
-          <li class="exercice white-container">
-              <h2 class="title">Super exercice avec un nom très long</h2>
-              <p>
-                  une petite description de l'exercice qui est suivi par un lorem ipsum.Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie. c'est ainsi que l'on peut conclure ce 1er exercice avec un long texte qui nous rpend la tête n'est pas magnifique ?
-              </p>
-              <ul class="tags-fixe">
-                <li class="tag">#snake</li>
-                <li class="tag">#graph</li>
-              </ul>
-          </li>
-          <li class="exercice white-container">
-              <h2 class="title">Super exercice avec un nom très long</h2>
-              <p>
-                  une petite description de l'exercice qui est suivi par un lorem ipsum.Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie. c'est ainsi que l'on peut conclure ce 1er exercice avec un long texte qui nous rpend la tête n'est pas magnifique ?
-              </p>
-          </li>
-          <li class="exercice white-container">
-              <h2 class="title">Super exercice avec un nom très long</h2>
-              <p>
-                  une petite description de l'exercice qui est suivi par un lorem ipsum.Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie. c'est ainsi que l'on peut conclure ce 1er exercice avec un long texte qui nous rpend la tête n'est pas magnifique ?
-              </p>
-              <ul class="tags-fixe">
-                <li class="tag">#snake</li>
-                <li class="tag">#graph</li>
-              </ul>
-          </li>
-          <li class="exercice white-container">
-              <h2 class="title">Super exercice avec un nom très long</h2>
-              <p>
-                  une petite description de l'exercice qui est suivi par un lorem ipsum.Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie. c'est ainsi que l'on peut conclure ce 1er exercice avec un long texte qui nous rpend la tête n'est pas magnifique ?
-              </p>
-              <ul class="tags-fixe">
-                <li class="tag">#snake</li>
-                <li class="tag">#graph</li>
-              </ul>
-          </li>
-          <li class="exercice white-container">
-              <h2 class="title">Super exercice avec un nom très long</h2>
-              <p>
-                  une petite description de l'exercice qui est suivi par un lorem ipsum.Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie. c'est ainsi que l'on peut conclure ce 1er exercice avec un long texte qui nous rpend la tête n'est pas magnifique ?
-              </p>
-              <ul class="tags-fixe">
-                <li class="tag">#snake</li>
-                <li class="tag">#graph</li>
-              </ul>
-          </li>
-          <li class="exercice white-container">
-              <h2 class="title">Super exercice avec un nom très long</h2>
-              <p>
-                  une petite description de l'exercice qui est suivi par un lorem ipsum.Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie. c'est ainsi que l'on peut conclure ce 1er exercice avec un long texte qui nous rpend la tête n'est pas magnifique ?
-              </p>
-              <ul class="tags-fixe">
-                <li class="tag">#snake</li>
-                <li class="tag">#graph</li>
-              </ul>
-          </li>
-          <li class="exercice white-container">
-              <h2 class="title">Super exercice avec un nom très long</h2>
-              <p>
-                  une petite description de l'exercice qui est suivi par un lorem ipsum.Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie. c'est ainsi que l'on peut conclure ce 1er exercice avec un long texte qui nous rpend la tête n'est pas magnifique ?
-              </p>
-              <ul class="tags-fixe">
-                <li class="tag">#snake</li>
-                <li class="tag">#graph</li>
-              </ul>
-          </li>
-          <li class="exercice white-container">
-              <h2 class="title">Super exercice avec un nom très long</h2>
-              <p>
-                  une petite description de l'exercice qui est suivi par un lorem ipsum.Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie. c'est ainsi que l'on peut conclure ce 1er exercice avec un long texte qui nous rpend la tête n'est pas magnifique ?
-              </p>
-              <ul class="tags-fixe">
-                <li class="tag">#snake</li>
-                <li class="tag">#graph</li>
-              </ul>
-          </li>
-          <li class="exercice white-container">
-              <h2 class="title">Super exercice avec un nom très long</h2>
-              <p>
-                  une petite description de l'exercice qui est suivi par un lorem ipsum.Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie. c'est ainsi que l'on peut conclure ce 1er exercice avec un long texte qui nous rpend la tête n'est pas magnifique ?
-              </p>
-              <ul class="tags-fixe">
-                <li class="tag">#snake</li>
-                <li class="tag">#graph</li>
-              </ul>
-          </li>
+          <router-link :to="{name: 'Exercice',params: { id: exo.id }}" v-for="exo in exos">
+            <li class="exercice white-container">
+                <h2 class="title">{{exo.title}}</h2>
+                <p>
+                    {{exo.description}}
+                </p>
+                <ul class="tags-fixe">
+                    <li class="tag">#snake</li>
+                    <li class="tag">#graph</li>
+                </ul>
+            </li>
+          </router-link>
       </ul>
       <ul id="pages" class="center-container">
           <li><img src="/static/icons/IcoMoon/SVG/288-backward2.svg"/></li>
@@ -151,19 +57,37 @@
 </template>
 
 <script>
+import * as axios from 'axios'
 export default {
   name: 'ListeExercices',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      exos: {}
     }
+  },
+  mounted () {
+    axios.get(`/api/exercice`)
+      .then(response => {
+        this.exos = response.data
+        console.log(this.exos)
+      })
+      .catch(error => {
+        if (error.request.status === 404) {
+          this.$router.push('/404')
+        }
+      })
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+a
+{
+    text-decoration: none;
+    color:black;
+}
 #search
 {
     width: 500px;
@@ -212,7 +136,6 @@ export default {
 
 .exercice
 {
-
     width: 300px;
     min-width: 300px;;
     max-height: 300px;
