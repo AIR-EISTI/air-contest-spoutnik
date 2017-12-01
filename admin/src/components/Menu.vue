@@ -13,16 +13,14 @@
 
 <script>
 export default {
-  name: 'Home',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
-  }
+  name: 'Menu'
 }
 </script>
 
 <style lang="css">
+  #menu{
+    z-index: 5;
+  }
   .side-menu{
     height: 100%;
     width: 300px;
@@ -55,6 +53,8 @@ export default {
     border : 1px solid #E120F0!important;
     box-shadow: 0 0 10px #E120F0 inset, 0 0 10px #E120F0;
     border-top-left-radius:30px;
+    margin-right : 10px;
+    margin-left: 10px;
   }
   h1{
     color : #00FE00;

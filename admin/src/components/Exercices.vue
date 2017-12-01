@@ -1,0 +1,63 @@
+<template lang="html">
+  <main>
+    <div id="titre">
+      <h2 class="neon">Bienvenue sur votre page d'exercices </h2>
+    </div>
+    <div id="infos">
+      <router-link :to="{name: 'CreationExo'}">
+        <div id="creerExo">
+          <p>Créer un exercice</p>
+          <img src="/src/assets/icons/IcoMoon/SVG/037-file-empty.svg" alt="créer un exercice" class="imgNeon">
+        </div>
+      </router-link>
+      <router-link :to="{name: 'RechercheExo'}">
+        <div id="rechercherExo">
+          <p>Rechercher un exercice</p>
+          <img src="/src/assets/icons/IcoMoon/SVG/135-search.svg" alt="rechercher un exercice" class="imgNeon">
+        </div>
+
+      </router-link>
+    </div>
+  </main>
+</template>
+
+<script>
+export default {
+  name: 'Exercices'
+}
+</script>
+
+<style lang="css">
+h2{
+  text-align: center;
+  color : #00F3F9;
+  text-shadow: 0px 0px 5px #00F3F9;
+  font-size: 35px;
+}
+#infos{
+  display:flex;
+  justify-content:space-around;
+  padding-top: 50px;
+}
+#infos a{
+  color:  #00F3F9;
+  padding: 8px 8px 8px 32px;
+  border : 1px solid #E120F0!important;
+  box-shadow: 0 0 10px #E120F0 inset, 0 0 10px #E120F0;
+  border-top-left-radius:30px;
+  border-bottom-right-radius:30px;
+  height: 267px;
+  width : 35%;
+  font-size: 35px;
+  text-align: center;
+}
+.imgNeon{
+  width : 90px;
+  height: 100px;
+  filter: drop-shadow( 0px 0px 5px #00F3F9);
+}
+
+svg path{
+  /*fill: #00F3F9;*/
+}
+</style>

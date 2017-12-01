@@ -1,7 +1,7 @@
 <template>
     <main >
         <section id="intro-section">
-            
+
             <div class="text-image">
                 <article>
                         <h2 class="center">Tournoi d'hiver</h2>
@@ -16,7 +16,7 @@
             </div>
         </section>
         <section id="month-exercise" class="white-container">
-            
+
             <h2 class="center">Exercice du mois</h2>
             <br/>
             <div class="center">
@@ -30,7 +30,7 @@
                 <div class="title">Le labyrinthe du sorcier</div>
                 <div class="description">
                     Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie.
-                    
+
                 </div>
                 <div class="center">
                     <a href="" class="button">Participer</a>
