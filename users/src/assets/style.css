@@ -297,6 +297,118 @@ h2
     margin: 10px;
 }
 
+
+
+/**** List exercises ****/
+
+#listeExercices
+{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: auto;
+    justify-content: center;
+
+}
+
+#listeExercices .exercice
+{
+    width: 300px;
+    min-width: 300px;;
+    max-height: 300px;
+    margin: 15px;
+    max-width: 500px;;
+    display: flex;
+    flex-direction: column;
+}
+
+ #listeExercices .exercice:nth-child(odd)
+{
+    flex:1;
+}
+
+#listeExercices .exercice:nth-child(even)
+{
+    flex:1;
+}   
+/*
+.exercice:nth-child(4n)
+{
+    
+    flex: 1 !important;
+}
+
+.exercice:nth-child(4n -1)
+{
+    
+    flex: 2 !important;
+}*/
+
+#listeExercices .exercice p
+{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-shrink: 1; 
+}
+
+#listeExercices .exercice .tags-fixe
+{
+    flex-shrink: 0;
+}
+
+#listeExercices .exercice h2
+{
+    margin-bottom: 10px;
+}
+
+
+/*** info exercices ****/
+
+.number-point
+{
+    margin: auto;
+    border: 1px solid;        
+    background-color: green;
+    color: white;        
+    text-align: center;
+    display: inline-block;
+}
+
+.infos
+{
+    
+}
+
+.date
+{
+    background-color: beige;   
+    display: inline-block;
+    text-align: center;
+}
+.normal-info
+{
+    min-width: 100px;
+    font-weight: 800;
+    padding: 10px;
+    margin: 0px 10px;
+}
+
+.small-info
+{
+    min-width: 80px;
+    padding: 3px;
+    font-weight: 500;
+    margin-right: 10px;
+}
+
+.date
+{
+    display: inline-block;
+}
+
 /**** input ****/
 
 

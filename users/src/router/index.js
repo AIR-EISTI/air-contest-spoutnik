@@ -5,6 +5,7 @@ import Login from '@/components/Login'
 import Exercice from '@/components/Exercice'
 import ListeExercices from '@/components/ListeExercices'
 import NotFound from '@/components/errors/NotFound'
+import Groupe from '@/components/Groupe'
 
 Vue.use(Router)
 
@@ -29,6 +30,11 @@ export default new Router({
       path: '/exercice',
       name: 'ListeExercices',
       component: ListeExercices
+    },
+    {
+      path: '/groupe/:id',
+      name: 'Groupe',
+      component: Groupe
     },
     {
       path: '/404',
