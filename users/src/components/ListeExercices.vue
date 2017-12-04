@@ -34,8 +34,12 @@
           <router-link :to="{name: 'Exercice',params: { id: exo.id }}" v-for="exo in exos">
             <li class="exercice white-container">
                 <h2 class="title">{{exo.title}}</h2>
+                <div class="infos">
+                    <div class="number-point small-info">{{exo.points}}</div>
+                    <div class="date small-info">{{exo.creatingDate | date}}</div>
+                </div>
                 <p>
-                    {{exo.description}}
+                    {{exo.description}} dqzdq dqzdzqd zqdzqd zqdzqdq dzqdqdzq zqdqzdqzdzqdqdqzd qzdqdzzqd zqdqdzqdq
                 </p>
                 <ul class="tags-fixe">
                     <li class="tag">#snake</li>
@@ -58,6 +62,8 @@
 
 <script>
 import * as axios from 'axios'
+import * as moment from 'moment'
+import 'moment/locale/fr'
 export default {
   name: 'ListeExercices',
   data () {
@@ -77,7 +83,19 @@ export default {
           this.$router.push('/404')
         }
       })
-  }
+  },
+  filters: {
+    date: function (value) {
+      if (moment().add(1, 'day').isAfter(moment(value))) {
+        return `${moment(value).fromNow()}`
+      } else {
+        return `le ${moment(value).format('LL')}`
+      }
+    },
+    dateTitle: function (value) {
+      return moment(value).format('LLL')
+    }
+  }  
 }
 </script>
 
@@ -120,66 +138,6 @@ a
     padding: 5px;
     border-left: none;
 }
-
-#listeExercices
-{
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 1200px;
-    margin: auto;
-    justify-content: center;
-
-}
-
-.exercice
-{
-    width: 300px;
-    min-width: 300px;;
-    max-height: 300px;
-    margin: 15px;
-    max-width: 500px;;
-    display: flex;
-    flex-direction: column;
-}
-
-.exercice:nth-child(odd)
-{
-    flex:1;
-}
-
-.exercice:nth-child(even)
-{
-    flex:1;
-}   
-/*
-.exercice:nth-child(4n)
-{
-    
-    flex: 1 !important;
-}
-
-.exercice:nth-child(4n -1)
-{
-    
-    flex: 2 !important;
-}*/
-
-.exercice p
-{
-    overflow: hidden;
-    text-overflow: ellipsis;
-    flex-shrink: 1; 
-}
-
-.exercice .tags-fixe
-{
-    flex-shrink: 0;
-}
-
-
 
 #pages
 {
