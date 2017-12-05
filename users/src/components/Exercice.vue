@@ -7,7 +7,7 @@
         <span class="number-point small-info">{{points}} points</span>
       </h1>
       <ul class="tags-fixe">
-        <li class="tag" v-for="tag in tags" :key="tag.id">{{tag.tag}}</li>
+        <li class="tag" v-for="tag in tags" :key="tag.id">#{{tag.tag}}</li>
       </ul>
       <div v-html="description"></div>
     </div>

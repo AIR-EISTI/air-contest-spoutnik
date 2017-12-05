@@ -7,27 +7,7 @@
 
       <section>
             <ul class="tags horizontal">
-                <li style="border-color:lightblue;">#tournoi</li>
-                <li style="border-color:darkorchid;">#graph</li>
-                <li style="border-color:lightgreen;">#labyrinthe</li>
-                <li style="border-color:orange;">#jeu</li>
-
-                <li style="border-color:lightseagreen;">#snake</li>
-                 <li style="border-color:red;">#tournoi</li>
-                <li style="border-color:darkorchid;">#graph</li>
-                <li style="border-color:green;">#labyrinthe</li>
-                <li style="border-color:lightsalmon;">#jeu</li>
-
-                <li style="border-color:lightseagreen;">#snake</li>
-                <li style="border-color:green;">#labyrinthe</li>
-                <li style="border-color:lightsalmon;">#jeu</li>
-
-                <li style="border-color:lightseagreen;">#snake</li>
-                <li style="border-color:green;">#labyrinthe</li>
-                <li style="border-color:lightsalmon;">#jeu</li>
-
-                <li style="border-color:lightseagreen;">#snake</li>
-
+                <li v-for="tag in tags" :key="tag.key" :style="`border-color: #${tag.color}`">#{{tag.tag}}</li>
             </ul>
       </section>
       <ul id="listeExercices">
@@ -42,8 +22,7 @@
                     {{exo.description}} dqzdq dqzdzqd zqdzqd zqdzqdq dzqdqdzq zqdqzdqzdzqdqdqzd qzdqdzzqd zqdqdzqdq
                 </p>
                 <ul class="tags-fixe">
-                    <li class="tag">#snake</li>
-                    <li class="tag">#graph</li>
+                    <li class="tag" v-for="tag in exo.tags" :key="tag.id">#{{tag.tag}}</li>
                 </ul>
             </li>
           </router-link>
@@ -72,7 +51,8 @@ export default {
       limit: 8,
       pages: [],
       searchValue: '',
-      pageVisible: 1
+      pageVisible: 1,
+      tags: []
     }
   },
   mounted () {
@@ -92,6 +72,10 @@ export default {
         if (error.request.status === 404) {
           this.$router.push('/404')
         }
+      })
+    axios.get('/api/tag')
+      .then(response => {
+        this.tags = response.data
       })
   },
   filters: {
