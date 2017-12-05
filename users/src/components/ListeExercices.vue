@@ -1,8 +1,8 @@
 <template>
   <main>
       <form id="search">
-        <input type="search"/>
-        <img src="/static/icons/IcoMoon/SVG/135-search.svg"/>
+        <input type="search" v-model="searchValue"/>
+        <img src="/static/icons/IcoMoon/SVG/135-search.svg" @click="searchAction()"/>
       </form>
       
       <section>
@@ -49,12 +49,9 @@
           </router-link>
       </ul>
       <ul id="pages" class="center-container">
-          <li><img src="/static/icons/IcoMoon/SVG/288-backward2.svg"/></li>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-          <li>4</li>
-          <li><img src="/static/icons/IcoMoon/SVG/289-forward3.svg"/></li>
+          <li><img src="/static/icons/IcoMoon/SVG/288-backward2.svg" @click="previousPage()"/></li>
+          <li v-for="idPage in pages" @click="changePage(idPage)">{{idPage}}</li>
+          <li><img src="/static/icons/IcoMoon/SVG/289-forward3.svg" @click="nextPage()"/></li>
       </ul>
 
   </main>
@@ -69,11 +66,24 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
-      exos: {}
+      exos: {},
+      numberExos: 0,
+      numberPage: 0,
+      limit: 8,
+      pages: [],
+      searchValue: '',
+      pageVisible: 1
     }
   },
   mounted () {
-    axios.get(`/api/exercice`)
+    axios.get(`/api/exercice/quantity`)
+      .then(response => {
+        this.numberExos = response.data.quantity
+        this.numberPage = Math.ceil(this.numberExos / this.limit)
+        this.pages = [...Array(this.numberPage).keys()].map(x => ++x)
+        // create an array [1,2,..,number pages]
+      })
+    axios.get('/api/exercice?limit=' + this.limit + '&start=1&search=')
       .then(response => {
         this.exos = response.data
         console.log(this.exos)
@@ -95,7 +105,31 @@ export default {
     dateTitle: function (value) {
       return moment(value).format('LLL')
     }
-  }  
+  },
+  methods: {
+    changePage (id) {
+      this.pageVisible = id
+      let start = ((id - 1) * this.limit) + 1
+      axios.get('/api/exercice?limit=' + this.limit + '&start=' + start + '&search=')
+      .then(response => {
+        this.exos = response.data
+        scroll(0, 0)
+      })
+    },
+    nextPage () {
+      this.changePage(this.pageVisible + 1)
+    },
+    previousPage () {
+      this.changePage(this.pageVisible - 1)
+    },
+    searchAction () {
+      axios.get('/api/exercice?limit=' + this.limit + '&start=1&search=')
+      .then(response => {
+        this.exos = response.data
+        console.log(this.exos)
+      })
+    }
+  }
 }
 </script>
 
@@ -156,6 +190,7 @@ a
     padding: 5px 10px;
     margin:10px 20px 10px 0px;
     display: flex;
+    cursor: pointer;
 
 }
 

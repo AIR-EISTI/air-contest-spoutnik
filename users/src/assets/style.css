@@ -325,6 +325,11 @@ h2
     flex-direction: column;
 }
 
+#listeExercices .exercice:hover
+{
+    border-color: navy;
+}
+
  #listeExercices .exercice:nth-child(odd)
 {
     flex:1;
