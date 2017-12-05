@@ -3,9 +3,12 @@
     <div class="enonce">
       <h1>
         {{title}}
-        <span class="date" :title="dateEnd | dateTitle">fin {{dateEnd | date}}</span>
-        <span class="state">{{state}}</span>
+        <span class="date small-info" :title="creatingDate | dateTitle">créé {{creatingDate | date}}</span>
+        <span class="number-point small-info">{{points}} points</span>
       </h1>
+      <ul class="tags-fixe">
+        <li class="tag" v-for="tag in tags" :key="tag.id">{{tag.tag}}</li>
+      </ul>
       <div v-html="description"></div>
     </div>
     <div class="resultat white-container">
@@ -28,10 +31,10 @@ export default {
     return {
       inputFile: '',
       title: '',
-      dateStart: 0,
-      dateEnd: 0,
+      creatingDate: 0,
       description: '',
-      state: ''
+      points: 0,
+      tags: []
     }
   },
   components: {
@@ -42,11 +45,11 @@ export default {
     axios.get(`/api/exercice/${this.$route.params.id}?markup=html`)
       .then(response => {
         this.description = response.data.description
-        this.dateStart = response.data.dateStart
-        this.dateEnd = response.data.dateEnd
+        this.creatingDate = response.data.creatingDate
         this.title = response.data.title
         this.inputFile = response.data.inputFile
-        this.state = response.data.state
+        this.points = response.data.points
+        this.tags = response.data.tags
       })
       .catch(error => {
         if (error.request.status === 404) {
@@ -80,12 +83,15 @@ export default {
 </script>
 
 <style lang="css">
+.exercice h1:first-of-type {
+  margin: 7px 0;
+}
 
 .exercice .resultat h2 {
   margin-top: 0;
 }
 
-.exercice .enonce span.date, .exercice .enonce span.state {
+.exercice .enonce span.small-info {
   font-weight: normal;
   font-size: 0.7rem;
   display: inline-block;
@@ -93,10 +99,6 @@ export default {
   padding: 5px;
   position: relative;
   top: -0.45rem
-}
-
-.exercice .enonce span.date {
-  background-color: beige;
 }
 
 .exercice .enonce span.state {
