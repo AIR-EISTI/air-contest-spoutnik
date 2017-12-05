@@ -317,7 +317,7 @@ h2
 {
     width: 300px;
     min-width: 300px;;
-    max-height: 300px;
+    height: 253px;
     margin: 15px;
     max-width: 500px;;
     display: flex;
@@ -397,12 +397,12 @@ h2
 
 .number-point
 {
-    margin: auto;
-    border: 1px solid;        
-    background-color: green;
+    margin: auto;      
+    background-color: #a1dea1;
     color: white;        
     text-align: center;
     display: inline-block;
+    color:rgb(90,90,90)
 }
 
 .infos
@@ -415,6 +415,7 @@ h2
     background-color: beige;   
     display: inline-block;
     text-align: center;
+    color:rgb(90,90,90)
 }
 .normal-info
 {
