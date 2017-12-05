@@ -170,7 +170,6 @@ h2
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
-    text-overflow: clip ellipsis;
     max-width: 100vw;
     
 }
@@ -323,6 +322,7 @@ h2
     max-width: 500px;;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 #listeExercices .exercice:hover
@@ -338,7 +338,8 @@ h2
 #listeExercices .exercice:nth-child(even)
 {
     flex:1;
-}   
+}
+
 /*
 .exercice:nth-child(4n)
 {
@@ -357,16 +358,38 @@ h2
     overflow: hidden;
     text-overflow: ellipsis;
     flex-shrink: 1; 
+    
+    margin-bottom: 36px;
+}
+
+#listeExercices .exercice p:hover
+{
+    overflow-y: scroll;
 }
 
 #listeExercices .exercice .tags-fixe
 {
     flex-shrink: 0;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    padding: 0px 0px;
+    width: 100%;
+    background-color: white;
+    /*box-shadow: 0px -2px 2px lightgrey;*/
+    border-top:1px solid lightgray;
 }
 
 #listeExercices .exercice h2
 {
     margin-bottom: 10px;
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 2px;
+    margin: 0;
+    font-size: 1.2em;
+    text-align: center;
+    margin-bottom: 2px;
+    /* font-weight: 100; */
 }
 
 
