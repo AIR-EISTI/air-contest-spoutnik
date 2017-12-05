@@ -4,34 +4,34 @@
         <input type="search" v-model="searchValue"/>
         <img src="/static/icons/IcoMoon/SVG/135-search.svg" @click="searchAction()"/>
       </form>
-      
+
       <section>
             <ul class="tags horizontal">
                 <li style="border-color:lightblue;">#tournoi</li>
                 <li style="border-color:darkorchid;">#graph</li>
                 <li style="border-color:lightgreen;">#labyrinthe</li>
-                <li style="border-color:orange;">#jeu</li>            
-                
+                <li style="border-color:orange;">#jeu</li>
+
                 <li style="border-color:lightseagreen;">#snake</li>
                  <li style="border-color:red;">#tournoi</li>
                 <li style="border-color:darkorchid;">#graph</li>
                 <li style="border-color:green;">#labyrinthe</li>
-                <li style="border-color:lightsalmon;">#jeu</li>            
-                
+                <li style="border-color:lightsalmon;">#jeu</li>
+
                 <li style="border-color:lightseagreen;">#snake</li>
                 <li style="border-color:green;">#labyrinthe</li>
-                <li style="border-color:lightsalmon;">#jeu</li>            
-                
+                <li style="border-color:lightsalmon;">#jeu</li>
+
                 <li style="border-color:lightseagreen;">#snake</li>
                 <li style="border-color:green;">#labyrinthe</li>
-                <li style="border-color:lightsalmon;">#jeu</li>            
-                
+                <li style="border-color:lightsalmon;">#jeu</li>
+
                 <li style="border-color:lightseagreen;">#snake</li>
-                
+
             </ul>
       </section>
       <ul id="listeExercices">
-          <router-link :to="{name: 'Exercice',params: { id: exo.id }}" v-for="exo in exos">
+          <router-link :to="{name: 'Exercice',params: { id: exo.id }}" v-for="exo in exos" :key="exo.id">
             <li class="exercice white-container">
                 <h2 class="title">{{exo.title}}</h2>
                 <div class="infos">
@@ -162,7 +162,7 @@ a
     height: 38px;
     background-color: transparent;
     border-right: none;
-    
+
 }
 
 #search img
