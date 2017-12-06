@@ -2,7 +2,7 @@
   <main>
       <form id="search">
         <input type="search" v-model="searchValue"/>
-        <img src="/static/icons/IcoMoon/SVG/135-search.svg" @click="searchAction()"/>
+        <img src="/static/icons/IcoMoon/SVG/135-search.svg" @click="searchAction"/>
       </form>
 
       <section>
@@ -56,27 +56,11 @@ export default {
     }
   },
   mounted () {
-    axios.get(`/api/exercice/quantity`)
-      .then(response => {
-        this.numberExos = response.data.quantity
-        this.numberPage = Math.ceil(this.numberExos / this.limit)
-        this.pages = [...Array(this.numberPage).keys()].map(x => ++x)
-        // create an array [1,2,..,number pages]
-      })
-    axios.get('/api/exercice?limit=' + this.limit + '&start=1&search=')
-      .then(response => {
-        this.exos = response.data
-        console.log(this.exos)
-      })
-      .catch(error => {
-        if (error.request.status === 404) {
-          this.$router.push('/404')
-        }
-      })
     axios.get('/api/tag')
       .then(response => {
         this.tags = response.data
       })
+    this.getResult('')
   },
   filters: {
     date: function (value) {
@@ -93,7 +77,7 @@ export default {
   methods: {
     changePage (id) {
       this.pageVisible = id
-      let start = ((id - 1) * this.limit) + 1
+      let start = ((id - 1) * this.limit)
       axios.get('/api/exercice?limit=' + this.limit + '&start=' + start + '&search=')
       .then(response => {
         this.exos = response.data
@@ -106,12 +90,26 @@ export default {
     previousPage () {
       this.changePage(this.pageVisible - 1)
     },
-    searchAction () {
-      axios.get('/api/exercice?limit=' + this.limit + '&start=1&search=')
+    getResult (search) {
+      axios.get(`/api/exercice/quantity?search=` + search)
+      .then(response => {
+        this.numberExos = response.data.quantity
+        this.numberPage = Math.ceil(this.numberExos / this.limit)
+        this.pages = [...Array(this.numberPage).keys()].map(x => ++x)
+        // create an array [1,2,..,number pages]
+      })
+      axios.get('/api/exercice?limit=' + this.limit + '&start=0&search=' + search)
       .then(response => {
         this.exos = response.data
-        console.log(this.exos)
       })
+      .catch(error => {
+        if (error.request.status === 404) {
+          this.$router.push('/404')
+        }
+      })
+    },
+    searchAction () {
+      this.getResult(this.searchValue)
     }
   }
 }
@@ -151,10 +149,13 @@ a
 
 #search img
 {
+    margin: 0;
     height: 28px;
     width: 28px;
     padding: 5px;
     border-left: none;
+    display: inline-block;
+    border: none;
 }
 
 #pages
