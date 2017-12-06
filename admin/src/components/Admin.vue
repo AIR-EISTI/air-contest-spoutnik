@@ -7,13 +7,13 @@
       <router-link :to="{name: 'Users'}">
         <div id="nbUsers">
           <p>Nombre d'utilisateurs</p>
-          <p class="nombre" id="nbUsersNb">0</p>
+          <p class="nombre">{{nbUser}}</p>
         </div>
       </router-link>
       <router-link :to="{name: 'Exercices'}">
         <div id="nbExercies">
           <p>Nombre d'exercices</p>
-          <p class="nombre" id="nbExerciesNb">0</p>
+          <p class="nombre">{{nbExo}}</p>
         </div>
       </router-link>
     </div>
@@ -26,24 +26,19 @@ export default {
   name: 'Admin',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      nbExo: 0,
+      nbUser: 0
     }
   },
   mounted () {
-    // axios.get(`/api/exercice/quantity`)
-    //   .then(response => {
-    //     document.getElementById("nbExerciesNb").innerHTML = "38";
-    //     document.getElementById("nbExerciesNb").innerHTML = response.data.quantity
-    //
-    //   })
-    // axios.get(`/api/user/quantity`)
-    //   .then(response => {
-    //     document.getElementById("nbUsersNb").innerHTML = "38";
-    //     document.getElementById("nbUsersNb").innerHTML = response.data.quantity
-    //
-    //   })
-    document.getElementById("nbExerciesNb").innerHTML = "38";
-    document.getElementById("nbUsersNb").innerHTML = "7";
+    axios.get(`/api/exercice/quantity`)
+      .then(response => {
+        this.nbExo = response.data.quantity
+      })
+    axios.get(`/api/user/quantity`)
+      .then(response => {
+        this.nbUser = response.data.quantity
+      })
   }
 }
 </script>

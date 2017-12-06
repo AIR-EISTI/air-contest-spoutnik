@@ -4,7 +4,7 @@
       <h2 class="neon">Bienvenue sur votre page d'exercices </h2>
     </div>
     <div id="infos">
-      <router-link :to="{name: 'CreationExo'}">
+      <router-link :to="{name: 'CreationExercice'}">
         <div id="creerExo">
           <p>Créer un exercice</p>
           <img src="/src/assets/icons/IcoMoon/SVG/037-file-empty.svg" alt="créer un exercice" class="imgNeon">
@@ -28,12 +28,7 @@ export default {
 </script>
 
 <style lang="css">
-h2{
-  text-align: center;
-  color : #00F3F9;
-  text-shadow: 0px 0px 5px #00F3F9;
-  font-size: 35px;
-}
+
 #infos{
   display:flex;
   justify-content:space-around;
@@ -57,7 +52,4 @@ h2{
   filter: drop-shadow( 0px 0px 5px #00F3F9);
 }
 
-svg path{
-  /*fill: #00F3F9;*/
-}
 </style>
