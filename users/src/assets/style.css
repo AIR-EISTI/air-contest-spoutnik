@@ -4,20 +4,39 @@ html,body
 {
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
+    font-family: "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    font-size: 20px;
+    line-height: 1.5;
 
 }
+
+::scrollbar {
+    width: 15px;
+    height: 15px;
+    }
+    
+    
+    ::scrollbar-track-piece  {
+    background-color: #C2D2E4;
+    }
+    
+    ::scrollbar-thumb:vertical {
+    height: 30px;
+    background-color: #0A4C95;
+    }
+
 
 #app
 {
     display: flex;
     flex-direction: row;
     background-color: rgb(245,245,245);
-    font-family: sans-serif;
+    font-family: "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     margin-top: 51px;
     min-height: calc(100vh - 51px);
+    font-size:0.8rem;
 }
 
 article
@@ -49,6 +68,12 @@ main
     background-color: white;
     border: 1px solid lightgray;
     padding: 10px;
+    color: rgb(50,50,50);
+}
+
+.white-container h2
+{
+    color:black; 
 }
 
 #landing-page
@@ -90,19 +115,6 @@ h2
     background-image: none !important;
 }
 
-/**** intro *****/
-
-#intro-section
-{
-    padding: 5px 0px 100px 0px;
-
-    background-color: cornflowerblue;
-    background-image: url("imgs/fond5.jpg");
-    background-size: cover;
-    padding-top: 100px;
-    color:white;
-    background-attachment: fixed;
-}
 /*** text-image ***/
 
 .text-image
@@ -222,82 +234,6 @@ h2
 }
 
 
-
-/****** exercise *************/
-
-
-.list-exo-min
-{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
-
-.vertical-line
-{
-    border-left: 1px solid #B7E0ED;
-    display: none;
-}
-.exo-min
-{
-    width: 320px;
-    padding: 5px;
-    height: 220px;
-    color: rgb(70,70,70);
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-
-}
-
-.exo-min .description
-{
-    flex: 1;
-    flex-shrink: 0;
-}
-.exo-min .button
-{
-
-}
-
-.exo-min.plus
-{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    border:none;
-    background-color: transparent;
-}
-
-.exo-min.plus .button
-{
-    background-color:lightsteelblue;
-    color:black;
-}
-
-.exo-min .title,.exercice .title
-{
-    font-size: 1.3em;
-    text-align: center;
-    margin: 5px;
-    font-weight: normal;
-}
-
-.exercice .title
-{
-    font-size: 1.5em;
-    text-align: left;
-}
-
-.exo-min .description
-{
-    margin: 10px;
-}
-
-
-
 /**** List exercises ****/
 
 #listeExercices
@@ -320,7 +256,6 @@ h2
     height: 253px;
     margin: 15px;
     max-width: 500px;;
-    display: flex;
     flex-direction: column;
     position: relative;
     border-radius: 3px;
@@ -361,6 +296,7 @@ h2
     flex-shrink: 1; 
     
     margin-bottom: 36px;
+    max-height: 150px;
 }
 
 #listeExercices .exercice p:hover
@@ -385,12 +321,15 @@ h2
 #listeExercices .exercice h2
 {
     margin-bottom: 10px;
-    border-bottom: 1px solid lightgray;
     padding-bottom: 2px;
     margin: 0;
     font-size: 1.2em;
     text-align: center;
     margin-bottom: 2px;
+    overflow: hidden;
+    white-space: nowrap;
+    border-bottom: 1px solid lightgrey;
+    text-overflow: ellipsis;
     /* font-weight: 100; */
 }
 

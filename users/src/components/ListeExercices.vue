@@ -19,7 +19,7 @@
                     <div class="date small-info">{{exo.creatingDate | date}}</div>
                 </div>
                 <p>
-                    {{exo.description}} dqzdq dqzdzqd zqdzqd zqdzqdq dzqdqdzq zqdqzdqzdzqdqdqzd qzdqdzzqd zqdqdzqdq
+                    {{exo.description}}
                 </p>
                 <ul class="tags-fixe">
                     <li class="tag" v-for="tag in exo.tags" :key="tag.id">#{{tag.tag}}</li>
