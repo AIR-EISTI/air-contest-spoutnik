@@ -1,8 +1,8 @@
 <template>
     <main >
-        <section id="intro-section">
+        <section id="intro-section" class="top-container">
 
-            <div class="text-image" data-0="top:0px;" data-500="top:-100px;">
+            <div class="text-image" data-0="top:0px;" data-500="top:-150px;">
                 <article>
                         <h2 class="center">Tournoi d'hiver</h2>
                         <p>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.</p>
@@ -15,7 +15,8 @@
                 </aside>
             </div>
         </section>
-        <section id="month-exercise" class="white-container" data-0="top:0px;" data-500="top:-200px;">
+        <div class="scroll" data-0="top:0px;" data-500="top:-200px;">
+        <section id="month-exercise" class="white-container">
 
             <h2 class="center">Exercice du mois</h2>
             <br/>
@@ -42,7 +43,7 @@
                     </li>
                 </router-link>
                 <router-link :to="{name: 'ListeExercices'}">
-                  <li class="exercice plus">
+                  <li class="exercice plus white-container">
                     <a href="" class="button">En voir plus ></a>
                   </li>
                 </router-link>
@@ -58,6 +59,7 @@
                 <li>#graph</li>
             </ul>
         </section>
+        </div>
     </main>
 </template>
 
@@ -100,14 +102,13 @@ export default {
 
 #intro-section
 {
-    padding: 5px 0px 100px 0px;
     background-color: cornflowerblue;
     background-image: url("/static/imgs/fond5.jpg");
     background-size: cover;
-    padding-top: 100px;
     color:white;
     background-attachment: fixed;
-    min-height: calc(100vh - 250px);
+    min-height: calc(100vh - 130px);
+    padding-bottom: 50px;
 }
 
 #intro-section .text-image
@@ -128,6 +129,7 @@ export default {
     justify-content: space-around;
     border:none;
     background-color: transparent;
+    box-shadow: none;
 }
 
 #listeExercices .plus .button
@@ -143,6 +145,15 @@ a
 }
 
 #month-exercise
+{
+    height: 500px;
+    width: 1000px;
+    max-width: calc(100vw - 50px);
+    margin: auto;
+    margin-bottom: 30px;
+}
+
+.scroll
 {
     position: relative;
 }

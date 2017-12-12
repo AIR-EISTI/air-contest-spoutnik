@@ -1,6 +1,6 @@
 <template>
   <main>
-      <form id="search">
+      <form id="search" class="top-container">
         <input type="search" v-model="searchValue"/>
         <img src="/static/icons/IcoMoon/SVG/135-search.svg" @click="searchAction"/>
       </form>
@@ -21,7 +21,7 @@
                 <p>
                     {{exo.description}}
                 </p>
-                <ul class="tags-fixe">
+                <ul class="tags-fixe" v-if="exos.tags">
                     <li class="tag" v-for="tag in exo.tags" :key="tag.id">#{{tag.tag}}</li>
                 </ul>
             </li>
@@ -129,7 +129,6 @@ a
     margin: auto;
     position: relative;
     display: flex;
-    margin-top: 25px;
     border-bottom:4px solid black;
     margin-bottom: 15px;
     max-width: calc(100vw - 40px);

@@ -1,6 +1,6 @@
 <template lang="html">
   <main class="exercice center-container">
-    <div class="enonce">
+    <div class="enonce top-container">
       <h1>
         {{title}}
         <span class="date small-info" :title="creatingDate | dateTitle">créé {{creatingDate | date}}</span>

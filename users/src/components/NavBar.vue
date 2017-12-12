@@ -1,25 +1,39 @@
 <template>
-    <nav id="navbar" v-bind:class="{ noVisible: noVisible }">
+    <nav id="navbar"    v-bind:class="{ noVisible: noVisible }"  
+                        data-0="background-color:rgba(255,255,255,0);border-color:rgba(0,0,0,0)" 
+                        data-50="background-color:rgba(255,255,255,255);border-color:rgba(230,230,230,1)">
         <img class="hamburger" src="/static/icons/IcoMoon/SVG/190-menu.svg" @click="displayMenu"/>
         <div class="content-menu">
         <router-link :to="{name: 'Home'}"><h1>Air-contest</h1></router-link>
         <ul>
-            <router-link :to="{name: 'ListeExercices'}"><li>Listes des exercices</li></router-link>
-            <a href="#"><li>Les tournois</li></a>
-            <router-link :to="{name: 'Login'}"><li>Login</li></router-link>
+            <router-link :to="{name: 'ListeExercices'}"><li data-0="border-color:rgba(0,0,0,0)" data-50="border-color:rgba(230,230,230,1)">Listes des exercices</li></router-link>
+            <a href="#">
+                <li data-0="border-color:rgba(0,0,0,0)" data-50="border-color:rgba(230,230,230,1)">
+                    Les tournois
+                </li>
+            </a>
+            <router-link :to="{name: 'Login'}">
+                <li data-0="border-color:rgba(0,0,0,0)" data-50="border-color:rgba(230,230,230,1)">
+                    Login
+                </li>
+            </router-link>
         </ul>
         </div>
     </nav>
 </template>
 
 <script>
+import * as skrollr from 'skrollr'
 export default {
   name: 'HelloWorld',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
-      noVisible: false
+      noVisible: true
     }
+  },
+  mounted () {
+    skrollr.init()
   },
   methods: {
     displayMenu () {
@@ -42,7 +56,7 @@ export default {
     left: 0;
     width: 100vw;
     z-index: 5;
-    background-color: white;
+    background-color: transparent;
     flex-wrap: 0;
     border-bottom: 1px solid lightgray;
 }
@@ -84,7 +98,7 @@ export default {
     border-left: 1px solid rgb(230,230,230);;
     min-width: 100px;
     text-align: center;
-    color:rgb(80,80,80);
+    color:black;
     font-size: 14px;
 }
 
@@ -122,8 +136,8 @@ export default {
         display: block;
         height: 100vh;
         color:black;
-        background-color: rgba(255,255,255,0.9);
-        border-right: 1px solid rgb(100,100,100);
+        background-color: rgba(255,255,255,0.9) !important;
+        border-right: 1px solid rgb(100,100,100) !important;
         background-image: none;
         width: 200px;
         padding:15px;
@@ -183,6 +197,8 @@ export default {
     {
         width: 50px;
         height: 50px;
+        background-color: transparent !important;
+        border: none !important;
     }
 }
 

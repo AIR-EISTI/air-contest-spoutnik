@@ -34,7 +34,7 @@ html,body
     font-family: "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    margin-top: 51px;
+    margin-top: 0px;/*51*/
     min-height: calc(100vh - 51px);
     font-size:0.8rem;
 }
@@ -55,20 +55,28 @@ main
     max-width: 100%;
 }
 
+.top-container
+{
+    padding-top: 80px;
+}
 
 .center-container
 {
-    max-width: 750px;
+    max-width: 800px;
     width: calc(100vw - 10px);
     margin: 0 auto;
+    padding: 10px;
 }
 
 .white-container
 {
     background-color: white;
     border: 1px solid lightgray;
+    box-shadow:0px 1px 1px lightgray;
     padding: 10px;
     color: rgb(50,50,50);
+    max-width: calc(100vw - 50px);
+    margin: auto;
 }
 
 .white-container h2
@@ -146,16 +154,6 @@ h2
 .text-image.inversed
 {
     flex-direction: row-reverse;
-}
-
-#month-exercise
-{
-    height: 500px;
-    position: relative;
-    top: -100px;
-    width: 1000px;
-    max-width: calc(100vw - 50px);
-    margin: auto !important;
 }
 
 /*********** tag **************/
@@ -252,10 +250,8 @@ h2
 #listeExercices .exercice
 {
     width: 300px;
-    min-width: 300px;;
     height: 253px;
     margin: 15px;
-    max-width: 500px;;
     flex-direction: column;
     position: relative;
     border-radius: 3px;
@@ -468,6 +464,11 @@ input[type=submit]
         min-height: 100vh;
     }
 
+    .top-container
+    {
+        padding-top: 50px;
+    }
+
     .text-image > *
     {
         padding: 20px 20px;
@@ -491,6 +492,7 @@ input[type=submit]
         white-space: pre-line;
         width: 230px;
         text-align: left;
+        overflow: hidden;
     }
 
     .tags.horizontal li
