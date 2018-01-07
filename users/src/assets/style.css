@@ -63,8 +63,16 @@ main
 .center-container
 {
     max-width: 800px;
-    width: calc(100vw - 10px);
+    width: calc(100vw - 20px);
     margin: 0 auto;
+    padding: 10px;
+}
+
+.center-big-container
+{
+    max-width: 1200px;
+    margin: 0 auto;
+    width: calc(100vw - 20px);
     padding: 10px;
 }
 
@@ -141,7 +149,7 @@ h2
 
 .text-image aside
 {
-
+    align-self: center;
 }
 
 .text-image aside img
@@ -237,12 +245,9 @@ h2
 #listeExercices
 {
     list-style-type: none;
-    margin: 0;
     padding: 0;
     display: flex;
     flex-wrap: wrap;
-    max-width: 1200px;
-    margin: auto;
     justify-content: center;
 
 }

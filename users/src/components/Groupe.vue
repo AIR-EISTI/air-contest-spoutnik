@@ -13,7 +13,7 @@
             <img src="/static/imgs/ordi2.jpeg"/>
         </aside>
     </div>
-    <ul id="listeExercices">
+    <ul id="listeExercices" class="center-big-container">
         <li class="exercice white-container">
             <h2 class="title">Atteindre le chalet</h2>
              <div class="infos">

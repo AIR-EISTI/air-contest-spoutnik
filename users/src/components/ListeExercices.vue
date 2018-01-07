@@ -10,7 +10,7 @@
                 <li v-for="tag in tags" :key="tag.key" :style="`border-color: #${tag.color}`">#{{tag.tag}}</li>
             </ul>
       </section>
-      <ul id="listeExercices">
+      <ul id="listeExercices" class="center-big-container">
           <router-link :to="{name: 'Exercice',params: { id: exo.id }}" v-for="exo in exos" :key="exo.id">
             <li class="exercice white-container">
                 <h2 class="title">{{exo.title}}</h2>
