@@ -83,7 +83,6 @@ export default {
   },
   mounted () {
     moment.locale('fr')
-    
     axios.get(`/api/group/${this.$route.params.id}?markup=html`)
       .then(response => {
         this.group = response.data

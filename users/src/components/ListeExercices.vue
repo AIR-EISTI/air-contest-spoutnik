@@ -122,67 +122,6 @@ a
     text-decoration: none;
     color:black;
 }
-#search
-{
-    width: 500px;
-    display: block;
-    margin: auto;
-    position: relative;
-    display: flex;
-    border-bottom:4px solid black;
-    margin-bottom: 15px;
-    max-width: calc(100vw - 40px);
-}
-
-#search input[type=search]
-{
-    width: 100%;
-    border:none;
-    border-radius: 0px;
-    margin: 0;
-    height: 38px;
-    background-color: transparent;
-    border-right: none;
-
-}
-
-#search img
-{
-    margin: 0;
-    height: 28px;
-    width: 28px;
-    padding: 5px;
-    border-left: none;
-    display: inline-block;
-    border: none;
-}
-
-#pages
-{
-    list-style-type: none;
-    display: flex;
-    max-width: 750px;
-    margin: auto;
-    padding: 0;
-    justify-content: center;
-}
-
-#pages li
-{
-    background-color: white;
-    border: 1px solid lightgray;
-    padding: 5px 10px;
-    margin:10px 20px 10px 0px;
-    display: flex;
-    cursor: pointer;
-
-}
-
-#pages li img
-{
-    width: 20px;
-    height: 20px;
-}
 
 #search_button
 {

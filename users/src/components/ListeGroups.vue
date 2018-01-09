@@ -1,5 +1,9 @@
 <template>
   <main>
+      <form id="search" class="top-container">
+        <input type="search" v-model="searchValue"/>
+        <img src="/static/icons/IcoMoon/SVG/135-search.svg" @click="searchAction"/>
+      </form>
       <div class="top-container center-big-container">
         <h2>Tournois en cours</h2>
         <div class="grid-1">
@@ -8,7 +12,7 @@
                       <h2 class="center">{{group.name}}</h2>
                       <div class="infos">
                           <div class="number-point normal-info">{{group.points}} points</div>
-                          <div class="date normal-info">{{group.publicationDate | date}}</div>
+                          <div class="date normal-info">{{group.endDate | date}}</div>
                       </div>
                       <p>{{group.description}}</p>
             </article>
@@ -29,7 +33,7 @@
                       <h2 class="center">{{group.name}}</h2>
                       <div class="infos">
                           <div class="number-point normal-info">{{group.points}} points</div>
-                          <div class="date normal-info">{{group.publicationDate | date}}</div>
+                          <div class="date normal-info">{{group.endDate | date}}</div>
                       </div>
                       <p>{{group.description}}</p>
               </article>
@@ -37,6 +41,11 @@
           </router-link>
         </div>
       </div>
+      <ul id="pages" class="center-big-container">
+          <li><img src="/static/icons/IcoMoon/SVG/288-backward2.svg"/></li>
+          <li v-for="idPage in pages">{{idPage}}</li>
+          <li><img src="/static/icons/IcoMoon/SVG/289-forward3.svg"/></li>
+      </ul>
 
   </main>
 </template>
@@ -51,11 +60,17 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App',
       groups: [],
-      tournaments: []
+      tournaments: [],
+      numberGroups: 0,
+      numberPage: 8,
+      limit: 8,
+      pages: [],
+      searchValue: '',
+      pageVisible: 1
     }
   },
   mounted () {
-    this.changePage(0)
+    this.getResult('')
   },
   filters: {
     date: function (value) {
@@ -71,15 +86,35 @@ export default {
   },
   methods: {
     changePage (id) {
-      // this.pageVisible = id
-      // let start = ((id - 1) * this.limit)
-      axios.get('/api/group')
+      this.pageVisible = id
+      let start = ((id - 1) * this.limit)
+      axios.get('/api/group?limit=' + this.limit + '&start=' + start + '&search=')
       .then(response => {
         this.sortGroups(response.data)
         scroll(0, 0)
       })
     },
+    getResult (search) {
+      axios.get(`/api/group/quantity?search=` + search)
+      .then(response => {
+        this.numberGroups = response.data.quantity
+        this.numberPage = Math.ceil(this.numberGroups / this.limit)
+        this.pages = [...Array(this.numberPage).keys()].map(x => ++x)
+        // create an array [1,2,..,number pages]
+      })
+      axios.get('/api/group?limit=' + this.limit + '&start=0&search=' + search)
+      .then(response => {
+        this.sortGroups(response.data)
+      })
+      .catch(error => {
+        if (error.request.status === 404) {
+          this.$router.push('/404')
+        }
+      })
+    },
     sortGroups (listGroups) {
+      this.groups = []
+      this.tournaments = []
       listGroups.forEach(element => {
         if (moment().add(1, 'day').isAfter(moment(element.endDate))) {
           this.groups.push(element)
@@ -87,6 +122,9 @@ export default {
           this.tournaments.push(element)
         }
       })
+    },
+    searchAction () {
+      this.getResult(this.searchValue)
     }
   }
 }
