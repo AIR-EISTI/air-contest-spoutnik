@@ -7,11 +7,11 @@
         <router-link :to="{name: 'Home'}"><h1>Air-contest</h1></router-link>
         <ul>
             <router-link :to="{name: 'ListeExercices'}"><li data-0="border-color:rgba(0,0,0,0)" data-50="border-color:rgba(230,230,230,1)">Listes des exercices</li></router-link>
-            <a href="#">
+            <router-link :to="{name: 'ListeGroupe'}">
                 <li data-0="border-color:rgba(0,0,0,0)" data-50="border-color:rgba(230,230,230,1)">
                     Les tournois
                 </li>
-            </a>
+            </router-link>
             <router-link :to="{name: 'Login'}">
                 <li data-0="border-color:rgba(0,0,0,0)" data-50="border-color:rgba(230,230,230,1)">
                     Login

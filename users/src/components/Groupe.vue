@@ -2,12 +2,12 @@
   <main>
     <div class="text-image">
         <article>
-                <h2 class="center">Tournoi d'hiver</h2>
-                <div class="infos">
-                    <div class="number-point normal-info">50 points</div>
-                    <div class="date normal-info">depuis 3j</div>
-                </div>
-                <p>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.</p>
+                      <h2 class="center">{{group.name}}</h2>
+                      <div class="infos">
+                          <div class="number-point normal-info">{{group.points}} points</div>
+                          <div class="date normal-info">{{group.publicationDate | date}}</div>
+                      </div>
+                      <p>{{group.description}}</p>
         </article>
         <aside>
             <img src="/static/imgs/ordi2.jpeg"/>
@@ -58,12 +58,41 @@
 </template>
 
 <script>
+import * as axios from 'axios'
+import * as moment from 'moment'
+import 'moment/locale/fr'
 export default {
   name: 'Groupe',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      group: {}
     }
+  },
+  filters: {
+    date: function (value) {
+      if (moment().add(1, 'day').isAfter(moment(value))) {
+        return `${moment(value).fromNow()}`
+      } else {
+        return `le ${moment(value).format('LL')}`
+      }
+    },
+    dateTitle: function (value) {
+      return moment(value).format('LLL')
+    }
+  },
+  mounted () {
+    moment.locale('fr')
+    
+    axios.get(`/api/group/${this.$route.params.id}?markup=html`)
+      .then(response => {
+        this.group = response.data
+      })
+      .catch(error => {
+        if (error.request.status === 404) {
+          this.$router.push('/404')
+        }
+      })
   }
 }
 </script>
