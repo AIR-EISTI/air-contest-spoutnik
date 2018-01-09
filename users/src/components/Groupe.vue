@@ -1,5 +1,6 @@
 <template>
   <main>
+    <!-- group description-->
     <div class="text-image">
         <article>
                       <h2 class="center">{{group.name}}</h2>
@@ -13,46 +14,23 @@
             <img src="/static/imgs/ordi2.jpeg"/>
         </aside>
     </div>
+    <!-- exercices-->
     <ul id="listeExercices" class="center-big-container">
-        <li class="exercice white-container">
-            <h2 class="title">Atteindre le chalet</h2>
-             <div class="infos">
-                <div class="number-point small-info">50 points</div>
-                <div class="date small-info">depuis 3j</div>
-            </div>
-                <p>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.</p>
-            
-            <ul class="tags-fixe">
-                <li class="tag">#snake</li>
-                <li class="tag">#graph</li>
-            </ul>
-        </li>
-        <li class="exercice white-container">
-            <h2 class="title">Atteindre le chalet</h2>
-            <div class="infos">
-                <div class="number-point small-info">50 points</div>
-                <div class="date small-info">depuis 3j</div>
-            </div>
-            <p>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.</p>
-            
-            <ul class="tags-fixe">
-                <li class="tag">#snake</li>
-                <li class="tag">#graph</li>
-            </ul>
-        </li>
-        <li class="exercice white-container">
-            <h2 class="title">Atteindre le chalet</h2>
-            <div class="infos">
-                <div class="number-point small-info">50 points</div>
-                <div class="date small-info">depuis 3j</div>
-            </div>
-            <p>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.</p>
-            
-            <ul class="tags-fixe">
-                <li class="tag">#snake</li>
-                <li class="tag">#graph</li>
-            </ul>
-        </li>
+        <router-link :to="{name: 'Exercice',params: { id: exo.id }}" v-for="exo in exercices" :key="exo.id">
+          <li class="exercice white-container">
+              <h2 class="title">{{exo.title}}</h2>
+              <div class="infos">
+                  <div class="number-point small-info">{{exo.points}}</div>
+                  <div class="date small-info">{{exo.creatingDate | date}}</div>
+              </div>
+              <p>
+                  {{exo.description}}
+              </p>
+              <ul class="tags-fixe" v-if="exo.tags">
+                  <li class="tag" v-for="tag in exo.tags" :key="tag.id">#{{tag.tag}}</li>
+              </ul>
+          </li>
+        </router-link>
     </ul>
   </main>
 </template>
@@ -66,7 +44,8 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
-      group: {}
+      group: {},
+      exercices: []
     }
   },
   filters: {
@@ -92,12 +71,25 @@ export default {
           this.$router.push('/404')
         }
       })
+    axios.get(`/api/exercice?group=${this.$route.params.id}`)
+      .then(response => {
+        this.exercices = response.data
+      })
+      .catch(error => {
+        if (error.request.status === 404) {
+          this.exercice = []
+        }
+      })
   }
 }
 </script>
 <style scoped>
     
-   
+   a
+{
+    text-decoration: none;
+    color:black;
+}
 </style>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
