@@ -48,6 +48,7 @@ export default {
         background-size: cover;
         background-attachment: fixed;
     }
+    
     #userNav
     {
         flex: 0;
@@ -84,5 +85,34 @@ export default {
     section
     {
         flex:1;
+    }
+
+    @media (max-width: 800px) {
+        main
+        {
+            display: block;
+        }
+        #userNav
+        {
+            padding-top: 60px;
+            width: auto;
+            text-align: center;
+        }
+
+        #userNav ul
+        {
+            display: none;
+
+        }
+
+        .top-container
+        {
+            padding-top: 0px;
+        }
+
+        h2
+        {
+            margin-top: 5px;
+        }
     }
 </style>
