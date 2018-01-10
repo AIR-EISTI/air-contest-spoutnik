@@ -7,6 +7,7 @@ import ListeExercices from '@/components/ListeExercices'
 import NotFound from '@/components/errors/NotFound'
 import Groupe from '@/components/Groupe'
 import ListeGroupe from '@/components/ListeGroups'
+import User from '@/components/User'
 
 Vue.use(Router)
 
@@ -17,6 +18,11 @@ export default new Router({
       path: '/',
       name: 'Home',
       component: Home
+    },
+    {
+      path: '/user',
+      name: 'User',
+      component: User
     },
     {
       path: '/login',

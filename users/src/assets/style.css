@@ -7,6 +7,7 @@ html,body
     font-family: "Arimo","Segoe UI", Roboto, "Helvetica Neue", sans-serif;
     font-size: 20px;
     line-height: 1.5;
+    height: auto !important;
 
 }
 
@@ -35,7 +36,7 @@ html,body
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     margin-top: 0px;/*51*/
-    min-height: calc(100vh - 51px);
+    min-height: calc(100vh - 0px);
     font-size:0.8rem;
 }
 
@@ -130,7 +131,38 @@ h2
     background-color: transparent !important;
     background-image: none !important;
 }
+/*** grid ***/
 
+.grid-2
+{
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   grid-gap: 15px;
+   /*grid-template-rows: 100px 100px 100px;*/
+}
+
+.grid-2 > .white-container
+{
+    margin:0;
+}
+
+.grid-1
+{
+   display: grid;
+   grid-template-columns: repeat(1, 1fr);
+   grid-gap: 15px;
+   /*grid-template-rows: 100px 100px 100px;*/
+}
+
+@media (max-width: 800px) {
+    .grid-2
+    {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 15px;
+        /*grid-template-rows: 100px 100px 100px;*/
+    }
+  }
 /*** text-image ***/
 
 .text-image

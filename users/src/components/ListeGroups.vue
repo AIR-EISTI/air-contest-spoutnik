@@ -150,21 +150,7 @@ export default {
    min-height: 300px;
  }
 
- .grid-2
- {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 15px;
-    /*grid-template-rows: 100px 100px 100px;*/
- }
-
- .grid-1
- {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-gap: 15px;
-    /*grid-template-rows: 100px 100px 100px;*/
- }
+ 
 
  .grid-2 *
  {
@@ -178,14 +164,6 @@ export default {
   background-color: rgba(255,255,255,0.9);
 }
 
-@media (max-width: 800px) {
-  .grid-2
-  {
-      display: grid;
-      grid-template-columns: repeat(1, 1fr);
-      grid-gap: 15px;
-      /*grid-template-rows: 100px 100px 100px;*/
-  }
-}
+
 
 </style>
