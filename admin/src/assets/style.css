@@ -14,18 +14,26 @@ h2.neon{
   text-shadow: 0px 0px 5px #00F3F9;
   font-size: 35px;
 }
-.button
-{
+.button{
     padding: 10px;
     display: inline-block;
     border: 1px solid black;
     min-width: 150px;
     text-align: center;
-    text-decoration: none;
-    background-color: navy;
-    color: white;
+    background-color: #1f0030;
+    font-family: neonsregular;
+    color: #00F3F9;
+    text-shadow: 0px 0px 5px #00F3F9;
+    border : 2px solid #E120F0!important;
+    box-shadow: 0 0 10px #E120F0 inset, 0 0 10px #E120F0;
+    border-radius:5px;
+    border-bottom-left-radius:10px;
+    border-top-right-radius:10px;
     margin-top: 10px;
 }
+
+button:focus {outline:0 !important;}
+
 
 #app > main{
   flex-grow: 1;

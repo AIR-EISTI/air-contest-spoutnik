@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Admin from '@/components/Admin'
 import Exercices from '@/components/Exercices'
 import CreationExercice from '@/components/CreationExercice'
+import User from '@/components/User'
 
 Vue.use(Router)
 
@@ -22,6 +23,11 @@ export default new Router({
       path: '/creationExercice',
       name: 'CreationExercice',
       component: CreationExercice
+    },
+    {
+      path: '/User',
+      name: 'User',
+      component: User
     }
   ]
 })

@@ -3,7 +3,7 @@
     <div class="side-menu">
     <router-link :to="{name: 'Admin'}"><h1 class="neon">Administration</h1></router-link>
     <div class="links neon">
-        <router-link :to="{name: 'Users'}" class="item">Users</router-link>
+        <router-link :to="{name: 'User'}" class="item">Users</router-link>
         <router-link :to="{name: 'Exercices'}" class="item">Exercices</router-link>
         <router-link :to="{name: 'Tournois'}" class="item">Tournois</router-link>
     </div>
@@ -26,7 +26,7 @@ export default {
     width: 300px;
     background-color:black;
     overflow-x: hidden;
-    border-right: 2px solid #00FE00;
+    border-right: 3px solid #00FE00;
     box-shadow: 0 0 10px #00FE00;
   }
   .item{
@@ -50,8 +50,9 @@ export default {
   }
 
   .links{
-    border : 1px solid #E120F0!important;
+    border : 3px solid #E120F0!important;
     box-shadow: 0 0 10px #E120F0 inset, 0 0 10px #E120F0;
+    border-radius:3px;
     border-top-left-radius:30px;
     margin-right : 10px;
     margin-left: 10px;
