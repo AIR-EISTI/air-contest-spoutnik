@@ -16,7 +16,7 @@
       <h2>Résultats</h2>
       <a :href="inputFile">Télécharger le jeu de données.</a>
       <extendable-content-input title="Sortie du programme" ref="output"></extendable-content-input>
-      <extendable-content-input title="Code du programme" ref="code"></extendable-content-input>
+      <extendable-content-input title="Code du programme" ref="code" code="true"></extendable-content-input>
       <button class="button" @click="sendResult">Envoyer</button>
     </div>
   </main>

@@ -1,23 +1,27 @@
 <template lang="html">
   <div class="extendable">
     <h3 @click="toggleExtended"><img src="/static/icons/IcoMoon/SVG/323-circle-right.svg" :class="{extended: extended}">{{title}}</h3>
-    <div v-if="extended">
+    <div :class="{notextended: !extended}">
       <file-input @fileChange="fileChange"></file-input>
-      <textarea placeholder="Coller le contenu" v-model="fileContent"></textarea>
+      <textarea v-if="!code" placeholder="Coller le contenu" v-model="fileContent"></textarea>
+      <div v-else id="editor"></div>
     </div>
   </div>
 </template>
 
 <script>
 import FileInput from '@/components/FileInput'
+
 export default {
   props: [
-    'title'
+    'title',
+    'code'
   ],
   data () {
     return {
       fileContent: '',
-      extended: false
+      extended: false,
+      editor: null
     }
   },
   methods: {
@@ -31,10 +35,25 @@ export default {
         return
       }
       this.fileContent = evt.target.result
+      if (this.editor) {
+        this.editor.setValue(this.fileContent)
+      }
     },
     toggleExtended (evt) {
       this.extended = !this.extended
+      if (this.code && this.extended && !this.editor) {
+        // eslint-disable-next-line
+        this.editor = ace.edit('editor')
+        this.editor.setTheme('ace/theme/twilight')
+        this.editor.session.setMode('ace/mode/python')
+        this.editor.setValue(this.fileContent)
+        this.editor.getSession().on('change', () => {
+          this.fileContent = this.editor.getValue()
+        })
+      }
     }
+  },
+  mouted () {
   },
   components: {
     'FileInput': FileInput
@@ -64,5 +83,13 @@ export default {
 
 .extendable img.extended {
   transform: rotate(90deg);
+}
+
+.extendable .notextended {
+  display: none;
+}
+
+#editor {
+  height: 500px;
 }
 </style>
