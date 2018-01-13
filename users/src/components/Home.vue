@@ -3,25 +3,41 @@
         <section id="intro-section" class="top-container">
 
             <div class="text-image" data-0="top:0px;" data-500="top:-150px;">
-                <article>
-                        <h2 class="center">Tournoi d'hiver</h2>
-                        <p>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.</p>
-                        <div class="center">
-                        <a href="" class="button">Participer</a>
-                        </div>
-                </article>
-                <aside>
-                    <img src="/static/imgs/ordi2.jpeg"/>
-                </aside>
+              <article>
+                    <h2 class="center">{{firstGroup.name}}</h2>
+                    <div class="infos">
+                        <div class="number-point normal-info">{{firstGroup.points}} points</div>
+                        <div class="date normal-info">{{firstGroup.endDate | date}}</div>
+                    </div>
+                    <p>{{firstGroup.description}}</p>
+                    <div class="center">
+                      <router-link class="button" :to="{name: 'Groupe',params: { id: firstGroup.id }}">
+                        Participer
+                      </router-link>
+                    </div>
+              </article>
+              <aside>
+                  <img src="/static/imgs/ordi2.jpeg"/>
+              </aside>
             </div>
         </section>
         <div class="scroll" data-0="top:0px;" data-500="top:-200px;">
         <section id="month-exercise" class="white-container">
-
-            <h2 class="center">Exercice du mois</h2>
-            <br/>
+            <h2 class="title center">{{firstExo.title}}</h2>
+            <div class="infos">
+                <div class="number-point small-info">{{firstExo.points}}</div>
+                <div class="date small-info">{{firstExo.creatingDate | date}}</div>
+            </div>
+            <p>
+                {{firstExo.description}}
+            </p>
+            <ul class="tags-fixe">
+                <li class="tag" v-for="tag in firstExo.tags" :key="tag.id">#{{tag.tag}}</li>
+            </ul>
             <div class="center">
-                    <a href="" class="button">Participer</a>
+              <router-link class="button" :to="{name: 'Exercice',params: { id: firstExo.id }}">
+                Résoudre
+              </router-link>
             </div>
         </section>
         <section >
@@ -51,12 +67,7 @@
         </section>
         <section>
             <ul class="tags horizontal">
-                <h2 class="center">Les tags</h2>
-                <li>#tournoi</li>
-                <li>#jeu</li>
-                <li>#labyrinthe</li>
-                <li>#snake</li>
-                <li>#graph</li>
+                <li v-for="tag in tags" :key="tag.key" :style="`border-color: #${tag.color}`">#{{tag.tag}}</li>
             </ul>
         </section>
         </div>
@@ -73,7 +84,10 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
-      exos: {}
+      exos: [],
+      firstExo:{},
+      tags: [],
+      firstGroup:{}
     }
   },
   filters: {
@@ -89,9 +103,18 @@ export default {
     }
   },
   mounted () {
-    axios.get('/api/exercice?limit=3&start=0&search=')
+    axios.get('/api/exercice?limit=4&start=0&search=')
     .then(response => {
       this.exos = response.data
+      this.firstExo = this.exos.shift()
+    }),
+    axios.get('/api/group?limit=8&start=0&search=')
+    .then(response => {
+      this.firstGroup = response.data.pop()
+    }),
+    axios.get('/api/tag')
+    .then(response => {
+      this.tags = response.data
     })
     skrollr.init()
   }
@@ -114,6 +137,11 @@ export default {
 #intro-section .text-image
 {
     position: relative;
+}
+
+#intro-section p
+{
+  font-size: 1.2em;
 }
 
 #listeExercices

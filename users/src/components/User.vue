@@ -1,5 +1,5 @@
 <template>
-    <main>
+    <main id="user">
         <nav id="userNav">
             <div class="top-container">
                 <div class="pseudo">
@@ -39,8 +39,8 @@ export default {
 }
 </script>
 
-<style>
-    main
+<style scoped>
+    #user
     {
         display: flex;
         flex-direction: row;
