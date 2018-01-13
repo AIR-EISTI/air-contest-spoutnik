@@ -42,7 +42,7 @@ export default {
   }
 }
 </script>
-<style lang="css">
+<style scoped lang="css">
   h2{
     text-align: center;
     color : #00F3F9;

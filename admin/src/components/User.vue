@@ -59,7 +59,7 @@ export default {
 
 </script>
 
-<style lang="css">
+<style scoped lang="css">
 main{
   overflow-y: auto;
 }

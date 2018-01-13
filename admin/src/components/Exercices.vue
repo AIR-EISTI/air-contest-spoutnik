@@ -10,7 +10,7 @@
           <img src="/src/assets/icons/IcoMoon/SVG/037-file-empty.svg" alt="créer un exercice" class="imgNeon">
         </div>
       </router-link>
-      <router-link :to="{name: 'RechercheExo'}">
+      <router-link :to="{name: 'SearchExercice'}">
         <div id="rechercherExo">
           <p>Rechercher un exercice</p>
           <img src="/src/assets/icons/IcoMoon/SVG/135-search.svg" alt="rechercher un exercice" class="imgNeon">

@@ -4,6 +4,7 @@ import Admin from '@/components/Admin'
 import Exercices from '@/components/Exercices'
 import CreationExercice from '@/components/CreationExercice'
 import User from '@/components/User'
+import SearchExercice from '@/components/SearchExercice'
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ export default new Router({
       path: '/User',
       name: 'User',
       component: User
+    },
+    {
+      path: '/SearchExercice',
+      name: 'SearchExercice',
+      component: SearchExercice
     }
   ]
 })

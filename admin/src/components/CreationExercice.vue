@@ -63,10 +63,9 @@ export default {
         points: this.points,
         tournament: this.checkedTournament,
         creatingDate: Date.now(),
-        tags: []
+        tags: [],
+        groups: []
       });
-
-
     }
   },
   components: {
@@ -75,7 +74,7 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style  scoped lang="css">
 .labelClass{
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
