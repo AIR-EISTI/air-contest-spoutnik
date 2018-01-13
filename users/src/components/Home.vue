@@ -85,9 +85,9 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App',
       exos: [],
-      firstExo:{},
+      firstExo: {},
       tags: [],
-      firstGroup:{}
+      firstGroup: {}
     }
   },
   filters: {
@@ -107,11 +107,11 @@ export default {
     .then(response => {
       this.exos = response.data
       this.firstExo = this.exos.shift()
-    }),
+    })
     axios.get('/api/group?limit=8&start=0&search=')
     .then(response => {
       this.firstGroup = response.data.pop()
-    }),
+    })
     axios.get('/api/tag')
     .then(response => {
       this.tags = response.data

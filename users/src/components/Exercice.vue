@@ -1,5 +1,6 @@
 <template lang="html">
   <main class="exercice center-container">
+    <notification :msg="notif.msg" :type="notif.type" :date="notif.date"  @close="(notif.msg='')"></notification>
     <div class="enonce top-container">
       <h1>
         {{title}}
@@ -23,6 +24,7 @@
 
 <script>
 import ExtendableContentInput from '@/components/ExtendableContentInput'
+import Notification from '@/components/Notification'
 import * as moment from 'moment'
 import 'moment/locale/fr'
 import * as axios from 'axios'
@@ -34,11 +36,17 @@ export default {
       creatingDate: 0,
       description: '',
       points: 0,
-      tags: []
+      tags: [],
+      notif: {
+        msg: '',
+        type: 'info',
+        date: ''
+      }
     }
   },
   components: {
-    'ExtendableContentInput': ExtendableContentInput
+    'ExtendableContentInput': ExtendableContentInput,
+    'Notification': Notification
   },
   mounted () {
     moment.locale('fr')
@@ -59,11 +67,40 @@ export default {
   },
   methods: {
     sendResult () {
-      console.log({
-        exercice: this.$route.params.id,
+      axios.post(`/api/result`, {
         output: this.$refs.output.fileContent,
-        code: this.$refs.code.fileContent
+        code: this.$refs.code.fileContent,
+        exercice: this.$route.params.id
       })
+        .then(response => {
+          if (response.data.jobId) {
+            this.subscribeJobEvent(response.data.jobId)
+          } else {
+            if (response.data.point === 100) {
+              this.displayNotif('info', {msgInfo: 'Exerice réussi !'})
+            } else {
+              this.displayNotif('error', {msgInfo: 'Solution érronée...'})
+            }
+          }
+        })
+    },
+    subscribeJobEvent (jobId) {
+      this.displayNotif('info', {msgInfo: 'Execution du code...'})
+      let ev = new EventSource(`/api/job/${jobId}`)
+      ev.addEventListener('error', (e) => {
+        ev.close()
+      })
+      ev.addEventListener('msg_info', (e) => {
+        this.displayNotif('info', JSON.parse(e.data))
+      })
+      ev.addEventListener('msg_error', (e) => {
+        this.displayNotif('error', JSON.parse(e.data))
+      })
+    },
+    displayNotif (type, {msgInfo, timestamp = null}) {
+      this.notif.msg = msgInfo
+      this.notif.type = type
+      this.notif.date = moment(timestamp).format('LT')
     }
   },
   filters: {
@@ -83,6 +120,9 @@ export default {
 </script>
 
 <style lang="css">
+main.exercice {
+  position: relative;
+}
 .exercice h1:first-of-type {
   margin: 7px 0;
 }
