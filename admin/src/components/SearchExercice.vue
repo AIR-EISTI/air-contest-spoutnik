@@ -4,6 +4,8 @@
       <h2 class="neon">Liste des exercices</h2>
     </div>
     <div class="Search">
+      <input type="search" class="inputField" v-on:keyup="searchAction" v-model="searchValue"/>
+      <img src="/src/assets/icons/IcoMoon/SVG/135-search.svg" class="imgNeonSearch" @click="searchAction"/>
     </div>
     <div class="ExoList">
       <div v-for="(exo, index) in exos" :key="exo.id" >
@@ -41,7 +43,7 @@
     <form id="groupForm">
       <div id="selectionGroup">
         <div id="groupName">
-          <select v-model="selected" v-on:change="changeSelection()">
+          <select class="inputField" v-model="selected" v-on:change="changeSelection()">
             <option disabled value="">Nom du groupe</option>
             <option v-for="(group, index) in listGroup" :value="group.value">
               {{group.text}}
@@ -69,6 +71,17 @@ import * as axios from 'axios'
 import * as moment from 'moment'
 import 'moment/locale/fr'
 
+function debounce (func, wait) {
+  let timeoutId = null
+  console.log('plop')
+  return function () {
+    if (timeoutId) {
+      clearTimeout(timeoutId)
+    }
+    timeoutId = setTimeout(func.bind(this, ...arguments), wait)
+  }
+}
+
 export default {
   name: 'SearchExercice',
   data () {
@@ -86,7 +99,8 @@ export default {
       selectedExos: [],
       selected:'',
       groupSelected:{},
-      isDeleted: -1
+      isDeleted: -1,
+      searchValue: ""
     }
   },
 
@@ -110,6 +124,20 @@ export default {
   },
 
   methods: {
+    searchAction : debounce(function () {
+      this.getResult(this.searchValue)
+    }, 500),
+    getResult (search) {
+      axios.get(`/api/exercice?search=` + search)
+      .then(response => {
+        this.exos = response.data
+      })
+      .catch(error => {
+        if (error.request.status === 404) {
+          this.$router.push('/404')
+        }
+      })
+    },
     changeSelection: function (){
       axios.get("api/group/"+this.selected).then(response => {
         this.groupSelected = response.data
@@ -210,6 +238,24 @@ export default {
   -ms-user-select: none; /* IE10+/Edge */
   user-select: none; /* Standard */
 }
+.imgNeonSearch{
+  margin-top: 12px;
+  margin-left: 7px;
+  height: 60%;
+  display: inline-block;
+  filter: drop-shadow( 0px 0px 5px #00F3F9);
+  vertical-align: middle;
+
+  /* top: 50%; /* poussé de la moitié de hauteur du référent */
+  /*transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
+}
+.imgNeonSearch:hover{
+
+  filter: drop-shadow( 0px 0px 8px #00F3F9);
+  cursor: pointer;
+
+}
+
 .imgNeon{
   width : 30px;
   height: 30px;
@@ -323,10 +369,7 @@ export default {
   padding: 8px 8px 8px 32px;
   border : 3px solid #E120F0!important;
   box-shadow: 0 0 10px #E120F0 inset, 0 0 10px #E120F0;
-  border-radius:3px;
-  border-top-left-radius:30px;
-  border-bottom-right-radius:10px;
-  border-bottom-left-radius:10px;
+  border-radius:10px;
   height: 60%;
   width : 75%;
   font-size: 1em;
@@ -341,9 +384,7 @@ export default {
   padding: 8px 8px 8px 32px;
   border : 3px solid #E120F0!important;
   box-shadow: 0 0 10px #E120F0 inset, 0 0 10px #E120F0;
-  border-radius:3px;
-  border-top-left-radius:10px;
-  border-top-right-radius:10px;
+  border-radius:10px;
   border-bottom-right-radius:30px;
   height: 10%;
   width : 75%;
@@ -382,8 +423,8 @@ export default {
   grid-column: 1;
   flex:1;
   flex-grow: 0;
-
 }
+
 #description{
   border : 3px solid #00F3F9!important;
   width:50%;
@@ -421,30 +462,49 @@ export default {
   height: 10px!important;
 }
 
-.dropdownGroup {
-  background: rgba(0, 50, 0, 1) !important;
-  height: 10px!important;
-  padding:0;
-  margin:0;
-  color:#00F3F9!important;
+.Search{
+  color:  #00F3F9;
+  padding: 8px 8px 8px 32px;
+  border : 3px solid #E120F0!important;
+  box-shadow: 0 0 10px #E120F0 inset, 0 0 10px #E120F0;
+  border-radius:10px;
+  border-top-left-radius:30px;
+  height: 7%;
+  width : 75%;
+  font-size: 1em;
+  margin:auto;
+  margin-bottom: 5px;
 }
 
-select{
+
+.inputField{
    background: #530080;
    border : 3px solid #00F3F9!important;
    box-shadow: 0 0 10px #00F3F9 inset, 0 0 10px #00F3F9;
    border-radius: 5px;
    overflow: hidden;
    font-size: 20px;
-   height: 40px;
-   padding: 5px; /* If you add too much padding here, the options won't show in IE */
-   width: 268px;
+   position: relative;
+   padding: 5px;
    outline:0;
    color:#00FE00;
    text-shadow: 0.5px 0.5px 1px #00FE00,
                -0.5px -0.5px 1px #00FE00,
                -0.5px 0.5px 1px #00FE00,
                 0.5px -0.5px 1px #00FE00;
+}
+
+input{
+  display: inline-block;
+  width: 95%;
+  height: 70%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+select{
+  height: 40px;
+  width: 268px;
 }
 
 .bottom{
