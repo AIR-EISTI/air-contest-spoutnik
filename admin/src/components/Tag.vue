@@ -4,7 +4,7 @@
     <h2 class="neon">Les tags</h2>
     
     <div class="main top container">
-        <span class="tag" v-for="tagEle in tags" @click="deleteTag(tagEle)">{{tagEle.tag}}</span>
+        <span class="tag" v-for="tagEle in tags" :style="`border-color: #${tagEle.color}`" @click="deleteTag(tagEle)">{{tagEle.tag}}</span>
     </div>
     <div class="bottom container">
       <input v-model="title" placeholder="Titre" id="formTitre" class="inputbox">
@@ -56,7 +56,7 @@ export default {
   .tag
   {
     display:inline-block;
-    border: 3px solid #00F3F9 !important;
+    border: 3px solid #00F3F9;
     box-shadow: 0 0 10px #00F3F9 inset, 0 0 10px #00F3F9;
     border-bottom-left-radius: 15px;
     border-top-right-radius: 15px;
