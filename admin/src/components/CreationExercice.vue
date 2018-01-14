@@ -80,7 +80,7 @@ export default {
         points: this.points,
         tournament: this.checkedTournament,
         creatingDate: Date.now(),
-        tags: this.tags,
+        tags: this.tags.map(o => o.id),
         groups: []
       });
     },
