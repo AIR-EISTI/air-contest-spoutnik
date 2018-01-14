@@ -6,6 +6,7 @@ import CreationExercice from '@/components/CreationExercice'
 import User from '@/components/User'
 import SearchExercice from '@/components/SearchExercice'
 import FileUpload from '@/components/FileUpload'
+import NewGroup from '@/components/NewGroup'
 
 Vue.use(Router)
 
@@ -35,6 +36,11 @@ export default new Router({
       path: '/SearchExercice',
       name: 'SearchExercice',
       component: SearchExercice
+    },
+    {
+      path: '/NewGroup',
+      name: 'NewGroup',
+      component: NewGroup
     },
     {
       path: '/file-upload',

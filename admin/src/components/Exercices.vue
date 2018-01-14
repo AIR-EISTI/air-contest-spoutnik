@@ -3,7 +3,7 @@
     <div id="titre">
       <h2 class="neon">Bienvenue sur votre page d'exercices </h2>
     </div>
-    <div id="infos">
+    <div class="infos">
       <router-link :to="{name: 'CreationExercice'}">
         <div id="creerExo">
           <p>Créer un exercice</p>
@@ -14,6 +14,21 @@
         <div id="rechercherExo">
           <p>Rechercher un exercice</p>
           <img src="/src/assets/icons/IcoMoon/SVG/135-search.svg" alt="rechercher un exercice" class="imgNeon">
+        </div>
+
+      </router-link>
+    </div>
+    <div class="infos">
+      <router-link :to="{name: 'NewGroup'}">
+        <div id="creerGroup">
+          <p>Créer un groupe</p>
+          <img src="/src/assets/icons/IcoMoon/SVG/204-link.svg" alt="créer un groupe" class="imgNeon">
+        </div>
+      </router-link>
+      <router-link :to="{name: 'tag'}">
+        <div id="creerTag">
+          <p>Créer un tag</p>
+          <img src="/src/assets/icons/IcoMoon/SVG/205-flag.svg" alt="Créer un tag" class="imgNeon">
         </div>
 
       </router-link>
@@ -29,12 +44,12 @@ export default {
 
 <style lang="css">
 
-#infos{
+.infos{
   display:flex;
   justify-content:space-around;
   padding-top: 50px;
 }
-#infos a{
+.infos a{
   color:  #00F3F9;
   padding: 8px 8px 8px 32px;
   border : 1px solid #E120F0!important;
