@@ -15,7 +15,15 @@
       </div>
       <extendable-content-input title="Fichier d'entrée" ref="inputFile"></extendable-content-input>
       <extendable-content-input title="Fichier de sortie" ref="outputFile"></extendable-content-input>
-      <p>Tags : <input placeholder="tag1 tag2 tag3"id="tag" class="tag inputbox"></p>
+      <div id="tags" class="deroul">Tags : 
+        <input type="text" placeholder="tag1" id="tag" class="inputbox" v-model="tag">
+        <div class="ideas-container">
+          <div class="ideas">
+            <div class="ele" v-for="tagEle in autoTags" @click="addTag(tagEle)">{{tagEle.tag}}</div>
+          </div>
+        </div>
+        <div class="choices"><span class="ele" v-for="tagEle in tags">{{tagEle.tag}}</span></div>
+      </div>
       <div class="labelClass">
         <input type="checkbox" id="tournament" value="tournament" v-model="checkedTournament" class="inputbox">
         <label for="tournament">Activer mode tournois</label>
@@ -45,8 +53,17 @@ export default {
       points: 0,
       creatingDate: 0,
       checkedTournament: false,
-      tags: []
+      tags: [], // tags del'exercice
+      allTags :[], // liste des tous les tags
+      tag:"", // tag en cours
+      autoTags: [] // autocompletion tags
     }
+  },
+  mounted () {
+    axios.get('/api/tag')
+      .then(response => {
+        this.allTags = response.data
+      })
   },
   computed: {
     compiledMarkdown: function () {
@@ -63,9 +80,22 @@ export default {
         points: this.points,
         tournament: this.checkedTournament,
         creatingDate: Date.now(),
-        tags: [],
+        tags: this.tags,
         groups: []
       });
+    },
+    addTag(tag)
+    {
+      this.tags.push(tag)
+      this.tag = ""
+      this.autoTags = []
+    }
+  },
+  watch : {
+    tag: function(newTag,oldTag)
+    {
+        if(newTag)
+          this.autoTags =  this.allTags.filter(tag => tag.tag.indexOf(newTag) > -1)
     }
   },
   components: {
@@ -123,5 +153,51 @@ input::placeholder {
 
 textarea{
   background-color: #350a42;
+}
+
+/***********************/
+
+.deroul .choices .ele
+{
+   display: inline-block;
+   margin: 5px;
+   min-width: 100px;
+   border-radius: 0px 30px 0px 30px;
+   padding: 5px 10px;
+   border : 1px solid #E120F0!important;
+   box-shadow: 0 0 10px #E120F0 inset, 0 0 10px #E120F0;
+
+}
+
+.deroul .ideas-container
+{
+  position: relative;
+  margin: auto;
+  width: 350px;
+  left: 47px;
+}
+
+.deroul .ideas
+{
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  background: #530080;
+  border : 1px solid #00F3F9!important;
+  border-radius: 0px 0px 5px 5px;
+
+   font-size: 20px;
+   color:#00FE00;
+}
+
+.deroul .ideas .ele:hover
+{
+  background-color: #350a42;
+}
+
+#tags .choices
+{
+  margin-top: 10px;
 }
 </style>
