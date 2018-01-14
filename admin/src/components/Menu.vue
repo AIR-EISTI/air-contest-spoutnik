@@ -66,5 +66,6 @@ export default {
   }
   a{
     text-decoration: none;
+    outline: none;
   }
 </style>
