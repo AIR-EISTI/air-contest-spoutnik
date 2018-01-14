@@ -61,7 +61,7 @@
           <span class="nbPoints">{{groupSelected && groupSelected.points||'0'}}</span> points
         </div>
         <div id="tournois">
-          <div  v-bind:class="{isHidden: groupSelected.endDate+0<Math.floor(Date.now()), isHidden: typeof groupSelected.endDate==='undefined'}">
+          <div  v-bind:class="{isHidden: groupSelected.endDate+0<Math.floor(Date.now()), isHidden: !(groupSelected.endDate)}">
             Tournois Actif <br/>
             {{groupSelected.publicationDate | date}} - {{groupSelected.endDate | date}}
           </div>
