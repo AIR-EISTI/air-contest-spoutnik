@@ -25,7 +25,7 @@
           <img src="/src/assets/icons/IcoMoon/SVG/204-link.svg" alt="créer un groupe" class="imgNeon">
         </div>
       </router-link>
-      <router-link :to="{name: 'tag'}">
+      <router-link :to="{name: 'Tag'}">
         <div id="creerTag">
           <p>Créer un tag</p>
           <img src="/src/assets/icons/IcoMoon/SVG/205-flag.svg" alt="Créer un tag" class="imgNeon">
