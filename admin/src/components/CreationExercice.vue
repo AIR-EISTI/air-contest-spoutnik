@@ -24,7 +24,7 @@
               <div class="ele" v-for="tagEle in autoTags" @click="addTag(tagEle)">{{tagEle.tag}}</div>
             </div>
           </div>
-          <div class="choices"><span class="ele" v-for="tagEle in tags">{{tagEle.tag}}</span></div>
+          <div class="choices"><span class="ele" v-for="tagEle in tags" @click="deleteTag(tagEle)">{{tagEle.tag}}</span></div>
         </div>
         <input v-model="points" placeholder="0" id="formPoint" class="inputbox">
       </div>
@@ -82,7 +82,17 @@ export default {
         groups: []
       });
     },
+    deleteTag(tag)
+    {
+      var newTags = []
+      this.tags.forEach(element => {
+        if(element.id != tag.id)
+          newTags.push(element)
+      });
+      this.tags = newTags
+    },
     addTag(tag) {
+      this.deleteTag(tag)
       this.tags.push(tag)
       this.tag = ""
       this.autoTags = []
