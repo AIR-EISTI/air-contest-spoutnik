@@ -4,8 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import '../src/assets/style.css'
-import '../node_modules/github-markdown.css';
-
+// import '../node_modules/github-markdown.css';
 
 Vue.config.productionTip = false
 

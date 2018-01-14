@@ -12,10 +12,15 @@
                     Les tournois
                 </li>
             </router-link>
-            <router-link :to="{name: 'Login'}">
-                <li data-0="border-color:rgba(0,0,0,0)" data-50="border-color:rgba(230,230,230,1)">
+            <a href="/api/token?redirectClientURI=http://localhost:8082/oauth" v-if="!username">
+                <li data-0="border-color:rgba(0,0,0,0)" data-50="border-color:rgba(230,230,230,1)" >
                     Login
                 </li>
+            </a>
+            <router-link :to="{name: 'User'}">
+            <li data-0="border-color:rgba(0,0,0,0)" data-50="border-color:rgba(230,230,230,1)" v-if="username">
+                    {{username}}
+            </li>
             </router-link>
         </ul>
         </div>
@@ -29,11 +34,13 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
-      noVisible: true
+      noVisible: true,
+      username:""
     }
   },
   mounted () {
     skrollr.init()
+    this.username = localStorage.getItem("username")
   },
   methods: {
     displayMenu () {
