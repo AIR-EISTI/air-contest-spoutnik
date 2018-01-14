@@ -78,6 +78,7 @@
 <script>
 import * as axios from 'axios'
 import * as moment from 'moment'
+import UtilsAuth from '@/utils/UtilsAuth'
 import 'moment/locale/fr'
 
 function debounce (func, wait) {
@@ -118,11 +119,11 @@ export default {
   },
 
   mounted () {
-    axios.get("api/exercice").then(response => {
+    UtilsAuth.authRequest.get("api/exercice").then(response => {
       this.exos = response.data
       //this.selectedExos.push(-1)
     })
-    axios.get("api/group").then(response => {
+    UtilsAuth.authRequest.get("api/group").then(response => {
       this.objGroup=response.data
       var bidule = {}
       var superArray = []
@@ -142,7 +143,7 @@ export default {
       this.selectedExos = []
       this.selected = ""
       this.groupSelected = {}
-      axios.get("api/exercice").then(response => {
+      UtilsAuth.authRequest.get("api/exercice").then(response => {
         this.exos = response.data
         //this.selectedExos.push(-1)
       })
@@ -151,7 +152,7 @@ export default {
       this.getResult(this.searchValue)
     }, 500),
     getResult (search) {
-      axios.get(`/api/exercice?search=` + search)
+      UtilsAuth.authRequest.get(`/api/exercice?search=` + search)
       .then(response => {
         this.exos = response.data
       })
@@ -162,7 +163,7 @@ export default {
       })
     },
     changeSelection: function (){
-      axios.get("api/group/"+this.selected).then(response => {
+      UtilsAuth.authRequest.get("api/group/"+this.selected).then(response => {
         this.groupSelected = response.data
       })
     },
@@ -172,7 +173,7 @@ export default {
       var groupNb = this.selected
       var exoEnCours
       this.selectedExos.forEach(function(exoNb){
-        axios.get("api/exercice/"+exoNb).then(response => {
+        UtilsAuth.authRequest.get("api/exercice/"+exoNb).then(response => {
           exoEnCours = response.data
           var groupePourri = []
           exoEnCours.groups.forEach(function(groupeee){
@@ -185,7 +186,7 @@ export default {
               if (uniqueGroup.indexOf(current) < 0) uniqueGroup.push(current);
           }
           if(uniqueGroup!=exoEnCours.groups){
-            axios.put('/api/exercice/'+exoNb, {
+            UtilsAuth.authRequest.put('/api/exercice/'+exoNb, {
               title: exoEnCours.title,
               description: exoEnCours.description,
               inputFile: exoEnCours.inputFile,
@@ -196,7 +197,7 @@ export default {
               tags: exoEnCours.tags,
               groups: uniqueGroup
             });
-            axios.get("api/exercice/"+exoNb).then(response => {
+            UtilsAuth.authRequest.get("api/exercice/"+exoNb).then(response => {
               newGroups: response.data
             });
           }

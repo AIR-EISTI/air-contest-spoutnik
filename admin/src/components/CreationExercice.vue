@@ -36,6 +36,7 @@
 <script>
 import * as marked from 'marked'
 import * as axios from 'axios'
+import UtilsAuth from '@/utils/UtilsAuth'
 import ExtendableContentInput from '@/components/ExtendableContentInput'
 import FileInput from '@/components/FileInput'
 
@@ -58,7 +59,7 @@ export default {
     }
   },
   mounted () {
-    axios.get('/api/tag')
+    UtilsAuth.authRequest.get('/api/tag')
       .then(response => {
         this.allTags = response.data
       })
@@ -70,7 +71,7 @@ export default {
   },
   methods: {
     sendResult: function () {
-      axios.post('/api/exercice', {
+      UtilsAuth.authRequest.post('/api/exercice', {
         title: this.title,
         description: this.description,
         inputFile: this.inputFile,
