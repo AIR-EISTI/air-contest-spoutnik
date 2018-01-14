@@ -106,6 +106,7 @@ export default {
           this.endDate=null
           this.points=0
           this.image=""
+
         })
     },
     deletage : function(group, index){
@@ -128,7 +129,6 @@ export default {
 
 <style scoped lang="css">
 .active{
-
   text-shadow: 2px 2px 5px #E120F0, -2px -2px 5px #E120F0, -2px 2px 5px #E120F0, 2px -2px 5px #E120F0;
   border : 3px solid #00FE00!important;
   box-shadow: 0 0 10px #00FE00 inset, 0 0 10px #00FE00;

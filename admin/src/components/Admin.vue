@@ -35,7 +35,7 @@ export default {
       .then(response => {
         this.nbExo = response.data.quantity
       })
-    axios.get(`/api/user/quantity`)
+    axios.get(`/api/users/quantity`)
       .then(response => {
         this.nbUser = response.data.quantity
       })
