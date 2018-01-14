@@ -67,11 +67,12 @@ export default {
   },
   methods: {
     sendResult () {
+      let headers = {'Accept': 'application/json', 'AUTHORIZATION': 'Bearer ' + localStorage.getItem('token')}
       axios.post(`/api/result`, {
         output: this.$refs.output.fileContent,
         code: this.$refs.code.fileContent,
         exercice: this.$route.params.id
-      })
+      }, {headers: headers})
         .then(response => {
           if (response.data.jobId) {
             this.subscribeJobEvent(response.data.jobId)
@@ -81,6 +82,11 @@ export default {
             } else {
               this.displayNotif('error', {msgInfo: 'Solution érronée...'})
             }
+          }
+        })
+        .catch(error => {
+          if (error.response.status === 401) {
+            this.$router.push('/401')
           }
         })
     },

@@ -1,6 +1,6 @@
 <template>
-    <nav id="navbar"    v-bind:class="{ noVisible: noVisible }"  
-                        data-0="background-color:rgba(255,255,255,0);border-color:rgba(0,0,0,0)" 
+    <nav id="navbar"    v-bind:class="{ noVisible: noVisible }"
+                        data-0="background-color:rgba(255,255,255,0);border-color:rgba(0,0,0,0)"
                         data-50="background-color:rgba(255,255,255,255);border-color:rgba(230,230,230,1)">
         <img class="hamburger" src="/static/icons/IcoMoon/SVG/190-menu.svg" @click="displayMenu"/>
         <div class="content-menu">
@@ -14,7 +14,7 @@
             </router-link>
             <a href="/api/token?redirectClientURI=http://localhost:8082/oauth" v-if="!username">
                 <li data-0="border-color:rgba(0,0,0,0)" data-50="border-color:rgba(230,230,230,1)" >
-                    Connection
+                    Connexion
                 </li>
             </a>
             <router-link :to="{name: 'User'}">
@@ -35,12 +35,12 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App',
       noVisible: true,
-      username:""
+      username: ''
     }
   },
   mounted () {
     skrollr.init()
-    this.username = localStorage.getItem("username")
+    this.username = localStorage.getItem('username')
   },
   methods: {
     displayMenu () {
@@ -55,7 +55,7 @@ export default {
   /*-- -- nav bar -- --*/
 
 #navbar
-{    
+{
     display: flex;
     align-items: center;
     position: fixed;
@@ -196,10 +196,10 @@ export default {
     #navbar .hamburger
     {
         height: 50px;
-        width: 50px;    
-        display: block;   
+        width: 50px;
+        display: block;
     }
-  
+
     #navbar.noVisible
     {
         width: 50px;

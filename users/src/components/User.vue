@@ -11,12 +11,12 @@
                 </div>
             </div>
             <ul>
-                <li>Profile</li>
-                <li>Succés</li>
+                <li>Profil</li>
+                <li>Succès</li>
             </ul>
         </nav>
         <section class="top-container">
-            <profil></profil>
+            <profil :username="username" :firstname="firstname" :surname="surname"></profil>
             <badges></badges>
         </section>
     </main>
@@ -30,41 +30,40 @@ export default {
   name: 'User',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App',
-      username:'',
-      firstname:'?',
-      surname:'?',
+      username: '',
+      firstname: '?',
+      surname: '?'
     }
   },
   mounted () {
-    if(!localStorage.getItem('token'))
-    {
-        this.$router.push('/401')
-        location.reload(); 
-    }
-    else
-    {
-        var headers = {'Accept':'application/json','AUTHORIZATION':'Bearer '+localStorage.getItem('token')}
-        axios.get(`/api/me`, {headers : headers})
+    if (!localStorage.getItem('token')) {
+      this.$router.push('/401')
+      location.reload()
+    } else {
+      let headers = {'Accept': 'application/json', 'AUTHORIZATION': 'Bearer ' + localStorage.getItem('token')}
+      axios.get(`/api/me`, {headers: headers})
         .then(response => {
-            this.username = response.data.username
-            this.firstname = response.data.firstname
-            this.surname = response.data.surname
+          this.username = response.data.username
+          this.firstname = response.data.firstname
+          this.surname = response.data.surname
+        })
+        .catch(e => {
+          if (e.response.status === 401) {
+            this.$router.push('/401')
+          }
         })
     }
   },
-  components:
-  {
+  components: {
     'profil': UserProfile,
     'badges': UserBadge
   },
   methods: {
-      logout()
-      {
-        localStorage.clear()
-        this.$router.push('/')
-        location.reload(); 
-      }
+    logout () {
+      localStorage.clear()
+      this.$router.push('/')
+      location.reload()
+    }
   }
 }
 </script>
@@ -84,7 +83,7 @@ export default {
         background-size: cover;
         background-attachment: fixed;
     }
-    
+
     #userNav
     {
         flex: 0;
@@ -102,7 +101,7 @@ export default {
     #userNav .infos
     {
         font-size: 0.7em;
-        
+
     }
 
     #userNav ul

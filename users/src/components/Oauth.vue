@@ -10,7 +10,7 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
-      username : ''
+      username: ''
     }
   },
   mounted () {
@@ -18,7 +18,7 @@ export default {
     localStorage.setItem('username', this.$route.query['username'])
     this.username = this.$route.query['username']
     this.$router.push('/')
-    location.reload(); 
+    location.reload()
   }
 }
 </script>

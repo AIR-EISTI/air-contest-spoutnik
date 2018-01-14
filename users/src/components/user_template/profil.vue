@@ -1,6 +1,6 @@
 <template>
     <div class="center-big-container">
-        <h2>Profile</h2>
+        <h2>Profil</h2>
         <div class="grid-2">
             <div class="white-container">
                 <h3>Infos personelles...</h3>
@@ -24,7 +24,7 @@
                     <div> ?</div>
                 </div>
                 <div class="line-info">
-                    <div>Points</div>
+                    <div>Points :</div>
                     <div> ?</div>
                 </div>
                 <div class="line-info">
@@ -39,24 +39,11 @@
 <script>
 export default {
   name: 'UserProfile',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App',
-      username:'',
-      firstname:'',
-      surname:''
-    }
-  },
-  mounted () {
-      console.log(localStorage.getItem('token'));
-    var headers = {'Accept':'application/json','AUTHORIZATION':'Bearer '+localStorage.getItem('token')}
-    axios.get(`/api/me`, {headers : headers})
-      .then(response => {
-        this.username = response.data.username
-        this.firstname = response.data.firstname
-        this.surname = response.data.surname
-      })
-  },
+  props: [
+    'username',
+    'firstname',
+    'surname'
+  ]
 }
 </script>
 
