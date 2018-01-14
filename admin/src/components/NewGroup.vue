@@ -20,7 +20,7 @@
             </div>
 
             <div class="icons">
-              <img src="/src/assets/icons/IcoMoon/SVG/272-cross.svg" alt="supprimer" v-on:click="deletage(group, index)" class="imgNeonRed unselectable">
+              <img src="/static/icons/IcoMoon/SVG/272-cross.svg" alt="supprimer" v-on:click="deletage(group, index)" class="imgNeonRed unselectable">
             </div>
         </li>
       </ul>
@@ -106,7 +106,6 @@ export default {
           this.endDate=null
           this.points=0
           this.image=""
-
         })
     },
     deletage : function(group, index){
@@ -129,6 +128,7 @@ export default {
 
 <style scoped lang="css">
 .active{
+
   text-shadow: 2px 2px 5px #E120F0, -2px -2px 5px #E120F0, -2px 2px 5px #E120F0, 2px -2px 5px #E120F0;
   border : 3px solid #00FE00!important;
   box-shadow: 0 0 10px #00FE00 inset, 0 0 10px #00FE00;

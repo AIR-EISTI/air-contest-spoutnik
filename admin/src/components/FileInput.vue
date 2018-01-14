@@ -2,7 +2,7 @@
   <div class="input-file">
     <input :id="inputId" type="file" v-on:change="fileChange">
     <label :for="inputId" class="button">
-      <img src="/src/assets/icons/IcoMoon/SVG/049-folder-open.svg" width="16px">
+      <img src="/static/icons/IcoMoon/SVG/049-folder-open.svg" width="16px">
       <span>{{ file === null ? 'Choisir un fichier' : file.name }}</span>
     </label>
   </div>

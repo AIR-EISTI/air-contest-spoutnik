@@ -8,7 +8,7 @@
         <li v-for="(upload, index) in uploads" :key="upload.id">
           <div>
             <a :href="`/files/${upload.id}-${upload.filename}`">{{upload.id}}-{{upload.filename}}</a>
-            <img src="/src/assets/icons/IcoMoon/SVG/272-cross.svg" alt="supprimer" class="imgNeonRed unselectable" @click="deleteUpload(index)">
+            <img src="/static/icons/IcoMoon/SVG/272-cross.svg" alt="supprimer" class="imgNeonRed unselectable" @click="deleteUpload(index)">
           </div>
         </li>
       </ul>

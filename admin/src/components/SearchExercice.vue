@@ -5,7 +5,7 @@
     </div>
     <div class="top container">
       <input type="search" class="inputField" v-on:keyup="searchAction" v-model="searchValue"/>
-      <img src="/src/assets/icons/IcoMoon/SVG/135-search.svg" class="imgNeonSearch unselectable" @click="searchAction"/>
+      <img src="/static/icons/IcoMoon/SVG/135-search.svg" class="imgNeonSearch unselectable" @click="searchAction"/>
     </div>
     <div class="main container">
       <div v-for="(exo, index) in exos" :key="exo.id" >
@@ -33,8 +33,8 @@
           <div class="icons">
             <div v-on:click="selectage(exo, index)"  class="icons1 unselectable" v-bind:class="{imgNeonGreen: (selectedExos.includes(exo.id)), imgNeonEmpty: !(selectedExos.includes(exo.id))}"><img src="/src/assets/icons/IcoMoon/SVG/273-checkmark.svg" class="unselectable"  v-bind:class="{imgNeonGreenPic: (selectedExos.includes(exo.id)), imgNeonEmptyPic: !(selectedExos.includes(exo.id)) }"></div>
             <div class="icons2">
-              <img src="/src/assets/icons/IcoMoon/SVG/006-pencil.svg" alt="modifier" class="imgNeon unselectable">
-              <img src="/src/assets/icons/IcoMoon/SVG/272-cross.svg" alt="supprimer" v-on:click="deletage(exo, index)" class="imgNeonRed unselectable">
+              <img src="/static/icons/IcoMoon/SVG/006-pencil.svg" alt="modifier" class="imgNeon unselectable">
+              <img src="/static/icons/IcoMoon/SVG/272-cross.svg" alt="supprimer" v-on:click="deletage(exo, index)" class="imgNeonRed unselectable">
             </div>
           </div>
         </div>

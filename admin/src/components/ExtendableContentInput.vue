@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="extendable">
-    <h3 @click="toggleExtended"><img src="/src/assets/icons/IcoMoon/SVG/323-circle-right.svg" :class="{extended: extended}">{{title}}</h3>
+    <h3 @click="toggleExtended"><img src="/static/icons/IcoMoon/SVG/323-circle-right.svg" :class="{extended: extended}">{{title}}</h3>
     <div v-if="extended">
       <file-input @fileChange="fileChange"></file-input>
       <textarea placeholder="Coller le contenu" :value="fileContent"></textarea>

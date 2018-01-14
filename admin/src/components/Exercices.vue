@@ -7,13 +7,13 @@
       <router-link :to="{name: 'CreationExercice'}">
         <div id="creerExo">
           <p>Créer un exercice</p>
-          <img src="/src/assets/icons/IcoMoon/SVG/037-file-empty.svg" alt="créer un exercice" class="imgNeon">
+          <img src="/static/icons/IcoMoon/SVG/037-file-empty.svg" alt="créer un exercice" class="imgNeon">
         </div>
       </router-link>
       <router-link :to="{name: 'SearchExercice'}">
         <div id="rechercherExo">
           <p>Rechercher un exercice</p>
-          <img src="/src/assets/icons/IcoMoon/SVG/135-search.svg" alt="rechercher un exercice" class="imgNeon">
+          <img src="/static/icons/IcoMoon/SVG/135-search.svg" alt="rechercher un exercice" class="imgNeon">
         </div>
 
       </router-link>
@@ -22,13 +22,13 @@
       <router-link :to="{name: 'NewGroup'}">
         <div id="creerGroup">
           <p>Créer un groupe</p>
-          <img src="/src/assets/icons/IcoMoon/SVG/204-link.svg" alt="créer un groupe" class="imgNeon">
+          <img src="/static/icons/IcoMoon/SVG/204-link.svg" alt="créer un groupe" class="imgNeon">
         </div>
       </router-link>
       <router-link :to="{name: 'Tag'}">
         <div id="creerTag">
           <p>Créer un tag</p>
-          <img src="/src/assets/icons/IcoMoon/SVG/205-flag.svg" alt="Créer un tag" class="imgNeon">
+          <img src="/static/icons/IcoMoon/SVG/205-flag.svg" alt="Créer un tag" class="imgNeon">
         </div>
 
       </router-link>
