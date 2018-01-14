@@ -6,6 +6,7 @@
         <router-link :to="{name: 'User'}" class="item">Users</router-link>
         <router-link :to="{name: 'Exercices'}" class="item">Exercices</router-link>
         <router-link :to="{name: 'Tournois'}" class="item">Tournois</router-link>
+        <router-link :to="{ name: 'FileUpload' }" class="item">Fichiers</router-link>
     </div>
     </div>
   </nav>
