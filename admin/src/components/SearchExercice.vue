@@ -5,41 +5,42 @@
     </div>
     <div class="Search">
       <input type="search" class="inputField" v-on:keyup="searchAction" v-model="searchValue"/>
-      <img src="/src/assets/icons/IcoMoon/SVG/135-search.svg" class="imgNeonSearch" @click="searchAction"/>
+      <img src="/src/assets/icons/IcoMoon/SVG/135-search.svg" class="imgNeonSearch unselectable" @click="searchAction"/>
     </div>
     <div class="ExoList">
       <div v-for="(exo, index) in exos" :key="exo.id" >
-        <div :class="{ deleted: isDeleted==index, exo: isDeleted!=index}">
-          <div class="infos1">
-            <h2 class="title">{{exo.title}}</h2>
-            <div class="infos">
-                <div class="number-point small-info">{{exo.points}}</div>
-                <div class="date small-info">{{exo.creatingDate | date}}</div>
-            </div>
+        <div :class="{ deleted: isDeleted==index, exo: isDeleted!=index}" class="exoItem">
+
+          <div class="titreExo">{{exo.title}}</div>
+          <div class="number-point small-info"><span class="nbPoints">{{exo.points}}</span> Points</div>
+          <div class="date small-info">{{exo.creatingDate | date}}</div>
+
+
+          <div class="infosDescription">
+              {{exo.description}}
           </div>
-          <div class="infos2">
-            <p>
-                {{exo.description}}
-                {{exo.groups}}
-            </p>
-          </div>
-          <div class="infos3">
-            <ul class="tags-fixe" v-if="exos.tags">
+
+          <div class="infosTag">
+            <ul class="tags-fixe">
                 <li class="tag" v-for="tag in exo.tags" :key="tag.id">#{{tag.tag}}</li>
             </ul>
           </div>
-          <div class="infos4">
-            Groupe 4
+          <div class="infosGroupe" >
+            <ul class="group-fixe">
+                <li class="groupLi" v-for="group in exo.groups" >{{group.name}}</li>
+            </ul>
           </div>
           <div class="icons">
-            <img src="/src/assets/icons/IcoMoon/SVG/006-pencil.svg" alt="modifier" class="imgNeon unselectable">
-            <img src="/src/assets/icons/IcoMoon/SVG/272-cross.svg" alt="supprimer" v-on:click="deletage(exo, index)" class="imgNeonRed unselectable">
-            <div v-on:click="selectage(exo, index)"  class="unselectable" v-bind:class="{imgNeonGreen: (selectedExos.includes(exo.id)), imgNeonEmpty: !(selectedExos.includes(exo.id))}"><img src="/src/assets/icons/IcoMoon/SVG/273-checkmark.svg" class="unselectable"  v-bind:class="{imgNeonGreenPic: (selectedExos.includes(exo.id)), imgNeonEmptyPic: !(selectedExos.includes(exo.id)) }"></div>
+            <div v-on:click="selectage(exo, index)"  class="icons1 unselectable" v-bind:class="{imgNeonGreen: (selectedExos.includes(exo.id)), imgNeonEmpty: !(selectedExos.includes(exo.id))}"><img src="/src/assets/icons/IcoMoon/SVG/273-checkmark.svg" class="unselectable"  v-bind:class="{imgNeonGreenPic: (selectedExos.includes(exo.id)), imgNeonEmptyPic: !(selectedExos.includes(exo.id)) }"></div>
+            <div class="icons2">
+              <img src="/src/assets/icons/IcoMoon/SVG/006-pencil.svg" alt="modifier" class="imgNeon unselectable">
+              <img src="/src/assets/icons/IcoMoon/SVG/272-cross.svg" alt="supprimer" v-on:click="deletage(exo, index)" class="imgNeonRed unselectable">
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="GroupAdd">
+    <div class="GroupAdd" v-bind:class="{ active: isActive }">
     <form id="groupForm">
       <div id="selectionGroup">
         <div id="groupName">
@@ -55,10 +56,16 @@
           {{groupSelected && groupSelected.description||'description'}}
         </div>
         <div id="pts">
-          {{groupSelected && groupSelected.points||'points'}} points
+          <span class="nbPoints">{{groupSelected && groupSelected.points||'0'}}</span> points
+        </div>
+        <div id="tournois">
+          <div  v-bind:class="{isHidden: groupSelected.endDate+0<Math.floor(Date.now()), isHidden: typeof groupSelected.endDate==='undefined'}">
+            Tournois Actif <br/>
+            {{groupSelected.publicationDate | date}} - {{groupSelected.endDate | date}}
+          </div>
         </div>
       </div>
-      <button class="button bottom" @click="addExercice">Ajouter</button>
+      <button class="button bottom" @click="addExercice" v-bind:class="{ active: isActive }">Ajouter</button>
     </form>
 
     </div>
@@ -97,10 +104,14 @@ export default {
       searchText: '',
       desc:"",
       selectedExos: [],
+      selectedExosIndex:[],
       selected:'',
       groupSelected:{},
       isDeleted: -1,
-      searchValue: ""
+      searchValue: "",
+      isActive: false,
+      isActiveT: false,
+      isNeon: true,
     }
   },
 
@@ -124,6 +135,16 @@ export default {
   },
 
   methods: {
+    deactivateValidation(){
+      this.isActive = !this.isActive;
+      this.selectedExos = []
+      this.selected = ""
+      this.groupSelected = {}
+      axios.get("api/exercice").then(response => {
+        this.exos = response.data
+        //this.selectedExos.push(-1)
+      })
+    },
     searchAction : debounce(function () {
       this.getResult(this.searchValue)
     }, 500),
@@ -144,7 +165,8 @@ export default {
       })
     },
     addExercice: function () {
-      console.log(this.selected)
+      this.isActive = !this.isActive;
+      setTimeout(() => this.deactivateValidation(), 1500);
       var groupNb = this.selected
       var exoEnCours
       this.selectedExos.forEach(function(exoNb){
@@ -160,8 +182,6 @@ export default {
               var current = groupePourri[i];
               if (uniqueGroup.indexOf(current) < 0) uniqueGroup.push(current);
           }
-          console.log(exoNb)
-          console.log(uniqueGroup)
           if(uniqueGroup!=exoEnCours.groups){
             axios.put('/api/exercice/'+exoNb, {
               title: exoEnCours.title,
@@ -174,17 +194,16 @@ export default {
               tags: exoEnCours.tags,
               groups: uniqueGroup
             });
+            axios.get("api/exercice/"+exoNb).then(response => {
+              newGroups: response.data
+            });
           }
 
           uniqueGroup = []
           groupePourri = []
 
         })
-
       })
-      this.selectedExos = []
-      this.selected = ""
-      this.groupSelected = {}
     },
     deletage : function(exo, index){
 
@@ -199,9 +218,12 @@ export default {
     selectage: function(exo, index){
       if (!this.selectedExos.includes(exo.id)){
         this.selectedExos.push(exo.id)
+        this.selectedExosIndex.push(index)
       }else{
         var indexSearched = this.selectedExos.indexOf(exo.id);
         this.selectedExos.splice(indexSearched, 1)
+        var indexSearchedIndex = this.selectedExos.indexOf(index);
+        this.selectedExosIndex.push(indexSearchedIndex)
       }
     }
   },
@@ -232,6 +254,19 @@ export default {
 </script>
 
 <style scoped lang="css">
+.active{
+
+  text-shadow: 2px 2px 5px #E120F0, -2px -2px 5px #E120F0, -2px 2px 5px #E120F0, 2px -2px 5px #E120F0;
+  border : 3px solid #00FE00!important;
+  box-shadow: 0 0 10px #00FE00 inset, 0 0 10px #00FE00;
+  transition-timing-function: cubic-bezier(0,.5,1,.58);
+  transition-duration: 1s ;
+}
+.active:hover{
+  text-shadow: 2px 2px 5px #E120F0, -2px -2px 5px #E120F0, -2px 2px 5px #E120F0, 2px -2px 5px #E120F0;
+  border : 3px solid #00FE00!important;
+  box-shadow: 0 0 10px #00FE00 inset, 0 0 10px #00FE00;
+}
 .unselectable{
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
@@ -335,6 +370,11 @@ export default {
   display: flex;
   transition: box-shadow 0.3s ease-in-out;
 }
+.deleted .imgNeonEmpty{
+  filter: drop-shadow( 0px 0px 0px #000000);
+  box-shadow: 0 0 0px #000000 inset, 0 0 0px #000000;
+  transition: box-shadow 0.3s ease-in-out;
+}
 .deleted .imgNeon{
   width : 30px;
   height: 30px;
@@ -376,7 +416,7 @@ export default {
   justify-content: center;
   margin:auto;
   position:relative;
-  overflow-y: scroll;
+  overflow-y: auto;
   margin-bottom: 5px;
 }
 .GroupAdd{
@@ -397,8 +437,8 @@ export default {
   /* overflow-y: hidden; */
 }
 ::-webkit-scrollbar {
-    width: 0px;  /* remove scrollbar space */
-    background: transparent;  /* optional: just make scrollbar invisible */
+    width: 0px;
+    background: transparent;
 }
 #groupForm{
   display:flex;
@@ -412,7 +452,7 @@ export default {
   border-radius: 5px; */
   align-items: stretch;
   flex-grow: 0;
-  height:70px;
+  height:85px;
   overflow: hidden;
   flex:1;
 }
@@ -427,21 +467,31 @@ export default {
 
 #description{
   border : 3px solid #00F3F9!important;
-  width:50%;
+  /* width:50%; */
   margin-left:5px;
   flex-shrink: 0;
   box-shadow: 0 0 10px #00F3F9 inset, 0 0 10px #00F3F9;
   border-radius: 5px;
-  grid-column:3;
   flex-grow: 0;
+  flex: 3 50%;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 #pts{
-  grid-column: 6;
-  width:33%;
+
   flex-shrink: 0;
   flex-grow: 0;
+  flex: 1 10%;
+  padding-left: 10px;
+  overflow: hidden;
+}
+#tournois{
+  width:15%;
+  flex: 2 25%;
+  flex-shrink: 0;
+  flex-grow: 0;
+  font-size: 20px;
+  overflow: hidden;
 }
 .exo{
   border : 3px solid #00F3F9!important;
@@ -522,5 +572,67 @@ select{
   text-decoration: none;
   cursor:pointer;
 }
+
+.exoItem{
+  display: flex;
+  flex-flow: row wrap;
+  padding-left:5px;
+  padding-right: 5px;
+}
+
+/* .exoItem > * {
+  border : 3px solid #00F3F9!important;
+} */
+
+.titreExo{
+  font-size: 23px;
+  font-weight: bold;
+  flex: 1 100%;
+}
+.number-point{
+  flex: 1 10%;
+}
+.date{
+  flex: 1 10%;
+  padding-top: 12px;;
+}
+.infosDescription{
+  flex:3 30%;
+
+}
+.infosTag{
+  flex: 1 10%;
+}
+.infosGroupe{
+  flex: 1 10%;
+  overflow-y: auto;
+}
+.icons{
+  text-align: right;
+  flex: 1 10%;
+}
+
+.icons1{
+  margin-left:auto;
+  margin-right:0;
+}
+.icons2{
+  margin-left:auto;
+  margin-right:0;
+}
+.nbPoints{
+  font-size: 30px;
+  text-shadow: 0.5px 0.5px 1px #00F3F9,
+              -0.5px -0.5px 1px #00F3F9,
+              -0.5px 0.5px 1px #00F3F9,
+               0.5px -0.5px 1px #00F3F9;
+}
+.groupLi{
+  list-style-type: none;
+}
+.isHidden{
+  display:none;
+}
+
 
 </style>
