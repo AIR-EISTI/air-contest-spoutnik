@@ -80,7 +80,15 @@ export default {
         creatingDate: Date.now(),
         tags: this.tags.map(o => o.id),
         groups: []
-      });
+      })
+        .then((response) => {
+          this.title = ''
+          this.description = ''
+          this.$refs.outputFile.file = null
+          this.$refs.inputFile.file = null
+          this.points = 0
+          this.tags = []
+        })
     },
     deleteTag(tag)
     {

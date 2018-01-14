@@ -16,7 +16,7 @@
             </ul>
         </nav>
         <section class="top-container">
-            <profil :username="username" :firstname="firstname" :surname="surname"></profil>
+            <profil :username="username" :firstname="firstname" :surname="surname" :pointExos="pointExos" :exoResolus="exoResolus"></profil>
             <badges></badges>
         </section>
     </main>
@@ -32,7 +32,9 @@ export default {
     return {
       username: '',
       firstname: '?',
-      surname: '?'
+      surname: '?',
+      exoResolus: 0,
+      pointExos: 0
     }
   },
   mounted () {
@@ -46,6 +48,16 @@ export default {
           this.username = response.data.username
           this.firstname = response.data.firstname
           this.surname = response.data.surname
+        })
+        .catch(e => {
+          if (e.response.status === 401) {
+            this.$router.push('/401')
+          }
+        })
+      axios.get(`/api/result`, {headers: headers})
+        .then(response => {
+          this.pointExos = response.data.pointExos
+          this.exoResolus = response.data.exoResolus
         })
         .catch(e => {
           if (e.response.status === 401) {

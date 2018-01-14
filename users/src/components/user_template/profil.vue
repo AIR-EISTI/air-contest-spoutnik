@@ -21,11 +21,11 @@
                 <h3>Quelques statistiques...</h3>
                 <div class="line-info">
                     <div>Exercices résolus :</div>
-                    <div> ?</div>
+                    <div>{{exoResolus}}</div>
                 </div>
                 <div class="line-info">
-                    <div>Points :</div>
-                    <div> ?</div>
+                    <div>Points des exos :</div>
+                    <div>{{pointExos}}</div>
                 </div>
                 <div class="line-info">
                     <div>Groupes résolu en entier :</div>
@@ -42,7 +42,9 @@ export default {
   props: [
     'username',
     'firstname',
-    'surname'
+    'surname',
+    'pointExos',
+    'exoResolus'
   ]
 }
 </script>

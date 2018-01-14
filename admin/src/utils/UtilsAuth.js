@@ -2,7 +2,7 @@ var axios = require('axios');
 
 var UtilsAuth = {};
 UtilsAuth.logUrl = "/api/token?redirectClientURI=http://localhost:8082/oauth";
-UtilsAuth.token="97f35dd9-75a3-49d4-bdc7-b91008484109";
+UtilsAuth.token="Bearer mj4h25oj3kdbndvl5t730ks9ret6i8dpli66kt14tngqlniab6";
 UtilsAuth.authRequest = axios.create();
 UtilsAuth.authRequest.defaults.headers.common['Authorization'] = UtilsAuth.token;
 

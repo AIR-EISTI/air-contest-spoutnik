@@ -82,13 +82,13 @@ export default {
         dateFin = null;
       }
 
-      axios.post(`/api/group`,
-      {
+      axios.post(`/api/group`, {
         name: this.name,
         description: this.description,
         publicationDate: Date.now(),
         endDate: dateFin,
-        points: this.points
+        points: this.points,
+        imageUrl: this.image
       }).then((response)=>{
         this.isActive = !this.isActive;
         setTimeout(() => this.deactivateValidation(), 1500);
@@ -110,7 +110,7 @@ export default {
         })
     },
     deletage : function(group, index){
-      axios.delete("api/group/"+group.id)
+      axios.delete('api/group/' + group.id)
       this.isDeleted = index
       setTimeout(() => this.deletageCSS(index), 1000)
     },
