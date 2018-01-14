@@ -83,7 +83,6 @@ import 'moment/locale/fr'
 
 function debounce (func, wait) {
   let timeoutId = null
-  console.log('plop')
   return function () {
     if (timeoutId) {
       clearTimeout(timeoutId)
@@ -145,7 +144,6 @@ export default {
       this.groupSelected = {}
       UtilsAuth.authRequest.get("api/exercice").then(response => {
         this.exos = response.data
-        //this.selectedExos.push(-1)
       })
     },
     searchAction : debounce(function () {
@@ -168,49 +166,54 @@ export default {
       })
     },
     addExercice: function () {
-      this.isActive = !this.isActive;
-      setTimeout(() => this.deactivateValidation(), 1500);
-      var groupNb = this.selected
-      var exoEnCours
-      this.selectedExos.forEach(function(exoNb){
-        UtilsAuth.authRequest.get("api/exercice/"+exoNb).then(response => {
-          exoEnCours = response.data
-          var groupePourri = []
-          exoEnCours.groups.forEach(function(groupeee){
-            groupePourri.push(Number(groupeee.id))
-          })
-          groupePourri.push(groupNb)
-          var uniqueGroup = []
-          for ( var i = 0; i < groupePourri.length; i++ ) {
-              var current = groupePourri[i];
-              if (uniqueGroup.indexOf(current) < 0) uniqueGroup.push(current);
-          }
-          if(uniqueGroup!=exoEnCours.groups){
-            UtilsAuth.authRequest.put('/api/exercice/'+exoNb, {
-              title: exoEnCours.title,
-              description: exoEnCours.description,
-              inputFile: exoEnCours.inputFile,
-              outputFile: exoEnCours.outputFile,
-              points: exoEnCours.points,
-              tournament: exoEnCours.tournament,
-              creatingDate: exoEnCours.creatingDate,
-              tags: exoEnCours.tags,
-              groups: uniqueGroup
-            });
-            UtilsAuth.authRequest.get("api/exercice/"+exoNb).then(response => {
-              newGroups: response.data
-            });
-          }
+      if(this.selected){
 
-          uniqueGroup = []
-          groupePourri = []
+        var groupNb = this.selected
+        var exoEnCours
+        this.selectedExos.forEach(function(exoNb){
+          UtilsAuth.authRequest.get("api/exercice/"+exoNb).then(response => {
+            exoEnCours = response.data
+            var groupePourri = []
+            exoEnCours.groups.forEach(function(groupeee){
+              groupePourri.push(Number(groupeee.id))
+            })
+            groupePourri.push(groupNb)
+            var uniqueGroup = []
+            for ( var i = 0; i < groupePourri.length; i++ ) {
+                var current = groupePourri[i];
+                if (uniqueGroup.indexOf(current) < 0) uniqueGroup.push(current);
+            }
+            if(uniqueGroup!=exoEnCours.groups){
+              UtilsAuth.authRequest.put('/api/exercice/'+exoNb, {
+                title: exoEnCours.title,
+                description: exoEnCours.description,
+                inputFile: exoEnCours.inputFile,
+                outputFile: exoEnCours.outputFile,
+                points: exoEnCours.points,
+                tournament: exoEnCours.tournament,
+                creatingDate: exoEnCours.creatingDate,
+                tags: exoEnCours.tags,
+                groups: uniqueGroup
+              });
+              UtilsAuth.authRequest.get("api/exercice/"+exoNb).then(response => {
+                newGroups: response.data
+              });
+            }
+
+            uniqueGroup = []
+            groupePourri = []
+
+          })
 
         })
-      })
+        this.isActive = !this.isActive;
+        setTimeout(() => this.deactivateValidation(), 1500);
+      }
+
     },
     deletage : function(exo, index){
 
-      // axios.delete("api/exercice/"+exo.id)
+      axios.delete("api/exercice/"+exo.id)
       this.isDeleted = index
       setTimeout(() => this.deletageCSS(index), 1000)
     },
@@ -545,6 +548,8 @@ select{
 }
 .infosDescription{
   flex:3 30%;
+  height: 90%;
+  overflow-y: auto;
 
 }
 .infosTag{
