@@ -120,7 +120,7 @@ export default {
   watch : {
     tag: function(newTag,oldTag) {
         if(newTag)
-          this.autoTags =  this.allTags.filter(tag => tag.tag.indexOf(newTag) > -1)
+          this.autoTags =  this.allTags.filter(tag => tag.tag.toLowerCase().indexOf(newTag.toLowerCase()) > -1)
     }
   },
   components: {
