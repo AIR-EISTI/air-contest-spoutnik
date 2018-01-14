@@ -1,3 +1,17 @@
+@font-face {
+    font-family: 'neonsregular';
+    src: url('fonts/neons/neons_demo-webfont.woff2') format('woff2'),
+         url('fonts/neons/neons_demo-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body{
+  height: 100vh;
+  margin: 0;
+  background-color: #1f0030;
+}
+
 #app
 {
     display : flex;
@@ -5,15 +19,22 @@
     height: 100%;
 }
 
+
+#app > main{
+  flex-grow: 1;
+}
+
 .neon{
   font-family: neonsregular;
 }
+
 h2.neon{
   text-align: center;
   color : #00F3F9;
   text-shadow: 0px 0px 5px #00F3F9;
   font-size: 35px;
 }
+
 .button{
     padding: 10px;
     display: inline-block;
@@ -34,21 +55,57 @@ h2.neon{
 
 button:focus {outline:0 !important;}
 
-
-#app > main{
-  flex-grow: 1;
+.button.bottom{
+  position:absolute;
+  right:10%;
+  align-self: right;
+  border : 3px solid #E120F0!important;
+  bottom:-23px;
 }
 
-body{
-  height: 100vh;
-  margin: 0;
-  background-color: #1f0030;
+.button.bottom:hover{
+  color : #00F3F9;
+  text-shadow: 2px 2px 5px #E120F0, -2px -2px 5px #E120F0, -2px 2px 5px #E120F0, 2px -2px 5px #E120F0;
+  border : 3px solid #00F3F9!important;
+  box-shadow: 0 0 10px #00F3F9 inset, 0 0 10px #00F3F9;
+  text-decoration: none;
+  cursor:pointer;
 }
 
-@font-face {
-    font-family: 'neonsregular';
-    src: url('fonts/neons/neons_demo-webfont.woff2') format('woff2'),
-         url('fonts/neons/neons_demo-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+input[type=text],input[type=mail],input[type=password],input[type=number]
+{
+  width: 350px;
+}
+
+
+.container {
+  color:  #00F3F9;
+  padding: 8px 8px 8px 32px;
+  border : 3px solid #E120F0!important;
+  box-shadow: 0 0 10px #E120F0 inset, 0 0 10px #E120F0;
+  border-radius:10px;
+  font-size: 1em;
+  justify-content: center;
+  width : 75%;
+  margin:auto;
+  position:relative;
+  margin-bottom: 5px;
+}
+
+.top.container {
+  border-top-left-radius:30px;
+  height: 7%;
+}
+
+.main.container {
+  height: 60%;
+  overflow-y: auto;
+}
+
+.bottom.container {
+  border-bottom-right-radius:30px;
+  height: 10%;
+  position:relative;
+  display:flex;
+  overflow: visible;
 }

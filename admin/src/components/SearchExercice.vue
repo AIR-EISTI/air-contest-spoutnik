@@ -3,11 +3,11 @@
     <div id="titre">
       <h2 class="neon">Liste des exercices</h2>
     </div>
-    <div class="Search">
+    <div class="top container">
       <input type="search" class="inputField" v-on:keyup="searchAction" v-model="searchValue"/>
       <img src="/src/assets/icons/IcoMoon/SVG/135-search.svg" class="imgNeonSearch unselectable" @click="searchAction"/>
     </div>
-    <div class="ExoList">
+    <div class="main container">
       <div v-for="(exo, index) in exos" :key="exo.id" >
         <div :class="{ deleted: isDeleted==index, exo: isDeleted!=index}" class="exoItem">
 
@@ -40,7 +40,9 @@
         </div>
       </div>
     </div>
-    <div class="GroupAdd" v-bind:class="{ active: isActive }">
+
+    <div class="bottom container"  v-bind:class="{ active: isActive }">
+
     <form id="groupForm">
       <div id="selectionGroup">
         <div id="groupName">
@@ -404,42 +406,15 @@ export default {
   transition: box-shadow 0.3s ease-in-out;
 }
 
-.ExoList{
-  color:  #00F3F9;
-  padding: 8px 8px 8px 32px;
-  border : 3px solid #E120F0!important;
-  box-shadow: 0 0 10px #E120F0 inset, 0 0 10px #E120F0;
-  border-radius:10px;
-  height: 60%;
-  width : 75%;
-  font-size: 1em;
-  justify-content: center;
-  margin:auto;
-  position:relative;
-  overflow-y: auto;
-  margin-bottom: 5px;
-}
-.GroupAdd{
-  color:  #00F3F9;
-  padding: 8px 8px 8px 32px;
-  border : 3px solid #E120F0!important;
-  box-shadow: 0 0 10px #E120F0 inset, 0 0 10px #E120F0;
-  border-radius:10px;
-  border-bottom-right-radius:30px;
-  height: 10%;
-  width : 75%;
-  font-size: 1em;
-  margin:auto;
-  display:flex;
-  /* display: grid;
-  grid-template-columns: 10px repeat(4, 1fr 10px); */
-  position:relative;
-  /* overflow-y: hidden; */
-}
+
+
 ::-webkit-scrollbar {
     width: 0px;
     background: transparent;
 }
+
+
+
 #groupForm{
   display:flex;
   flex:1;
@@ -502,6 +477,8 @@ export default {
   margin-top: 5px;
   padding: 0;
   display: flex;
+  height: 110px;
+  overflow: hidden;
 }
 .infos1{
   display: flex;
@@ -511,21 +488,6 @@ export default {
   /*width: 10%!important;*/
   height: 10px!important;
 }
-
-.Search{
-  color:  #00F3F9;
-  padding: 8px 8px 8px 32px;
-  border : 3px solid #E120F0!important;
-  box-shadow: 0 0 10px #E120F0 inset, 0 0 10px #E120F0;
-  border-radius:10px;
-  border-top-left-radius:30px;
-  height: 7%;
-  width : 75%;
-  font-size: 1em;
-  margin:auto;
-  margin-bottom: 5px;
-}
-
 
 .inputField{
    background: #530080;
@@ -555,22 +517,6 @@ input{
 select{
   height: 40px;
   width: 268px;
-}
-
-.bottom{
-  position:absolute;
-  right:10%;
-  align-self: right;
-  border : 3px solid #E120F0!important;
-  bottom:-23px;
-}
-.bottom:hover{
-  color : #00F3F9;
-  text-shadow: 2px 2px 5px #E120F0, -2px -2px 5px #E120F0, -2px 2px 5px #E120F0, 2px -2px 5px #E120F0;
-  border : 3px solid #00F3F9!important;
-  box-shadow: 0 0 10px #00F3F9 inset, 0 0 10px #00F3F9;
-  text-decoration: none;
-  cursor:pointer;
 }
 
 .exoItem{
@@ -604,6 +550,7 @@ select{
   flex: 1 10%;
 }
 .infosGroupe{
+  height: 90%;
   flex: 1 10%;
   overflow-y: auto;
 }
