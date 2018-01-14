@@ -3,9 +3,8 @@
     <div class="side-menu">
     <router-link :to="{name: 'Admin'}"><h1 class="neon">Administration</h1></router-link>
     <div class="links neon">
-        <router-link :to="{name: 'User'}" class="item">Users</router-link>
         <router-link :to="{name: 'Exercices'}" class="item">Exercices</router-link>
-        <router-link :to="{name: 'Tournois'}" class="item">Tournois</router-link>
+        <router-link :to="{name: 'NewGroup'}" class="item">Groupes</router-link>
         <router-link :to="{ name: 'FileUpload' }" class="item">Fichiers</router-link>
     </div>
     </div>

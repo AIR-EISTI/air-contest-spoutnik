@@ -4,7 +4,7 @@
       <h2 class="neon">Bienvenue dans votre page administrateur </h2>
     </div>
     <div id="infos">
-      <router-link :to="{name: 'User'}">
+      <router-link :to="{name: ''}">
         <div id="nbUsers">
           <p>Nombre d'utilisateurs</p>
           <p class="nombre">{{nbUser}}</p>
