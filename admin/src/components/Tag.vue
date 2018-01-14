@@ -98,8 +98,11 @@ export default {
   {
     border-color:#00FE00;
     outline: 0;
-    border:1px solid #00FE00;
+    border: 3px solid #00F3F9;
     vertical-align:middle;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 15px;
+    box-shadow: 0 0 10px #00F3F9 inset, 0 0 10px #00F3F9;
   }
 
 </style>
