@@ -8,6 +8,7 @@ import NotFound from '@/components/errors/NotFound'
 import Groupe from '@/components/Groupe'
 import ListeGroupe from '@/components/ListeGroups'
 import User from '@/components/User'
+import Oauth from '@/components/Oauth'
 
 Vue.use(Router)
 
@@ -18,6 +19,11 @@ export default new Router({
       path: '/',
       name: 'Home',
       component: Home
+    },
+    {
+      path: '/oauth',
+      name: 'Oauth',
+      component: Oauth
     },
     {
       path: '/user',
