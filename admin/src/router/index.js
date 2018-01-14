@@ -7,6 +7,7 @@ import User from '@/components/User'
 import SearchExercice from '@/components/SearchExercice'
 import FileUpload from '@/components/FileUpload'
 import NewGroup from '@/components/NewGroup'
+import Tag from '@/components/Tag'
 
 Vue.use(Router)
 
@@ -21,6 +22,11 @@ export default new Router({
       path: '/exercices',
       name: 'Exercices',
       component: Exercices
+    },
+    {
+      path: '/tag',
+      name: 'Tag',
+      component: Tag
     },
     {
       path: '/creationExercice',
