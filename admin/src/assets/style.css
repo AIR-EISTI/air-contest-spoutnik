@@ -45,6 +45,10 @@ body{
   background-color: #1f0030;
 }
 
+input[type=text],input[type=mail],input[type=password],input[type=number]
+{
+  width: 350px;
+}
 @font-face {
     font-family: 'neonsregular';
     src: url('fonts/neons/neons_demo-webfont.woff2') format('woff2'),
