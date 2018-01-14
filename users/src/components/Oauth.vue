@@ -14,9 +14,11 @@ export default {
     }
   },
   mounted () {
-    localStorage.setItem('monChat', this.$route.query['tokenContest'])
+    localStorage.setItem('token', this.$route.query['tokenContest'])
     localStorage.setItem('username', this.$route.query['username'])
     this.username = this.$route.query['username']
+    this.$router.push('/')
+    location.reload(); 
   }
 }
 </script>

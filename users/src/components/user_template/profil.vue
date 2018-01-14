@@ -6,30 +6,30 @@
                 <h3>Infos personelles...</h3>
                 <div class="line-info">
                     <div>Nom :</div>
-                    <div>Darboux</div>
+                    <div>{{surname}}</div>
                 </div>
                 <div class="line-info">
                     <div>Prenom :</div>
-                    <div>Tom</div>
+                    <div>{{firstname}}</div>
                 </div>
                 <div class="line-info">
-                    <div>Mail :</div>
-                    <div>tom.darboux@laposte.net</div>
+                    <div>Authentifié par:</div>
+                    <div>Lpmng</div>
                 </div>
             </div>
             <div class="white-container">
                 <h3>Quelques statistiques...</h3>
                 <div class="line-info">
                     <div>Exercices résolus :</div>
-                    <div>14</div>
+                    <div> ?</div>
                 </div>
                 <div class="line-info">
                     <div>Points</div>
-                    <div>178</div>
+                    <div> ?</div>
                 </div>
                 <div class="line-info">
                     <div>Groupes résolu en entier :</div>
-                    <div>2</div>
+                    <div> ?</div>
                 </div>
             </div>
         </div>
@@ -41,9 +41,22 @@ export default {
   name: 'UserProfile',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      username:'',
+      firstname:'',
+      surname:''
     }
-  }
+  },
+  mounted () {
+      console.log(localStorage.getItem('token'));
+    var headers = {'Accept':'application/json','AUTHORIZATION':'Bearer '+localStorage.getItem('token')}
+    axios.get(`/api/me`, {headers : headers})
+      .then(response => {
+        this.username = response.data.username
+        this.firstname = response.data.firstname
+        this.surname = response.data.surname
+      })
+  },
 }
 </script>
 
@@ -61,7 +74,7 @@ export default {
 
     .line-info > :first-child
     {
-        min-width: 220px;
+        min-width: 230px;
         font-weight: 800;
         font-size: 1.1em;
         color:black;

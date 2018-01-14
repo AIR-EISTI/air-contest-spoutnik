@@ -3,10 +3,11 @@
         <nav id="userNav">
             <div class="top-container">
                 <div class="pseudo">
-                    Tjiho
+                    {{username}}
+                    <span class="logout center" @click="logout()"><img src="/static/icons/IcoMoon/SVG/183-switch.svg"/></span>
                 </div>
                 <div class="infos">
-                    Tom Darboux
+                    {{firstname}} {{surname}}
                 </div>
             </div>
             <ul>
@@ -24,22 +25,50 @@
 <script>
 import UserProfile from '@/components/user_template/profil.vue'
 import UserBadge from '@/components/user_template/badge.vue'
+import * as axios from 'axios'
 export default {
   name: 'User',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      username:'',
+      firstname:'?',
+      surname:'?',
     }
+  },
+  mounted () {
+      console.log(localStorage.getItem('token'));
+    var headers = {'Accept':'application/json','AUTHORIZATION':'Bearer '+localStorage.getItem('token')}
+    axios.get(`/api/me`, {headers : headers})
+      .then(response => {
+        this.username = response.data.username
+        this.firstname = response.data.firstname
+        this.surname = response.data.surname
+      })
   },
   components:
   {
     'profil': UserProfile,
     'badges': UserBadge
+  },
+  methods: {
+      logout()
+      {
+        localStorage.clear()
+        this.$router.push('/')
+        location.reload(); 
+      }
   }
 }
 </script>
 
 <style scoped>
+    .logout img
+    {
+        color:red;
+        margin-right: 5px;
+        height: 20px;
+    }
     #user
     {
         display: flex;
