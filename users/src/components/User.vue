@@ -54,7 +54,7 @@ export default {
             this.$router.push('/401')
           }
         })
-      axios.get(`/api/results/`)
+      axios.get(`/api/result`, {headers: headers})
         .then(response => {
           this.pointExos = response.data.pointExos
           this.exoResolus = response.data.exoResolus

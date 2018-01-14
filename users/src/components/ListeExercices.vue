@@ -78,7 +78,7 @@ export default {
     changePage (id) {
       this.pageVisible = id
       let start = ((id - 1) * this.limit)
-      axios.get('/api/exercice?limit=' + this.limit + '&start=' + start + '&search=')
+      axios.get('/api/exercice?limit=' + this.limit + '&start=' + start + '&search=&markup=txt')
       .then(response => {
         this.exos = response.data
         scroll(0, 0)
@@ -98,7 +98,7 @@ export default {
         this.pages = [...Array(this.numberPage).keys()].map(x => ++x)
         // create an array [1,2,..,number pages]
       })
-      axios.get('/api/exercice?limit=' + this.limit + '&start=0&search=' + search)
+      axios.get('/api/exercice?limit=' + this.limit + '&start=0&search=' + search + '&markup=txt')
       .then(response => {
         this.exos = response.data
       })

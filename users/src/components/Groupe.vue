@@ -11,7 +11,7 @@
                       <p>{{group.description}}</p>
         </article>
         <aside>
-            <img src="/static/imgs/ordi2.jpeg"/>
+            <img :src="group.imageUrl"/>
         </aside>
     </div>
     <!-- exercices-->
@@ -84,7 +84,7 @@ export default {
 }
 </script>
 <style scoped>
-    
+
    a
 {
     text-decoration: none;
@@ -93,4 +93,3 @@ export default {
 </style>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-

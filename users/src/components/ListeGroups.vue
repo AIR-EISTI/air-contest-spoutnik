@@ -17,18 +17,18 @@
                       <p>{{group.description}}</p>
             </article>
             <aside>
-                <img src="/static/imgs/ordi2.jpeg"/>
+                <img :src="group.imageUrl"/>
             </aside>
           </router-link>
         </div>
       </div>
       <div class="center-big-container">
-       
+
         <h2>Les Autres Groupes</h2>
         <div class="grid-2">
-          <router-link :to="{name: 'Groupe',params: { id: group.id }}" style="background-image:url('/static/imgs/ordi2.jpeg')" v-for="group in groups" :key="group.id">
+          <router-link :to="{name: 'Groupe',params: { id: group.id }}" :style="`background-image:url('${group.imageUrl}')`" v-for="group in groups" :key="group.id">
             <div class="white-container tournoi background">
-              
+
               <article>
                       <h2 class="center">{{group.name}}</h2>
                       <div class="infos">
@@ -141,7 +141,7 @@ export default {
   .white-container:hover
   {
     border-color: navy !important;
-    
+
   }
 
  .tournoi
@@ -150,7 +150,7 @@ export default {
    min-height: 300px;
  }
 
- 
+
 
  .grid-2 *
  {
@@ -160,7 +160,7 @@ export default {
 
 .grid-2 .background
 {
-  
+
   background-color: rgba(255,255,255,0.9);
 }
 

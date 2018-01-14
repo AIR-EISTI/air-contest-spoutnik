@@ -17,7 +17,7 @@
                     </div>
               </article>
               <aside>
-                  <img src="/static/imgs/ordi2.jpeg"/>
+                  <img :src="firstGroup.imageUrl"/>
               </aside>
             </div>
         </section>
@@ -103,12 +103,12 @@ export default {
     }
   },
   mounted () {
-    axios.get('/api/exercice?limit=4&start=0&search=')
+    axios.get('/api/exercice?limit=4&start=0&search=&markup=txt')
     .then(response => {
       this.exos = response.data
       this.firstExo = this.exos.shift()
     })
-    axios.get('/api/group?limit=8&start=0&search=')
+    axios.get('/api/group?limit=8&start=0&search=&')
     .then(response => {
       this.firstGroup = response.data.pop()
     })

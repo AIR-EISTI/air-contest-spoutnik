@@ -88,7 +88,8 @@ export default {
         description: this.description,
         publicationDate: Date.now(),
         endDate: dateFin,
-        points: this.points
+        points: this.points,
+        imageUrl: this.image
       }).then((response)=>{
         this.isActive = !this.isActive;
         setTimeout(() => this.deactivateValidation(), 1500);
