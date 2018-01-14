@@ -5,6 +5,7 @@ import Exercices from '@/components/Exercices'
 import CreationExercice from '@/components/CreationExercice'
 import User from '@/components/User'
 import SearchExercice from '@/components/SearchExercice'
+import FileUpload from '@/components/FileUpload'
 
 Vue.use(Router)
 
@@ -34,6 +35,11 @@ export default new Router({
       path: '/SearchExercice',
       name: 'SearchExercice',
       component: SearchExercice
+    },
+    {
+      path: '/file-upload',
+      name: 'FileUpload',
+      component: FileUpload
     }
   ]
 })

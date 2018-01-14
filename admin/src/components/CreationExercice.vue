@@ -4,26 +4,30 @@
       <h2 class="neon">Créer un exercice</h2>
     </div>
     <div class="top container">
-      <label>Titre : <input v-model="title" placeholder="Titre" id="formTitre" class="inputbox"></label>
+      <input v-model="title" placeholder="Titre" id="formTitre" class="inputbox">
     </div>
     <div class="main container">
       <div class="editor">
         <textarea class="inputbox" v-model="description"></textarea>
         <div class="separator"></div>
-        <div contenteditable="true" v-html="compiledMarkdown"></div>
+        <div v-html="compiledMarkdown"></div>
       </div>
     </div>
     <div class="bottom container">
-      <div id="tags" class="deroul">Tags :
-        <input type="text" placeholder="tag1" id="tag" class="inputbox" v-model="tag">
-        <div class="ideas-container">
-          <div class="ideas">
-            <div class="ele" v-for="tagEle in autoTags" @click="addTag(tagEle)">{{tagEle.tag}}</div>
+      <div>
+        <div class="file-input-container"> Fichier d'entrée <file-input ref="inputFile" @fileChange="fileChange('inputFile')"></file-input></div>
+        <div class="file-input-container"> Fichier de sortie <file-input  ref="outputFile" @fileChange="fileChange('outputFile')"></file-input></div>
+        <div id="tags" class="deroul">
+          <input type="text" placeholder="tag1" id="tag" class="inputbox" v-model="tag">
+          <div class="ideas-container">
+            <div class="ideas">
+              <div class="ele" v-for="tagEle in autoTags" @click="addTag(tagEle)">{{tagEle.tag}}</div>
+            </div>
           </div>
+          <div class="choices"><span class="ele" v-for="tagEle in tags">{{tagEle.tag}}</span></div>
         </div>
-        <div class="choices"><span class="ele" v-for="tagEle in tags">{{tagEle.tag}}</span></div>
+        <input v-model="points" placeholder="0" id="formPoint" class="inputbox">
       </div>
-      Nombre de points : <input v-model="points" placeholder="0" id="formPoint" class="inputbox">
       <button class="button bottom" @click="sendResult">Publier</button>
     </div>
   </main>
@@ -33,6 +37,7 @@
 import * as marked from 'marked'
 import * as axios from 'axios'
 import ExtendableContentInput from '@/components/ExtendableContentInput'
+import FileInput from '@/components/FileInput'
 
 export default {
   name: 'CreationExercice',
@@ -68,31 +73,40 @@ export default {
       axios.post('/api/exercice', {
         title: this.title,
         description: this.description,
-        inputFile: this.$refs.inputFile.fileContent,
-        outputFile: this.$refs.outputFile.fileContent,
+        inputFile: this.inputFile,
+        outputFile: this.outputFile,
         points: this.points,
-        tournament: this.checkedTournament,
         creatingDate: Date.now(),
         tags: this.tags.map(o => o.id),
         groups: []
       });
     },
-    addTag(tag)
-    {
+    addTag(tag) {
       this.tags.push(tag)
       this.tag = ""
       this.autoTags = []
+    },
+    fileChange (fileName) {
+      let reader = new FileReader()
+      reader.onload = this.readFile.bind(this, fileName)
+      reader.readAsText(this.$refs[fileName].file)
+    },
+    readFile (fileName, evt) {
+      if (evt.target.readyState !== 2 || evt.target.error) {
+        return
+      }
+      this[fileName] = evt.target.result
     }
   },
   watch : {
-    tag: function(newTag,oldTag)
-    {
+    tag: function(newTag,oldTag) {
         if(newTag)
           this.autoTags =  this.allTags.filter(tag => tag.tag.indexOf(newTag) > -1)
     }
   },
   components: {
     'ExtendableContentInput': ExtendableContentInput,
+    'FileInput': FileInput
   }
 }
 </script>
@@ -139,8 +153,8 @@ input{
 }
 
 input::placeholder {
-    color: #00FE00;
-    opacity: 0.7;
+  color: #00FE00;
+  opacity: 0.7;
 }
 .inputbox{
   background-color: #1f0030;
@@ -169,8 +183,7 @@ textarea{
 {
   position: relative;
   margin: auto;
-  width: 350px;
-  left: 47px;
+  /*width: 350px;*/
 }
 
 .deroul .ideas
@@ -183,8 +196,8 @@ textarea{
   border : 1px solid #00F3F9!important;
   border-radius: 0px 0px 5px 5px;
 
-   font-size: 20px;
-   color:#00FE00;
+  font-size: 20px;
+  color:#00FE00;
 }
 
 .deroul .ideas .ele:hover
@@ -192,8 +205,37 @@ textarea{
   background-color: #350a42;
 }
 
+.deroul input {
+  width: 100%;
+}
+
 #tags .choices
 {
   margin-top: 10px;
 }
+
+.top.container > input {
+  width: 100%;
+}
+
+.bottom.container {
+  min-height: 10%;
+  height: auto;
+}
+
+.bottom.container > div {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 15px;
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.file-input-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
 </style>

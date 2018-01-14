@@ -80,7 +80,7 @@ input[type=text],input[type=mail],input[type=password],input[type=number]
 
 .container {
   color:  #00F3F9;
-  padding: 8px 8px 8px 32px;
+  padding: 8px 32px 8px 32px;
   border : 3px solid #E120F0!important;
   box-shadow: 0 0 10px #E120F0 inset, 0 0 10px #E120F0;
   border-radius:10px;
