@@ -1,8 +1,8 @@
 <template lang="html">
   <main>
-    
+
     <h2 class="neon">Les tags</h2>
-    
+
     <div class="main top container">
         <span class="tag" v-for="tagEle in tags" :style="`border-color: #${tagEle.color}`" @click="deleteTag(tagEle)">{{tagEle.tag}}</span>
     </div>
@@ -24,8 +24,8 @@ export default {
     return {
       isNeon: true,
       tags:[],
-      color:"ab2567",
-      titre:"",
+      color: 'ab2567',
+      title: '',
     }
   },
   mounted () {
@@ -45,14 +45,14 @@ export default {
       .then(response => {
         this.tags.push(newTag)
       });
-      
+
     },
   }
 }
 
 </script>
 
-<<style scoped>
+<style scoped>
   .tag
   {
     display:inline-block;
@@ -106,4 +106,3 @@ export default {
   }
 
 </style>
-

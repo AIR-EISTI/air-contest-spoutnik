@@ -76,7 +76,6 @@
 
 
 <script>
-import * as axios from 'axios'
 import * as moment from 'moment'
 import UtilsAuth from '@/utils/UtilsAuth'
 import 'moment/locale/fr'
@@ -113,16 +112,15 @@ export default {
       searchValue: "",
       isActive: false,
       isActiveT: false,
-      isNeon: true,
+      isNeon: true
     }
   },
-
   mounted () {
-    UtilsAuth.authRequest.get("api/exercice").then(response => {
+    UtilsAuth.authRequest.get('api/exercice').then(response => {
       this.exos = response.data
       //this.selectedExos.push(-1)
     })
-    UtilsAuth.authRequest.get("api/group").then(response => {
+    UtilsAuth.authRequest.get('api/group').then(response => {
       this.objGroup=response.data
       var bidule = {}
       var superArray = []
@@ -135,14 +133,13 @@ export default {
 
     })
   },
-
   methods: {
     deactivateValidation(){
       this.isActive = !this.isActive;
       this.selectedExos = []
       this.selected = ""
       this.groupSelected = {}
-      UtilsAuth.authRequest.get("api/exercice").then(response => {
+      UtilsAuth.authRequest.get('api/exercice').then(response => {
         this.exos = response.data
       })
     },
@@ -161,17 +158,16 @@ export default {
       })
     },
     changeSelection: function (){
-      UtilsAuth.authRequest.get("api/group/"+this.selected).then(response => {
+      UtilsAuth.authRequest.get('api/group/' + this.selected).then(response => {
         this.groupSelected = response.data
       })
     },
     addExercice: function () {
       if(this.selected){
-
         var groupNb = this.selected
         var exoEnCours
         this.selectedExos.forEach(function(exoNb){
-          UtilsAuth.authRequest.get("api/exercice/"+exoNb).then(response => {
+          UtilsAuth.authRequest.get('api/exercice/' + exoNb).then(response => {
             exoEnCours = response.data
             var groupePourri = []
             exoEnCours.groups.forEach(function(groupeee){
@@ -180,8 +176,8 @@ export default {
             groupePourri.push(groupNb)
             var uniqueGroup = []
             for ( var i = 0; i < groupePourri.length; i++ ) {
-                var current = groupePourri[i];
-                if (uniqueGroup.indexOf(current) < 0) uniqueGroup.push(current);
+                var current = groupePourri[i]
+                if (uniqueGroup.indexOf(current) < 0) uniqueGroup.push(current)
             }
             if(uniqueGroup!=exoEnCours.groups){
               UtilsAuth.authRequest.put('/api/exercice/'+exoNb, {
@@ -199,12 +195,9 @@ export default {
                 newGroups: response.data
               });
             }
-
             uniqueGroup = []
             groupePourri = []
-
           })
-
         })
         this.isActive = !this.isActive;
         setTimeout(() => this.deactivateValidation(), 1500);
@@ -213,7 +206,7 @@ export default {
     },
     deletage : function(exo, index){
 
-      axios.delete("api/exercice/"+exo.id)
+      UtilsAuth.authRequest.delete('api/exercice/' + exo.id)
       this.isDeleted = index
       setTimeout(() => this.deletageCSS(index), 1000)
     },

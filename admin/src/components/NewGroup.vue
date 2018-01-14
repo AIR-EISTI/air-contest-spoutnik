@@ -82,8 +82,7 @@ export default {
         dateFin = null;
       }
 
-      axios.post(`/api/group`,
-      {
+      axios.post(`/api/group`, {
         name: this.name,
         description: this.description,
         publicationDate: Date.now(),
@@ -110,7 +109,7 @@ export default {
         })
     },
     deletage : function(group, index){
-      axios.delete("api/group/"+group.id)
+      axios.delete('api/group/' + group.id)
       this.isDeleted = index
       setTimeout(() => this.deletageCSS(index), 1000)
     },
