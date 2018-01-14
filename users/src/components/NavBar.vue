@@ -14,7 +14,7 @@
             </router-link>
             <a href="/api/token?redirectClientURI=http://localhost:8082/oauth" v-if="!username">
                 <li data-0="border-color:rgba(0,0,0,0)" data-50="border-color:rgba(230,230,230,1)" >
-                    Login
+                    Connection
                 </li>
             </a>
             <router-link :to="{name: 'User'}">

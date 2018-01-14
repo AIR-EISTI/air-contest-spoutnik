@@ -37,14 +37,21 @@ export default {
     }
   },
   mounted () {
-      console.log(localStorage.getItem('token'));
-    var headers = {'Accept':'application/json','AUTHORIZATION':'Bearer '+localStorage.getItem('token')}
-    axios.get(`/api/me`, {headers : headers})
-      .then(response => {
-        this.username = response.data.username
-        this.firstname = response.data.firstname
-        this.surname = response.data.surname
-      })
+    if(!localStorage.getItem('token'))
+    {
+        this.$router.push('/401')
+        location.reload(); 
+    }
+    else
+    {
+        var headers = {'Accept':'application/json','AUTHORIZATION':'Bearer '+localStorage.getItem('token')}
+        axios.get(`/api/me`, {headers : headers})
+        .then(response => {
+            this.username = response.data.username
+            this.firstname = response.data.firstname
+            this.surname = response.data.surname
+        })
+    }
   },
   components:
   {

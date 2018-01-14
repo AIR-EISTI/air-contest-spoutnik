@@ -9,6 +9,7 @@ import Groupe from '@/components/Groupe'
 import ListeGroupe from '@/components/ListeGroups'
 import User from '@/components/User'
 import Oauth from '@/components/Oauth'
+import NotConnected from '@/components/errors/NotConnected'
 
 Vue.use(Router)
 
@@ -54,6 +55,11 @@ export default new Router({
       path: '/groupe/:id',
       name: 'Groupe',
       component: Groupe
+    },
+    {
+      path: '/401',
+      name: 'NotConnected',
+      component: NotConnected
     },
     {
       path: '/404',
