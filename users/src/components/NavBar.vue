@@ -6,14 +6,18 @@
         <div class="content-menu">
         <router-link :to="{name: 'Home'}"><h1>Air-contest</h1></router-link>
         <ul>
-            <router-link :to="{name: 'ListeExercices'}"><li data-0="border-color:rgba(0,0,0,0)" data-50="border-color:rgba(230,230,230,1)">Listes des exercices</li></router-link>
-            <router-link :to="{name: 'ListeGroupe'}">
+            <router-link :to="{name: 'ListeExercices'}">
                 <li data-0="border-color:rgba(0,0,0,0)" data-50="border-color:rgba(230,230,230,1)">
-                    Les tournois
+                    Exercices
                 </li>
             </router-link>
-            <a href="/api/token?redirectClientURI=http://localhost:8082/oauth" v-if="!username">
-                <li data-0="border-color:rgba(0,0,0,0)" data-50="border-color:rgba(230,230,230,1)" >
+            <router-link :to="{name: 'ListeGroupe'}">
+                <li data-0="border-color:rgba(0,0,0,0)" data-50="border-color:rgba(230,230,230,1)">
+                    Tournois
+                </li>
+            </router-link>
+            <a href="https://ppr.contest.air-eisti.fr/api/token?redirectClientURI=http://localhost:8082/oauth" v-if="!username">
+                <li data-0="border-color:rgba(0,0,0,0)" data-50="border-color:rgba(230,230,230,1)" id="connect-button">
                     Connexion
                 </li>
             </a>
@@ -66,6 +70,7 @@ export default {
     background-color: transparent;
     flex-wrap: 0;
     border-bottom: 1px solid lightgray;
+    padding: 13px 0px;
 }
 
 #navbar .content-menu
@@ -85,6 +90,7 @@ export default {
     margin: 0;
     flex-shrink:0;
     padding:0px 10px;
+    margin-left: 40px;
 }
 
 #navbar ul
@@ -101,17 +107,30 @@ export default {
 #navbar li
 {
     display: inline-block;
-    padding: 17px 20px;
-    border-left: 1px solid rgb(230,230,230);;
+    padding: 10px 20px;
     min-width: 100px;
     text-align: center;
     color:black;
-    font-size: 14px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-right: 30px;
+}
+
+#navbar #connect-button
+{
+    background-color: rgb(0, 102, 255);
+    color:white;
+}
+
+#navbar #connect-button:hover
+{
+    background-color: rgb(0, 90, 224);
 }
 
 #navbar li:hover
 {
-  background-color: rgb(240,240,240);
+  background-color: rgba(0,0,0,0.1);
   color:black;
 }
 
@@ -137,6 +156,7 @@ export default {
         border-bottom: 1px solid black;
         padding: 5px;
         text-align: center;
+        margin: 0;
     }
     #navbar
     {
@@ -180,6 +200,7 @@ export default {
         border: none;
         font-weight: 800;
         border-left: 1px solid rgb(150,150,150);
+        padding-left: 10px;
     }
 
     #navbar li:hover
