@@ -1,6 +1,6 @@
 <template>
     <main >
-        <section id="intro-section" class="top-container">
+        <section id="intro-section" class="top-container tournoi">
 
             <div class="text-image" data-0="top:0px;" data-500="top:-150px;">
               <article>
@@ -9,7 +9,7 @@
                         <div class="number-point normal-info">{{firstGroup.points}} points</div>
                         <div class="date normal-info">{{firstGroup.endDate | date}}</div>
                     </div>
-                    <p>{{firstGroup.description}}</p>
+                    <p class="description">{{firstGroup.description}}</p>
                     <div class="center">
                       <router-link class="button" :to="{name: 'Groupe',params: { id: firstGroup.id }}">
                         Participer
@@ -22,13 +22,13 @@
             </div>
         </section>
         <div class="scroll" data-0="top:0px;" data-500="top:-200px;">
-        <section id="month-exercise" class="white-container">
+        <section id="month-exercise" class="white-container exercice">
             <h2 class="title center">{{firstExo.title}}</h2>
             <div class="infos">
                 <div class="number-point small-info">{{firstExo.points}}</div>
                 <div class="date small-info">{{firstExo.creatingDate | date}}</div>
             </div>
-            <p>
+            <p class="description">
                 {{firstExo.description}}
             </p>
             <ul class="tags-fixe">
@@ -50,11 +50,12 @@
                             <div class="number-point small-info">{{exo.points}}</div>
                             <div class="date small-info">{{exo.creatingDate | date}}</div>
                         </div>
-                        <p>
+                        <p class="description">
                             {{exo.description}}
                         </p>
                         <ul class="tags-fixe">
                             <li class="tag" v-for="tag in exo.tags" :key="tag.id">#{{tag.tag}}</li>
+                            <li class="tag" v-if="! exo.tags.length">no tags</li>
                         </ul>
                     </li>
                 </router-link>
@@ -108,15 +109,41 @@ export default {
       this.exos = response.data
       this.firstExo = this.exos.shift()
     })
-    axios.get('/api/group?limit=8&start=0&search=&')
-    .then(response => {
-      this.firstGroup = response.data.pop()
-    })
+    this.getFirstTournamentFix(0, myGroup => this.firstGroup = myGroup)
     axios.get('/api/tag')
     .then(response => {
       this.tags = response.data
     })
     skrollr.init()
+  },
+  methods: {
+    // get the 1st tournament from the ieme group, don't work due to an api bug
+    getFirstTournament (i, callback) {
+      console.log(i)
+      axios.get('/api/group?limit=1&start=' + i + '&search=&markup=txt')
+      .then(response => {
+        var first = response.data.pop()
+        console.log(first)
+        console.log(i)
+        if (moment(first.endDate).isValid()) {
+          callback(first)
+        } else {
+          return this.getFirstTournament(i + 1, callback)
+        }
+      })
+    },
+    getFirstTournamentFix (i, callback) {
+      console.log(i)
+      axios.get('/api/group?limit=1&start=' + i + '&search=&markup=txt')
+      .then(response => {
+        response.data.some(element => {
+          if (moment(element.endDate).isValid()) {
+            callback(element)
+            return true
+          }
+        })
+      })
+    }
   }
 }
 </script>
@@ -125,13 +152,12 @@ export default {
 
 #intro-section
 {
-    background-color: cornflowerblue;
-    background-image: url("/static/imgs/fond5.jpg");
     background-size: cover;
     color:white;
     background-attachment: fixed;
     min-height: calc(100vh - 130px);
     padding-bottom: 50px;
+    background-image: url(/static/imgs/fond5.jpg);
 }
 
 #intro-section .text-image
@@ -179,6 +205,13 @@ a
     max-width: calc(100vw - 50px);
     margin: auto;
     margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+#month-exercise p
+{
+    flex: 1;
 }
 
 .scroll

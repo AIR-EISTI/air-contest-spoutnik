@@ -10,7 +10,7 @@
       <ul class="tags-fixe">
         <li class="tag" v-for="tag in tags" :key="tag.id">#{{tag.tag}}</li>
       </ul>
-      <div v-html="description"></div>
+      <div v-html="description" class="description"></div>
     </div>
     <div class="resultat white-container">
       <h2>Résultats</h2>

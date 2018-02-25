@@ -1,14 +1,14 @@
 <template>
   <main>
     <!-- group description-->
-    <div class="text-image">
+    <div class="text-image tournoi">
         <article>
                       <h2 class="center">{{group.name}}</h2>
                       <div class="infos">
                           <div class="number-point normal-info">{{group.points}} points</div>
                           <div class="date normal-info">{{group.publicationDate | date}}</div>
                       </div>
-                      <p>{{group.description}}</p>
+                      <p class="description">{{group.description}}</p>
         </article>
         <aside>
             <img :src="group.imageUrl"/>
@@ -23,11 +23,12 @@
                   <div class="number-point small-info">{{exo.points}}</div>
                   <div class="date small-info">{{exo.creatingDate | date}}</div>
               </div>
-              <p>
+              <p class="description">
                   {{exo.description}}
               </p>
               <ul class="tags-fixe" v-if="exo.tags">
                   <li class="tag" v-for="tag in exo.tags" :key="tag.id">#{{tag.tag}}</li>
+                  <li class="tag" v-if="! exo.tags.length">no tags</li>
               </ul>
           </li>
         </router-link>

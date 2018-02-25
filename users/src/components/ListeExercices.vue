@@ -18,11 +18,12 @@
                     <div class="number-point small-info">{{exo.points}}</div>
                     <div class="date small-info">{{exo.creatingDate | date}}</div>
                 </div>
-                <p>
+                <p class="description">
                     {{exo.description}}
                 </p>
-                <ul class="tags-fixe" v-if="exos.tags">
+                <ul class="tags-fixe" >
                     <li class="tag" v-for="tag in exo.tags" :key="tag.id">#{{tag.tag}}</li>
+                    <li class="tag" v-if="! exo.tags.length">no tags</li>
                 </ul>
             </li>
           </router-link>

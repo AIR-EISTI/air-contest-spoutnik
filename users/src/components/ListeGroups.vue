@@ -14,7 +14,7 @@
                           <div class="number-point normal-info">{{group.points}} points</div>
                           <div class="date normal-info">{{group.endDate | date}}</div>
                       </div>
-                      <p>{{group.description}}</p>
+                      <p class="description">{{group.description}}</p>
             </article>
             <aside>
                 <img :src="group.imageUrl"/>
@@ -116,7 +116,7 @@ export default {
       this.groups = []
       this.tournaments = []
       listGroups.forEach(element => {
-        if (moment().add(1, 'day').isAfter(moment(element.endDate))) {
+        if (moment().add(1, 'day').isAfter(moment(element.endDate)) || !moment(element.endDate).isValid()) {
           this.groups.push(element)
         } else {
           this.tournaments.push(element)

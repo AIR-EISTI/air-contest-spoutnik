@@ -31,7 +31,7 @@ html,body
 {
     display: flex;
     flex-direction: row;
-    background-color: rgb(245,245,245);
+    background-color: #e6ecf0;
     font-family: "Arimo","Segoe UI", Roboto, "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -131,6 +131,12 @@ h2
     background-color: transparent !important;
     background-image: none !important;
 }
+
+.exercice .description,.tournoi .description
+{
+    font-family: "liberation serif";
+    flex:1;
+}
 /*** grid ***/
 
 .grid-2
@@ -154,6 +160,9 @@ h2
    /*grid-template-rows: 100px 100px 100px;*/
 }
 
+
+
+
 /*** text-image ***/
 
 .text-image
@@ -166,9 +175,19 @@ h2
 .text-image > *
 {
     flex: 1;
-    padding: 80px;
+    margin: 70px;
+    padding: 10px;
 }
 
+.text-image > article
+{
+    border-left: 3px solid navy;
+    border-radius: 3px;
+    display:flex;
+    flex-direction: column;
+
+
+}
 
 .text-image aside
 {
@@ -350,6 +369,8 @@ h2
     flex-direction: column;
     position: relative;
     border-radius: 3px;
+    display:flex;
+    flex-direction: column;
 }
 
 #listeExercices .exercice:hover
@@ -367,27 +388,11 @@ h2
     flex:1;
 }
 
-/*
-.exercice:nth-child(4n)
-{
-    
-    flex: 1 !important;
-}
-
-.exercice:nth-child(4n -1)
-{
-    
-    flex: 2 !important;
-}*/
-
 #listeExercices .exercice p
 {
     overflow: hidden;
     text-overflow: ellipsis;
-    flex-shrink: 1; 
-    
-    margin-bottom: 36px;
-    max-height: 150px;
+    flex:1;
 }
 
 #listeExercices .exercice p:hover
@@ -398,9 +403,6 @@ h2
 #listeExercices .exercice .tags-fixe
 {
     flex-shrink: 0;
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
     padding: 0px 0px;
     width: 100%;
     background-color: white;
@@ -423,6 +425,7 @@ h2
     text-overflow: ellipsis;
     /* font-weight: 100; */
 }
+
 
 
 /*** info exercices ****/
